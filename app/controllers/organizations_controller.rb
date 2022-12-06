@@ -8,34 +8,34 @@ class OrganizationsController < ApplicationController
   def show
   end
 
-  def new
-    @organization = Organization.new
-  end
+  # def new
+  #   @organization = Organization.new
+  # end
 
-  def create
-    @organization = Organization.new(organization_params)
-    if @organization.save
-      redirect_to organizations_path, notice: "organization was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @organization = Organization.new(organization_params)
+  #   if @organization.save
+  #     redirect_to organizations_path, notice: "organization was successfully created."
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @organization.update(organization_params)
-      redirect_to @organization, notice: "organization was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @organization.update(organization_params)
+  #     redirect_to @organization, notice: "organization was successfully updated."
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
-  def destroy
-    @organization.destroy
-    redirect_to root_path, notice: "organization was successfully destroyed."
-  end
+  # def destroy
+  #   @organization.destroy
+  #   redirect_to root_path, notice: "organization was successfully destroyed."
+  # end
 
   private
 
