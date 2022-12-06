@@ -37,9 +37,11 @@ array_of_users = []
 
 puts "Creating users"
 seed_number.times do
+  puts "email: #{Faker::Internet.email}"
   array_of_users << User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
     password: '123456',
     bio: Faker::Lorem.sentence,
     address: Faker::Address.full_address,
