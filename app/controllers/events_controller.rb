@@ -7,6 +7,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @booking = Booking.new
+  end
+
+  def new
   end
 
   # def new
@@ -44,7 +49,7 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:id])
   end
 
   def event_params

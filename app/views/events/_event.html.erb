@@ -45,4 +45,21 @@
     <%= event.capacity %>
   </p>
 
+  <div class="container">
+  <div class="row justify-content-center m-5">
+    <div class="col-12 col-lg-6 ">
+      <div class="p-4 border rounded mb-5 mx-4 shadow-lg p-3 mb-5 bg-white rounded ">
+        <h2>Subscribe to this event</h2>
+        <br>
+        <br>
+        <%= simple_form_for([event, booking]) do |f| %>
+          <br>
+          <%= f.button :submit , class: "btn btn-success w-100 rounded btn-lg"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </div>
