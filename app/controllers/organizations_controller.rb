@@ -7,6 +7,10 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    @event = Event.where(organization: @organization)
+    @booking = Booking.where(event: @event)
+    @users = User.all
+    @review = Review.where(booking: @booking)
   end
 
   # def new

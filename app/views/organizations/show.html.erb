@@ -1,1 +1,10 @@
 <h1><%= @organization.name %></h1>
+<h2>About Us</h2>
+<h3>Reviews</h3>
+<%# <%= @review %>
+<% @review.each_with_index do |review, index| %>
+  <p><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+  <p>Review id: <%= review.id %></p>
+  <%# <p><%= @users[index].booking.review %>
+  <p><%= review.content %></p>
+<% end %>
