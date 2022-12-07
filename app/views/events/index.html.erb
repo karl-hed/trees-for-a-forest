@@ -2,7 +2,7 @@
 <h1>events</h1>
 <div id="events">
   <% @events.each do |event| %>
-    <%= render event %>
+    <%= render event, event: event, booking: @booking %>
     <p>
       <%= link_to "Show this event", events_path %>
     </p>
