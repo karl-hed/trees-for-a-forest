@@ -9,7 +9,12 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @booking = Booking.new
-    @bookings = Booking.all
+    @bookings = Booking.where(event: @event) # Booking.includes(:user).where(event: @event)
+    # @users = []
+    # User.all.each do |user|
+    #   # raise
+    #   @users << Booking.find_by(user_id: user.id)
+    # end
   end
 
   def new

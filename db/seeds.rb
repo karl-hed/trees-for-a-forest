@@ -120,7 +120,7 @@ index = 0
 array_of_bookings = []
 
 puts "Creating bookings"
-seed_number.times do
+(seed_number / 2).times do
   array_of_bookings << Booking.create(
     user_id: array_of_users[index].id,
     event_id: array_of_events[index].id
@@ -131,7 +131,7 @@ end
 index = 0
 
 puts "Creating reviews"
-seed_number.times do
+(seed_number / 2).times do
   Review.create(
     content: Faker::Hipster.sentence,
     rating: [*0..5].sample,
