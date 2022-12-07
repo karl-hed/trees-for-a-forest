@@ -74,7 +74,7 @@ seed_number.times do
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = URI.read(avatar_imgs[[*0..1].sample])
+  file = URI.open(avatar_imgs[[*0..1].sample])
   user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
   user.save
   array_of_users << user
