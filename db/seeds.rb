@@ -51,7 +51,6 @@ seed_number.times do
 end
 
 index = 0
-
 array_of_organizations = []
 
 puts "Creating organizations"
@@ -63,18 +62,10 @@ org_array.each do |org|
   index += 1
 end
 
-array_of_ids_from_organizations = []
-
-Organization.all.each do |org|
-  array_of_ids_from_organizations << org.id
-end
-
 index = 0
-
-puts "Creating events"
-
 array_of_events = []
 
+puts "Creating events"
 I18n.locale = 'en-US'
 seed_number.times do
   array_of_events << Event.create(
@@ -82,7 +73,6 @@ seed_number.times do
     description: Faker::Hipster.sentence,
     date: Faker::Date.in_date_period,
     time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
-    # organization_id: Organization.find(id: array_of_ids_from_organizations[index]),
     organization_id: array_of_organizations[index].id,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
