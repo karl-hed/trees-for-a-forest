@@ -4,6 +4,7 @@
 <% @review.each_with_index do |review, index| %>
   <p><%= image_tag review.booking.user.photo, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
      <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+     <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
      <% remaining_stars = 5 - review.rating %>
      <% review.rating.times do %>
       <% unless review.rating.is_a? Integer %>
