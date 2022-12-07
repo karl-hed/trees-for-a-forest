@@ -47,6 +47,30 @@ descriptions = ["Tree planting event near Sherbrooke for nature-lovers. Get to k
                 around you and give your time to participate in an awesome event.",
                 "Participate in an awesome event planting trees near Levis with eco-friendly people."]
 
+reviews = ["Awesome organisation. I enjoyed planting tree in this week's (december 2022) event. Organizers were really \
+            helpful.",
+           "I loved participating in this tree planting event. I'd like to thank everyone involved.",
+           "It was my first time participating in a tree planting event. I really enjoyed my time with this \
+            organisation. I loved meeting new people and making new friends.",
+           "It is the first time I participate with this organisation and I loved volunteering with them.",
+           "Loved it.",
+           "I came with several of my friends who were all experienced tree planters and we all had a really good time.",
+           "It was a pleasure for me to plant trees with this organisation.",
+           "I'd like to personnally thank all the organizers for this event.",
+           "I was very fun and very intense.",
+           "Thanks to everyone involved.",
+           "Our group was fun and the organisation was really good.",
+           "Generally it was a fun experience.",
+           "I enjoyed my time wit this organisation.",
+           "It was a surprisingly fun experience.",
+           "It was a lot of work but overall satisfying.",
+           "Thanks to all the organizers.",
+           "I was very fun",
+           "I learned a lot.",
+           "I loved the vibe.",
+           "I made friends and I enjoyed planting trees with this organization."
+          ]
+
 places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
 
 latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.3432397 48.844516 45.400002 46.738227]
@@ -59,9 +83,26 @@ seed_number = org_array.size
 
 array_of_users = []
 
+puts "Creating main user"
+user = User.new(
+  first_name: "Jim",
+  last_name: "Bo",
+  email: "lewagon@lewagon.com",
+  password: "password",
+  bio: "Student at Le Wagon Montreal",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = URI.open(avatar_imgs[[*0..1].sample])
+user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user.save
+array_of_users << user
+
 puts "Creating users"
-seed_number.times do
-  puts "email: #{Faker::Internet.email}"
+(seed_number - 1).times do
+  # puts "email: #{Faker::Internet.email}"
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -100,16 +141,12 @@ I18n.locale = 'en-US'
 seed_number.times do
   array_of_events << Event.create(
     name: Faker::FunnyName.name,
-    # description: Faker::Hipster.sentence,
     description: descriptions[index],
     date: Faker::Date.in_date_period,
     time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
     organization_id: array_of_organizations[index].id,
-    # latitude: Faker::Address.latitude,
-    # longitude: Faker::Address.longitude,
     latitude: latitudes[index],
     longitude: longitudes[index],
-    # region: Faker::Address.state,
     region: places[index],
     capacity: [*0..100].sample
   )
@@ -129,16 +166,18 @@ seed_number.times do
 end
 
 index = 0
+review_index = 0
 
 puts "Creating reviews"
-(seed_number * 2).times do
+reviews.size.times do
   index = 0 if index > seed_number - 1
   Review.create(
-    content: Faker::Hipster.sentence,
+    content: reviews[review_index],
     rating: [*0..5].sample,
     booking_id: array_of_bookings[index].id
   )
   index += 1
+  review_index += 1
 end
 
 # array_of_chats = []
