@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require "open-uri"
 
 Booking.destroy_all
 Event.destroy_all
@@ -43,8 +44,12 @@ descriptions = ["Tree planting event near Sherbrooke for nature-lovers.",
                 "Participate in an awesome event planting trees near Levis with eco-friendly people."]
 
 places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
+
 latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.3432397 48.844516 45.400002 46.738227]
+
 longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -71.246459]
+
+avatar_imgs = %w[https://www.w3schools.com/w3images/avatar2.png https://www.w3schools.com/howto/img_avatar.png]
 
 seed_number = org_array.size
 
@@ -53,7 +58,7 @@ array_of_users = []
 puts "Creating users"
 seed_number.times do
   puts "email: #{Faker::Internet.email}"
-  array_of_users << User.create(
+  user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -65,6 +70,10 @@ seed_number.times do
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
+  file = URI.read(avatar_imgs[[*0..1].sample])
+  user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+  user.save
+  array_of_users << user
 end
 
 index = 0
