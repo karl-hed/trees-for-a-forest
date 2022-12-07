@@ -49,7 +49,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 # gem "bootstrap"
 # gem 'image_processing'
-
+gem "cloudinary"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 gem "devise"
