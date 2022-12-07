@@ -170,7 +170,7 @@ review_index = 0
 
 puts "Creating reviews"
 reviews.size.times do
-  index = 0 if index > seed_number - 1
+  index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
   Review.create(
     content: reviews[review_index],
     rating: [*0..5].sample,
