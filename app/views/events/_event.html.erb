@@ -62,20 +62,14 @@
 </div>
 
 <div class="container">
-  <h2>People who will be attending this event.</h2>
+  <h2>People attending this event</h2>
   <p>
-    <%# <% @bookings.each do |booking| %>
-      <%# <%= image_tag booking.user.photo, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-      <%# <%= booking.user.first_name %>
-      <%# <%= booking.user.last_name %>
-    <%# <% end %>
     <% @bookings.each do |booking_loop| %>
-      <%= image_tag booking_loop.user.photo, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-      <p><%= booking_loop.user.first_name %> <%= booking_loop.user.last_name %></p>
+      <p>
+        <%= image_tag booking_loop.user.photo, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+        <%= booking_loop.user.first_name %> <%= booking_loop.user.last_name %>
+      </p>
     <% end %>
-    <%# <% @users.each do |user| %>
-      <%# <%= image_tag user.photo, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-    <%# <% end %>
   </p>
 </div>
 
