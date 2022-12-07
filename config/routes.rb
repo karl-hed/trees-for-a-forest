@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :events
   end
+  resources :events do
+    resources :bookings, only: %i[new create]
+  end
   resources :events, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
