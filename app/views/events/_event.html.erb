@@ -61,5 +61,11 @@
   </div>
 </div>
 
+<div class="container">
+  <h2>People who will be attending this event.</h2>
+  <% @bookings.each do |booking| %>
+    <%= booking.user.first_name %><%= booking.user.last_name %>
+  <% end %>
+</div>
 
 </div>
