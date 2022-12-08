@@ -1,15 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
+
 <%= render @event, event: @event, booking: @booking %>
 
 <%# <% @event.photos.each do |photo| %>
   <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill  %>
 <%# <% end %>
 
-
 <div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", root_path %>
 
-  <%= button_to "Destroy this event", @event, method: :delete %>
+  <%= link_to "Back to events", events_path %>
+
 </div>
+<%# Geocoding for show page - start - %>
+<div class="container">
+  <div class="row">
+    <div style="width: 100%; height: 600px;"
+      data-controller="eventmap"
+      data-eventmap-event-value="<%= @event.to_json %>"
+      data-eventmap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+</div>
+<%# Geocoding for show page - end - %>

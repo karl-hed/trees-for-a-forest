@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @booking = Booking.new
+    # @users = User.where(name: 'John')
   end
 
   def new
