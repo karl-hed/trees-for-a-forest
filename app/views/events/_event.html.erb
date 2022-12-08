@@ -31,7 +31,9 @@
     <p>
       <% bookings.each do |booking_loop| %>
         <p>
-          <%= image_tag booking_loop.user.photo, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+          <% if booking_loop.user.photo.attached? %>
+            <%= cl_image_tag booking_loop.user.photo.key, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+          <% end  %>
           <%= booking_loop.user.first_name %> <%= booking_loop.user.last_name %>
         </p>
       <% end %>
