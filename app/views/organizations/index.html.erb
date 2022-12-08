@@ -5,6 +5,7 @@
     <%= link_to organization.name, organization_path(organization) %>
     <%# <% @reviews.each do  %>
     <%# <%= @organizations.events.last.bookings.last.reviews.count %>
-    <%= raise %>
+    <%= organization.reviews.last.rating %>
+    <%# <%= raise %>
   </p>
 <% end %>
