@@ -67,7 +67,27 @@ h6 {
 
 .footer {
   width: 100%;
-  
 
+}
 
+.footer-content li {
+  text-decoration: none;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: #285430;
+  font-weight: bold;
+}
+
+.socials {
+  text-decoration: none;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  color: #285430;
+
+}
+
+.stay-in-touch {
+  color: #285430;
 }
