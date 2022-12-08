@@ -32,15 +32,19 @@ logos = %w[https://cdn.shopify.com/s/files/1/0326/7189/files/One_Tree_Planted-lo
            https://media-exp1.licdn.com/dms/image/C4D0BAQG_rEz8GKwSAQ/company-logo_200_200/0/1646233804068?e=2147483647&v=beta&t=JYNaKIgJqn3urXppyrEy3tmfzg0noXYV0cSN2_hcYlE
            https://mouvement.arbre-evolution.org/images/logo_AE.png]
 
-descriptions = ["Tree planting event near Sherbrooke for nature-lovers.",
-                "Plant trees in Bois-de-Boulogne in Montreal with eco-friendly people.",
+descriptions = ["Tree planting event near Sherbrooke for nature-lovers. Get to know nature-minded people around you and\
+                 give your time to participate in an awesome event.",
+                "Plant trees in Bois-de-Boulogne in Montreal with eco-friendly people. Meet new people with an \
+                eco-friendly attitude and actively participate in an event that changes our future.",
                 "Participate in tree planting event near the Capitale-Nationale with nature-lovers.",
                 "Get involved in the biggest tree planting this year in Chicoutimi for environmentalists.",
                 "Give your time to fight climate change by planting trees in the Gaspésie region.",
                 "Join a tree planting event in Longueuil by giving your time and energy to help the environment.",
-                "Spend time with nature-lovers by planting trees in Trois-Rivieres.",
+                "Spend time with nature-lovers by planting trees in Trois-Rivieres. Meet new people with an \
+                eco-friendly attitude and actively participate in an event that changes our future.",
                 "Volunteer to plant trees near Matane by joining other nature-minded people.",
-                "Spend time planting trees near Granby with eco-responsable people.",
+                "Spend time planting trees near Granby with eco-responsable people. Get to know nature-minded people \
+                around you and give your time to participate in an awesome event.",
                 "Participate in an awesome event planting trees near Levis with eco-friendly people."]
 
 places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
@@ -70,7 +74,7 @@ seed_number.times do
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = URI.read(avatar_imgs[[*0..1].sample])
+  file = URI.open(avatar_imgs[[*0..1].sample])
   user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
   user.save
   array_of_users << user
@@ -116,7 +120,7 @@ index = 0
 array_of_bookings = []
 
 puts "Creating bookings"
-seed_number.times do
+(seed_number / 2).times do
   array_of_bookings << Booking.create(
     user_id: array_of_users[index].id,
     event_id: array_of_events[index].id
@@ -127,7 +131,7 @@ end
 index = 0
 
 puts "Creating reviews"
-seed_number.times do
+(seed_number / 2).times do
   Review.create(
     content: Faker::Hipster.sentence,
     rating: [*0..5].sample,
