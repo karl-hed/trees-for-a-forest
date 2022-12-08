@@ -16,7 +16,7 @@ Organization.destroy_all
 # Chat.destroy_all
 User.destroy_all
 
-achievement_levels = %i[beginner: 0 intermediate: 1 advanced: 2 super_planter: 3]
+achievement_levels = %w[0 1 2 3]
 
 org_array = %w[onetreeplanted jour-de-la-terre espacepourlavie arbrescanada asfq
                mon-arbre-a-moi arbres-eco GRAME-Eco-quartier nature-action-quebec arbre-evolution]
@@ -120,7 +120,7 @@ index = 0
 array_of_bookings = []
 
 puts "Creating bookings"
-(seed_number / 2).times do
+seed_number.times do
   array_of_bookings << Booking.create(
     user_id: array_of_users[index].id,
     event_id: array_of_events[index].id
@@ -131,7 +131,8 @@ end
 index = 0
 
 puts "Creating reviews"
-(seed_number / 2).times do
+(seed_number * 2).times do
+  index = 0 if index > seed_number - 1
   Review.create(
     content: Faker::Hipster.sentence,
     rating: [*0..5].sample,

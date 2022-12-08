@@ -2,9 +2,10 @@
 <h1>events</h1>
 <div id="events">
   <% @events.each do |event| %>
-    <%= render event %>
+    <%# <%= render event, event: event, booking: @booking %>
+    <%= render "individual_event", event: event %>
     <p>
-      <%= link_to "Show this event", events_path %>
+      <%= link_to "Show this event", event_path(event) %>
     </p>
   <% end %>
 </div>
