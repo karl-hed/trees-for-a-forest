@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="video-content">
+  <div class="content">
+      <h1>Trees for a Forest</h1>
+      <h6>Land a hand to plant a tree</h6>
+      <br>
+      <br>
+      <a  class="btn btn-ghost" href="#">Start now</a>
+  </div>
+  <%= video_tag "pine_forest.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "back-video" %>
+</div>
+
+
+<div class="trees-planted">
+  <h1>TREES PLANTED</h1>
+</div>
+
+<div class="counter">
+  <h2 id="tree-counter"></h2>
+</div>
+
+<div class="footer">
+  <%= image_tag "footer_image.png" %>
+</div>
