@@ -173,7 +173,7 @@ reviews.size.times do
   index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
   Review.create(
     content: reviews[review_index],
-    rating: [*0..5].sample,
+    rating: [*3..5].sample,
     booking_id: array_of_bookings[index].id
   )
   index += 1

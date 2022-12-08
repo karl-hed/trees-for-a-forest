@@ -1,9 +1,25 @@
 <h1><%= @organization.name %></h1>
 <h2>About Us</h2>
 <h3>Reviews</h3>
-<%# <%= @review %>
 <% @review.each_with_index do |review, index| %>
-  <p><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+  <p>
+    <%= image_tag review.booking.user.photo, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+    <!-- Reviewer name -->
+    <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+    <!-- Review date -->
+    <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
+    <!-- Rating in stars -->
+    <% review.rating.times do %>
+      <% unless review.rating.is_a? Integer %>
+        <i class="fa-solid fa-star-half-stroke"></i>
+      <% end %>
+      <i class="fa-solid fa-star fa-star-gold"></i>
+    <% end %>
+    <% (5 - review.rating).times do %>
+      <i class="fa-solid fa-star"></i>
+    <% end %>
+     <!-- <%= review.rating %> / 5 -->
+  </p>
   <p>Review id: <%= review.id %></p>
   <%# <p><%= @users[index].booking.review %>
   <p><%= review.content %></p>
