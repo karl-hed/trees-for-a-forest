@@ -1,8 +1,29 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: %i[show edit update destroy]
 
   def index
     @organizations = Organization.all
+    # raise
+
+    # @organization = Organization.find(params[:id])
+
+    @events = []
+    @bookings = []
+    @reviews = []
+    @organizations.each do |org|
+      event = Event.where(organization: org)
+      if event.nil?
+        raise
+      end
+      @events << event unless event.nil?
+      unless @events.nil?
+        @bookings << Booking.where(event: @events.last)
+        @reviews << Review.where(booking: @bookings.last)
+      end
+    end
+    # @event = Event.where(organization: @organization)
+    # @booking = Booking.where(event: @event)
+    # @review = Review.where(booking: @booking)
   end
 
   def show
@@ -11,6 +32,7 @@ class OrganizationsController < ApplicationController
     @booking = Booking.where(event: @event)
     @users = User.all
     @review = Review.where(booking: @booking)
+    # raise
   end
 
   # def new
