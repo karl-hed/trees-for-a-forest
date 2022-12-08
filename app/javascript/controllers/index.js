@@ -7,8 +7,16 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+
 import { CountUp } from 'countup.js';
 
 window.onload = function() {
   new CountUp('tree-counter', 12956, {enableScrollSpy: true, duration: 5});
 }
+
+import MapController from "./map_controller"
+application.register("map", MapController)
+
+import EventMapController from "./event_map_controller"
+application.register("eventmap", EventMapController)
+

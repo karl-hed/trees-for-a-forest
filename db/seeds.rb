@@ -16,7 +16,7 @@ Organization.destroy_all
 # Chat.destroy_all
 User.destroy_all
 
-achievement_levels = %i[beginner: 0 intermediate: 1 advanced: 2 super_planter: 3]
+achievement_levels = %w[0 1 2 3]
 
 org_array = %w[onetreeplanted jour-de-la-terre espacepourlavie arbrescanada asfq
                mon-arbre-a-moi arbres-eco GRAME-Eco-quartier nature-action-quebec arbre-evolution]
@@ -32,16 +32,44 @@ logos = %w[https://cdn.shopify.com/s/files/1/0326/7189/files/One_Tree_Planted-lo
            https://media-exp1.licdn.com/dms/image/C4D0BAQG_rEz8GKwSAQ/company-logo_200_200/0/1646233804068?e=2147483647&v=beta&t=JYNaKIgJqn3urXppyrEy3tmfzg0noXYV0cSN2_hcYlE
            https://mouvement.arbre-evolution.org/images/logo_AE.png]
 
-descriptions = ["Tree planting event near Sherbrooke for nature-lovers.",
-                "Plant trees in Bois-de-Boulogne in Montreal with eco-friendly people.",
+descriptions = ["Tree planting event near Sherbrooke for nature-lovers. Get to know nature-minded people around you and\
+                 give your time to participate in an awesome event.",
+                "Plant trees in Bois-de-Boulogne in Montreal with eco-friendly people. Meet new people with an \
+                eco-friendly attitude and actively participate in an event that changes our future.",
                 "Participate in tree planting event near the Capitale-Nationale with nature-lovers.",
                 "Get involved in the biggest tree planting this year in Chicoutimi for environmentalists.",
                 "Give your time to fight climate change by planting trees in the Gaspésie region.",
                 "Join a tree planting event in Longueuil by giving your time and energy to help the environment.",
-                "Spend time with nature-lovers by planting trees in Trois-Rivieres.",
+                "Spend time with nature-lovers by planting trees in Trois-Rivieres. Meet new people with an \
+                eco-friendly attitude and actively participate in an event that changes our future.",
                 "Volunteer to plant trees near Matane by joining other nature-minded people.",
-                "Spend time planting trees near Granby with eco-responsable people.",
+                "Spend time planting trees near Granby with eco-responsable people. Get to know nature-minded people \
+                around you and give your time to participate in an awesome event.",
                 "Participate in an awesome event planting trees near Levis with eco-friendly people."]
+
+reviews = ["Awesome organisation. I enjoyed planting tree in this week's (december 2022) event. Organizers were really \
+            helpful.",
+           "I loved participating in this tree planting event. I'd like to thank everyone involved.",
+           "It was my first time participating in a tree planting event. I really enjoyed my time with this \
+            organisation. I loved meeting new people and making new friends.",
+           "It is the first time I participate with this organisation and I loved volunteering with them.",
+           "Loved it.",
+           "I came with several of my friends who were all experienced tree planters and we all had a really good time.",
+           "It was a pleasure for me to plant trees with this organisation.",
+           "I'd like to personnally thank all the organizers for this event.",
+           "I was very fun and very intense.",
+           "Thanks to everyone involved.",
+           "Our group was fun and the organisation was really good.",
+           "Generally it was a fun experience.",
+           "I enjoyed my time wit this organisation.",
+           "It was a surprisingly fun experience.",
+           "It was a lot of work but overall satisfying.",
+           "Thanks to all the organizers.",
+           "I was very fun",
+           "I learned a lot.",
+           "I loved the vibe.",
+           "I made friends and I enjoyed planting trees with this organization."
+          ]
 
 places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
 
@@ -55,9 +83,26 @@ seed_number = org_array.size
 
 array_of_users = []
 
+puts "Creating main user"
+user = User.new(
+  first_name: "Jim",
+  last_name: "Bo",
+  email: "lewagon@lewagon.com",
+  password: "password",
+  bio: "Student at Le Wagon Montreal",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = URI.open(avatar_imgs[[*0..1].sample])
+user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user.save
+array_of_users << user
+
 puts "Creating users"
-seed_number.times do
-  puts "email: #{Faker::Internet.email}"
+(seed_number - 1).times do
+  # puts "email: #{Faker::Internet.email}"
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -70,7 +115,7 @@ seed_number.times do
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = URI.read(avatar_imgs[[*0..1].sample])
+  file = URI.open(avatar_imgs[[*0..1].sample])
   user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
   user.save
   array_of_users << user
@@ -96,16 +141,12 @@ I18n.locale = 'en-US'
 seed_number.times do
   array_of_events << Event.create(
     name: Faker::FunnyName.name,
-    # description: Faker::Hipster.sentence,
     description: descriptions[index],
     date: Faker::Date.in_date_period,
     time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
     organization_id: array_of_organizations[index].id,
-    # latitude: Faker::Address.latitude,
-    # longitude: Faker::Address.longitude,
     latitude: latitudes[index],
     longitude: longitudes[index],
-    # region: Faker::Address.state,
     region: places[index],
     capacity: [*0..100].sample
   )
@@ -125,15 +166,18 @@ seed_number.times do
 end
 
 index = 0
+review_index = 0
 
 puts "Creating reviews"
-seed_number.times do
+reviews.size.times do
+  index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
   Review.create(
-    content: Faker::Hipster.sentence,
-    rating: [*0..5].sample,
+    content: reviews[review_index],
+    rating: [*3..5].sample,
     booking_id: array_of_bookings[index].id
   )
   index += 1
+  review_index += 1
 end
 
 # array_of_chats = []

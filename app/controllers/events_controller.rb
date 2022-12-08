@@ -1,14 +1,18 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.all
-
+    @booking = Booking.new
+    @bookings = Booking.where(event: @event)
   end
 
   def show
     @event = Event.find(params[:id])
     @booking = Booking.new
+    @bookings = Booking.where(event: @event) # Booking.includes(:user).where(event: @event)
+    @user_booking = Booking.find_by(user: current_user)
+    # raise
   end
 
   def new
