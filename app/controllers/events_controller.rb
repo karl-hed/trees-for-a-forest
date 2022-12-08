@@ -11,6 +11,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @booking = Booking.new
     @bookings = Booking.where(event: @event) # Booking.includes(:user).where(event: @event)
+    @user_booking = Booking.find_by(user: current_user)
+    # raise
   end
 
   def new
