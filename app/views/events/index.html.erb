@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="container p-5">
+<div class="container">
 
 
 
@@ -22,28 +22,25 @@
   <% @events.each do |event| %>
 <div id="events">
 
-  <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <%= image_tag event.organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%= event.name %></h5>
-        <%= event.description %>
+  <div class="card mb-5 mt-5" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag event.organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title"><%= event.name %></h2>
+          <h3 class="card-organization"><%= event.organization.name %></h3>
+          <h5 class="card-date"><%= event.date %></h5>
+          <%= link_to "Show this event", event_path(event) %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-  </div>
-</div>
 
 
-    <%# <%= render event, event: event, booking: @booking %>
-    <%= render "individual_event", event: event %>
-    <p>
-      <%= link_to "Show this event", event_path(event) %>
-    </p>
+
   <% end %>
 </div>
 
