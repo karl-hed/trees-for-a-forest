@@ -1,0 +1,21 @@
+
+<%= cl_image_tag @user.photo.key, class:"rounded-circle "%>
+<p>
+<strong>Name: </strong>
+<%= @user.first_name %><%= @user.last_name %>
+</p>
+
+<p>
+<% if @user.wants_to_carpool %>
+<%= @user.first_name + " accepts carpooling requests"  %>
+<% else  %>
+<%= @user.first_name + " Doesn't accepts carpooling requests"   %>
+<% end %>
+</p>
+
+<p>
+<strong>Bio: </strong>
+<%= @user.bio %>
+</p>
+
+<button type="button" class="btn btn-success btn-lg"><i class="fa-solid fa-messages"></i>Messege</button>
