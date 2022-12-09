@@ -119,9 +119,9 @@ array_of_users << user_jim
 
 puts "Creating user Harmony"
 user_harmony = User.new(
-  first_name: "Harmony",
-  last_name: "Treelover",
-  email: "harmony@lewagon.com",
+  first_name: "Anne Fleur",
+  last_name: "Hagbang Bayiha",
+  email: "anne_fleur@lewagon.com",
   password: "123456",
   bio: "Student at Le Wagon Montreal",
   address: "Montreal",
