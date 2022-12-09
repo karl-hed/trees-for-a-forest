@@ -46,12 +46,18 @@ h6 {
 .trees-planted {
   font-family: 'Poppins', sans-serif;
   color: #A4BE7B;
-  font-size:25px;
-  font-weight: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
 
+
+
+}
+
+.trees-planted h1 {
+  font-weight: bold;
+  font-size:27px;
+  letter-spacing: 10px;
 }
 
 .counter {
@@ -62,9 +68,14 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
+.counter h2 {
+  font-weight: bold;
+  font-size:100px;
+  letter-spacing: 2px;
+
+}
 .footer {
   width: 100%;
 
@@ -76,7 +87,6 @@ h6 {
   align-items: center;
   justify-content: center;
   color: #285430;
-  font-weight: bold;
 }
 
 .socials {
@@ -90,4 +100,8 @@ h6 {
 
 .stay-in-touch {
   color: #285430;
+}
+
+.space {
+  height: 200px;
 }
