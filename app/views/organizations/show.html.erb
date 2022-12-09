@@ -12,14 +12,16 @@
     <h2 class="my-5">About Us</h2>
       <%# REVIEW BUTTON %>
     <div class="review-button my-5">
-      <a class="btn btn-flat" href="#">Write a review</a>
+      <%# <a class="btn btn-flat" href="#">Write a review</a> %>
+      <%= link_to "Write a review", new_organization_review_path(@organization), class:"btn btn-flat" %>
     </div>
   </div>
 
   <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
   <h3 class="my-5">Reviews</h3>
 
-  <%# REVIEW CARD %>
+  <%# REVIEW CARD NOT EXECUTED %>
+  <% if false %>
   <% @review.each_with_index do |review, index| %>
     <p>
       <%= image_tag review.booking.user.photo, class:"img-fluid rounded-circle shadow-4-strong ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
@@ -32,21 +34,18 @@
         <% unless review.rating.is_a? Integer %>
           <i class="fa-solid fa-star-half-stroke"></i>
         <% end %>
-        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star fa-star-gold"></i>
       <% end %>
       <% (5 - review.rating).times do %>
         <i class="fa-solid fa-star"></i>
       <% end %>
-      <!-- <%= review.rating %> / 5 -->
-    </p>
-    <p>Review id: <%= review.id %></p>
-    <%# <p><%= @users[index].booking.review %>
-    <p><%= review.content %></p>
-  <% end %>
-
-
-
-
+     <!-- <%= review.rating %> / 5 -->
+  </p>
+  <p>Review id: <%= review.id %></p>
+  <%# <p><%= @users[index].booking.review %>
+  <p><%= review.content %></p>
+<% end %>
+<% end %>
 
 </div>
 
@@ -54,8 +53,9 @@
 
 <%# CARD LAYOUT %>
 
-<div class="container">
-  <div class="col-12">
+<% @review.each_with_index do |review, index| %>
+  <div class="container">
+    <div class="col-12">
       <div class="card py-2 my-3" style="width:100%">
         <div class="row g-0">
           <div class="col-md-2">
@@ -63,13 +63,37 @@
           </div>
           <div class="col-md-10">
             <div class="card-body">
+              <p class="card-text">
 
-              <p class="card-text"><small class="text-muted">18/03/2022</small></p>
-              <h5 class="card-title" style="font-family:roboto, sans-serif;">Reviewer Name</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural leIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution </p>
+                <small class="text-muted">
+                  <!-- Review date -->
+                  <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
+                </small>
+
+                <!-- Rating in stars -->
+                <% review.rating.times do %>
+                  <i class="fa-solid fa-star fa-star-gold"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+
+              </p>
+
+              <h5 class="card-title" style="font-family:roboto, sans-serif;">
+                <!-- Reviewer name -->
+                <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+              </h5>
+              <!-- Review content -->
+              <p class="card-text"><%= review.content %></p>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
+<% end %>
+
+<div class="container">
+  <%= link_to "< Back to organizations", organizations_path, class:"btn btn-flat mb-5"  %>
 </div>
