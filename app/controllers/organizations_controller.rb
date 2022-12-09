@@ -10,17 +10,23 @@ class OrganizationsController < ApplicationController
     @events = []
     @bookings = []
     @reviews = []
+    @mean = 0
     @organizations.each do |org|
-      event = Event.where(organization: org)
-      if event.nil?
-        raise
-      end
-      @events << event unless event.nil?
-      unless @events.nil?
-        @bookings << Booking.where(event: @events.last)
-        @reviews << Review.where(booking: @bookings.last)
+      org.reviews.each do |review|
+        @mean += review.rating
       end
     end
+    # @organizations.each do |org|
+    #   event = Event.where(organization: org)
+    #   if event.nil?
+    #     raise
+    #   end
+    #   @events << event unless event.nil?
+    #   unless @events.nil?
+    #     @bookings << Booking.where(event: @events.last)
+    #     @reviews << Review.where(booking: @bookings.last)
+    #   end
+    # end
     # @event = Event.where(organization: @organization)
     # @booking = Booking.where(event: @event)
     # @review = Review.where(booking: @booking)
