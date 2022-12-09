@@ -38,8 +38,10 @@
         <div class="card-body">
           <h2 class="card-title"><%= event.name %></h2>
           <h3 class="card-organization"><%= event.organization.name %></h3>
-          <h5 class="card-date"><i class="fa-solid fa-calendar-days"></i><%= event.date %></h5>
-          <%= link_to "Show this event", event_path(event) %>
+          <h5 class="card-date"><%= event.date %></h5>
+          <div class="btn btn-flat">
+            <%= link_to "View", event_path(event), class:"text-decoration-none fw-semibold " %>
+          </div>
         </div>
       </div>
     </div>

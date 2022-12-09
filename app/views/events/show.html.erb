@@ -1,33 +1,109 @@
-
-<p style="color: green"><%= notice %></p>
-
-
-<%= render @event, event: @event, booking: @booking, user_booking: @user_booking, bookings: @bookings %>
-
-
-<%# <% @event.photos.each do |photo| %>
-  <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill  %>
-<%# <% end %>
-
-<div>
-
-  <!-- <%= link_to "Edit this event", edit_event_path(@event) %> | -->
-  <%= link_to "Back to events", events_path %>
-
-  <%# <%= button_to "Destroy this event", @event, method: :delete %>
-
-
-  <%= link_to "Back to events", events_path %>
-
+<%# BANNER %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
+  <div class="container">
+    <h1 class="fs-1" style="font-family:roboto, sans-serif;"><%= @event.name %></h1>
+  </div>
 </div>
-<%# Geocoding for show page - start - %>
+
+
+
+
+
 <div class="container">
-  <div class="row">
-    <div style="width: 100%; height: 600px;"
-      data-controller="eventmap"
-      data-eventmap-event-value="<%= @event.to_json %>"
-      data-eventmap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  <div class="d-flex justify-content-between">
+    <h2 class="my-5">Details</h2>
+
+    <%# BUTTON %>
+    <%= simple_form_for([ @event,  @booking]) do |f| %>
+      <br>
+      <%= f.submit "Join event", class: "btn btn-flat" %>
+    <% end %>
   </div>
 
+
+
+
+  <br>
+  <div class="card">
+    <div class="card-body">
+    <%= @event.description %>
+    <br>
+    <small class= "muted">capacity:<%= @event.capacity %></small>
+    </div>
+  </div>
+
+   <h2 class="my-5">Meet up point</h2>
+
+
+
+
+
+
+  <p style="color: green"><%= notice %></p>
+
+
+
+
+  <%# <% @event.photos.each do |photo| %>
+    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill  %>
+  <%# <% end %>
+
+  <div>
+
+
+
+
+
+
+  </div>
+  <%# Geocoding for show page - start - %>
+  <div class="container">
+    <div class="row">
+      <div style="width: 100%; height: 600px;"
+        data-controller="eventmap"
+        data-eventmap-event-value="<%= @event.to_json %>"
+        data-eventmap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+
+  </div>
+    <%# <%= render @event, event: @event, booking: @booking, user_booking: @user_booking, bookings: @bookings %>
+
+    <div id="<%= dom_id @event %>">
+
+      <%= render "individual_event", event:  @event %>
+
+      <%# <% user = booking.select { |b| b.user == current_user } %>
+      <%# <%= raise %>
+
+    <% unless @event.users.include?(current_user) %>
+
+              <br>
+              <br>
+
+
+
+    <% end %>
+
+    <%# <% if false %>
+    <h2 class="my-5">People attending this event</h2>
+
+      <div class="container">
+          <% @bookings.each do |booking| %>
+            <%= link_to profile_path(booking.user) do %>
+              <div class="d-inline">
+                <% if booking.user.photo.attached? %>
+                  <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+                <% end  %>
+                <%= booking.user.first_name %> <%= booking.user.last_name %>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    <%# <% end %>
+    </div>
+     <br>
+     <br>
+    <!-- <%= link_to "Edit this event", edit_event_path(@event) %> | -->
+    <%= link_to "Back to events", events_path %>
 </div>
-<%# Geocoding for show page - end - %>
