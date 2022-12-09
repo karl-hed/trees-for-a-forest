@@ -13,7 +13,7 @@
       <% unless review.rating.is_a? Integer %>
         <i class="fa-solid fa-star-half-stroke"></i>
       <% end %>
-      <i class="fa-solid fa-star fa-star-gold"></i>
+      <i class="fa-solid fa-star"></i>
     <% end %>
     <% (5 - review.rating).times do %>
       <i class="fa-solid fa-star"></i>
@@ -24,3 +24,10 @@
   <%# <p><%= @users[index].booking.review %>
   <p><%= review.content %></p>
 <% end %>
+
+
+
+<%# REVIEW BUTTON %>
+<div class="review-button">
+ <a class="btn btn-flat" href="#">Write a review</a>
+</div>
