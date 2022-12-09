@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
     @mean = 0
     @organizations.each do |org|
       org.reviews.each do |review|
-        @mean += review.rating
+        # @mean += review.rating
       end
     end
     # @organizations.each do |org|

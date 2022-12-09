@@ -8,14 +8,17 @@
     <%= organization.reviews.last.rating %>
     <% organization.reviews.each do |review| %>
       <% @mean += review.rating %>
+      <%= review.rating %>
     <% end %>
-    <% raise %>
+    <p><%= @mean / organization.reviews.size %></p>
+    <%# <% raise %>
     <% (@mean / organization.reviews.size).times do %>
       <i class="fa-solid fa-star fa-star-gold"></i>
     <% end %>
     <% (5 - (@mean / organization.reviews.size)).times do %>
       <i class="fa-solid fa-star"></i>
     <% end %>
+    <% @mean = 0 %>
     <%# <%= raise %>
   </p>
 <% end %>
