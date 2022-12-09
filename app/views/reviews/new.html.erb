@@ -1,0 +1,6 @@
+<%= simple_form_for(@organization) do |f| %>
+  <%= f.input :rating, :collection => %w[0 1 2 3 4 5] %>
+  <%= f.input :content %>
+  <br>
+  <%= f.button :submit , class: "btn btn-success w-100 rounded btn-lg"%>
+<% end %>
