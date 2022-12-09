@@ -79,6 +79,10 @@ longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734
 
 avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
 
+event_photos = %w[
+  https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
+]
+
 seed_number = org_array.size
 
 array_of_users = []

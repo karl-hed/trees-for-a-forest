@@ -1,6 +1,7 @@
 .card {
   border-radius: 8px;
   box-shadow: 0px 5px 6px #adb5bd;
+  font-family: Roboto, sans-serif;
 }
 
 .col-md-4 {
@@ -13,16 +14,17 @@
 .card-title {
   color: #285430;
   font-weight: bold;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 }
 
 .card-date {
   color: #000000;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 }
 
 .card-organization {
   color: #A4BE7B;
   font-weight: bold;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 }
+

@@ -9,22 +9,26 @@
 <br>
 <br>
 <br>
+<%# CARDS %>
 
-<div class="container">
-<% @organizations.each do |organization| %>
-  <div class="row row-cols-3">
-    <div class="card mt-5 mb-5">
-      <div class="col-6 py-5">
-        <div class="card-img-top">
+
+
+
+
+
+
+<div class="container mt-4 d-flex flex-row flex-wrap">
+  <% @organizations.each do |organization| %>
+    <%= link_to organization_path(organization) do %>
+      <div class="row">
+        <div class="col-auto mb-3">
+          <div class="card custom" style="width: 18rem;">
+            <div class="card-img-top">
               <%= image_tag organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-        </div>
-        </div>
-          <div class="card-body">
-            <div class="card-title">
-              <h5 class="fw-semibold"><%=organization.name.capitalize %></h5>
             </div>
-            <div class="card-text">
-              <p>We have a really cool organization with awesome volunteers. join us today...</p>
+            <div class="card-body">
+              <h5 class="card-title"><%=organization.name.capitalize %></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <div class="d-inline">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -32,43 +36,13 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
               </div>
+              <div class="card-link"><%= rand(0..55) %></div>
             </div>
           </div>
-      </div>
-  </div>
-    <% end %>
-</div>
-
-
-***************
-
-
-
-<div class="container mt-4 ">
-<% @organizations.each do |organization| %>
-<%=link_to  organization_path(organization) do  %>
-    <div class="row">
-        <div class="col-auto mb-3">
-            <div class="card custom" style="width: 18rem;">
-              <div class="card-img-top">
-                <%= image_tag organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-              </div>
-                  <div class="card-body">
-                      <h5 class="card-title"><%=organization.name.capitalize %></h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <div class="d-inline">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                      <a href="#" class="card-link"><%= rand(0..55) %></a>
-
-            </div>
         </div>
-        <% end %>
-         <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
 

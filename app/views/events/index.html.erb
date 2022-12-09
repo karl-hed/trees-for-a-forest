@@ -39,7 +39,9 @@
           <h2 class="card-title"><%= event.name %></h2>
           <h3 class="card-organization"><%= event.organization.name %></h3>
           <h5 class="card-date"><%= event.date %></h5>
-          <%= link_to "Show this event", event_path(event) %>
+          <div class="btn btn-flat">
+            <%= link_to "View", event_path(event), class:"text-decoration-none fw-semibold " %>
+          </div>
         </div>
       </div>
     </div>
