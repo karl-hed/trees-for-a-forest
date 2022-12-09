@@ -77,7 +77,7 @@ latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.343
 
 longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -71.246459]
 
-avatar_imgs = %w[https://www.w3schools.com/w3images/avatar2.png https://www.w3schools.com/howto/img_avatar.png]
+avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
 
 seed_number = org_array.size
 
@@ -95,7 +95,7 @@ user = User.new(
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = URI.open(avatar_imgs[[*0..1].sample])
+file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
 user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
 user.save
 array_of_users << user
@@ -115,7 +115,7 @@ puts "Creating users"
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = URI.open(avatar_imgs[[*0..1].sample])
+  file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
   user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
   user.save
   array_of_users << user
