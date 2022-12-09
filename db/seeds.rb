@@ -111,6 +111,7 @@ user_jim = User.new(
   wants_to_carpool: true
 )
 file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
+
 user_jim.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
 user_jim.save!
 
