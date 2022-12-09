@@ -6,6 +6,16 @@
     <%# <% @reviews.each do  %>
     <%# <%= @organizations.events.last.bookings.last.reviews.count %>
     <%= organization.reviews.last.rating %>
+    <% organization.reviews.each do |review| %>
+      <% @mean += review.rating %>
+    <% end %>
+    <% raise %>
+    <% (@mean / organization.reviews.size).times do %>
+      <i class="fa-solid fa-star fa-star-gold"></i>
+    <% end %>
+    <% (5 - (@mean / organization.reviews.size)).times do %>
+      <i class="fa-solid fa-star"></i>
+    <% end %>
     <%# <%= raise %>
   </p>
 <% end %>

@@ -8,18 +8,34 @@
 require 'faker'
 require "open-uri"
 
-Booking.destroy_all
-Event.destroy_all
+puts "Destroying Reviews in the database"
 Review.destroy_all
+puts "Destroying Bookings in the database"
+Booking.destroy_all
+puts "Destroying Events in the database"
+Event.destroy_all
+puts "Destroying Organizations in the database"
 Organization.destroy_all
+puts "Destroying Users in the database"
+User.destroy_all
 # Message.destroy_all
 # Chat.destroy_all
-User.destroy_all
 
 achievement_levels = %w[0 1 2 3]
 
 org_array = %w[onetreeplanted jour-de-la-terre espacepourlavie arbrescanada asfq
                mon-arbre-a-moi arbres-eco GRAME-Eco-quartier nature-action-quebec arbre-evolution]
+
+event_names = %w[Save\ the\ Environment
+                 Help\ plant\ a\ tree
+                 Rock\ with\ the\ Environment
+                 Tree\ Planting\ Quebec
+                 Plant\ Trees
+                 Tree\ Helpers
+                 Forest\ Love
+                 Government\ Forest\ Event
+                 Tree\ Planting\ Event\ Quebec
+                 Grow\ your\ Forest]
 
 logos = %w[https://cdn.shopify.com/s/files/1/0326/7189/files/One_Tree_Planted-logo-round.png?v=1668781952
            https://jourdelaterre.org/images/JTC_logo_c_rgb_web.png
@@ -47,7 +63,7 @@ descriptions = ["Tree planting event near Sherbrooke for nature-lovers. Get to k
                 around you and give your time to participate in an awesome event.",
                 "Participate in an awesome event planting trees near Levis with eco-friendly people."]
 
-reviews = ["Awesome organisation. I enjoyed planting tree in this week's (december 2022) event. Organizers were really \
+reviews = ["Awesome organisation. I enjoyed planting trees in this week's (december 2022) event. Organizers were really \
             helpful.",
            "I loved participating in this tree planting event. I'd like to thank everyone involved.",
            "It was my first time participating in a tree planting event. I really enjoyed my time with this \
@@ -65,11 +81,10 @@ reviews = ["Awesome organisation. I enjoyed planting tree in this week's (decemb
            "It was a surprisingly fun experience.",
            "It was a lot of work but overall satisfying.",
            "Thanks to all the organizers.",
-           "I was very fun",
+           "It was very fun",
            "I learned a lot.",
            "I loved the vibe.",
-           "I made friends and I enjoyed planting trees with this organization."
-          ]
+           "I made friends and I enjoyed planting trees with this organization."]
 
 places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
 
@@ -77,14 +92,14 @@ latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.343
 
 longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -71.246459]
 
-avatar_imgs = %w[https://www.w3schools.com/w3images/avatar2.png https://www.w3schools.com/howto/img_avatar.png]
+avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
 
 seed_number = org_array.size
 
 array_of_users = []
 
-puts "Creating main user"
-user = User.new(
+puts "Creating user Jim Bo"
+user_jim = User.new(
   first_name: "Jim",
   last_name: "Bo",
   email: "lewagon@lewagon.com",
@@ -95,13 +110,32 @@ user = User.new(
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = URI.open(avatar_imgs[[*0..1].sample])
-user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-user.save
-array_of_users << user
+file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
+user_jim.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user_jim.save!
 
-puts "Creating users"
-(seed_number - 1).times do
+array_of_users << user_jim
+
+puts "Creating user Harmony"
+user_harmony = User.new(
+  first_name: "Harmony",
+  last_name: "Treelover",
+  email: "harmony@lewagon.com",
+  password: "123456",
+  bio: "Student at Le Wagon Montreal",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
+user_harmony.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user_harmony.save!
+
+array_of_users << user_harmony
+
+puts "Creating #{seed_number - array_of_users.size} other users"
+(seed_number - array_of_users.size).times do
   # puts "email: #{Faker::Internet.email}"
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -115,18 +149,18 @@ puts "Creating users"
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = URI.open(avatar_imgs[[*0..1].sample])
+  file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
   user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-  user.save
+  user.save!
   array_of_users << user
 end
 
 index = 0
 array_of_organizations = []
 
-puts "Creating organizations"
+puts "Creating #{org_array.size} organizations"
 org_array.each do |org|
-  array_of_organizations << Organization.create(
+  array_of_organizations << Organization.create!(
     name: org,
     photo_url: logos[index]
   )
@@ -136,11 +170,12 @@ end
 index = 0
 array_of_events = []
 
-puts "Creating events"
+puts "Creating #{seed_number} events"
 I18n.locale = 'en-US'
 seed_number.times do
-  array_of_events << Event.create(
-    name: Faker::FunnyName.name,
+  array_of_events << Event.create!(
+    # name: Faker::FunnyName.name,
+    name: event_names[index],
     description: descriptions[index],
     date: Faker::Date.in_date_period,
     time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
@@ -148,7 +183,7 @@ seed_number.times do
     latitude: latitudes[index],
     longitude: longitudes[index],
     region: places[index],
-    capacity: [*0..100].sample
+    capacity: [*70..100].sample
   )
   index += 1
 end
@@ -156,10 +191,20 @@ end
 index = 0
 array_of_bookings = []
 
-puts "Creating bookings"
+puts "Creating #{seed_number} bookings"
 seed_number.times do
-  array_of_bookings << Booking.create(
+  array_of_bookings << Booking.create!(
     user_id: array_of_users[index].id,
+    event_id: array_of_events[index].id
+  )
+  index += 1
+end
+
+index = 0
+puts "Creating #{seed_number} bookings"
+seed_number.times do
+  array_of_bookings << Booking.create!(
+    user_id: array_of_users[-index].id,
     event_id: array_of_events[index].id
   )
   index += 1
@@ -168,17 +213,55 @@ end
 index = 0
 review_index = 0
 
-puts "Creating reviews"
-reviews.size.times do
-  index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
-  Review.create(
-    content: reviews[review_index],
-    rating: [*3..5].sample,
-    booking_id: array_of_bookings[index].id
-  )
-  index += 1
-  review_index += 1
+puts "Creating #{reviews.size} reviews"
+
+# Review.create!(content: reviews[0], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
+# Review.create!(content: reviews[1], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
+# Review.create!(content: reviews[2], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
+# Review.create!(content: reviews[3], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
+# Review.create!(content: reviews[4], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
+# Review.create!(content: reviews[5], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
+# Review.create!(content: reviews[6], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
+# Review.create!(content: reviews[7], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
+# Review.create!(content: reviews[8], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
+# Review.create!(content: reviews[9], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
+# Review.create!(content: reviews[10], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
+# Review.create!(content: reviews[11], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
+# Review.create!(content: reviews[12], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
+# Review.create!(content: reviews[13], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
+# Review.create!(content: reviews[14], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
+# Review.create!(content: reviews[15], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
+# Review.create!(content: reviews[16], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
+# Review.create!(content: reviews[17], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
+# Review.create!(content: reviews[18], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
+# Review.create!(content: reviews[19], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
+
+review_index = 0
+
+array_of_organizations.each do |org|
+  org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
+  org_bookings.each do |org_booking|
+    Review.create!(
+      content: reviews[review_index],
+      rating: [*3..5].sample,
+      booking_id: org_booking.id
+    )
+    review_index += 1
+  end
 end
+
+# review_index = 0
+
+# reviews.size.times do
+#   # index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
+#   Review.create!(
+#     content: reviews[review_index],
+#     rating: [*3..5].sample,
+#     booking_id: array_of_bookings[index > seed_number - 1 ? [*1..9].sample : index].id
+#   )
+#   index += 1
+#   review_index += 1
+# end
 
 # array_of_chats = []
 
