@@ -1,2 +1,59 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="video-content">
+  <div class="content">
+      <h1>Trees for a Forest</h1>
+      <h6>Land a hand to plant a tree</h6>
+      <br>
+      <br>
+      <div class="btn btn-ghost">
+            <%= link_to "Start now", events_path, class: "nav-link" %>
+      </div>
+  </div>
+  <%= video_tag "pine_forest.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "back-video" %>
+</div>
+
+<%# TREE COUNTER %>
+
+<div class="trees-planted">
+  <h1>TREES PLANTED</h1>
+</div>
+
+<div class="counter">
+  <h2 id="tree-counter"></h2>
+</div>
+
+<%# FOOTER %>
+
+<div class="footer-content d-flex justify-content-around">
+  <ul class="footer-text">
+    <li>About</li>
+    <li>Services</li>
+    <li>Press</li>
+    <li>Careers</li>
+    <li>FAQs</li>
+    <li>Contacts</li>
+  </ul>
+</div>
+
+<div class= "d-flex justify-content-around">
+  <p><strong>Stay in touch</strong></p>
+</div>
+
+
+
+<div class="socials d-flex justify-content-around">
+  <ul>
+    <i class="fa-brands fa-tiktok"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-square-twitter"></i>
+    <i class="fa-brands fa-facebook"></i>
+  </ul>
+</div>
+
+
+<%# IMAGE FOOTER %>
+
+
+<div class="d-flex justify-content w-auto ">
+  <%= image_tag "footer_image.png" %>
+</div>

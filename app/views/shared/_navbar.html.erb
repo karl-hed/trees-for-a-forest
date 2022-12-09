@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "https://res.cloudinary.com/dyyzftmya/image/upload/v1669944568/logo_transparent_gz36pm.png" %>
+        <%= image_tag "simple_logo.png" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,19 +24,15 @@
           <li class="nav-item">
             <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%# <%= link_to "New post",  new_article_path, class: "nav-link" %>
-          </li>
-          <br>
-          <li class="nav-item nav-link" ><%= current_user.first_name%></li>
-
-          <li class="nav-item dropdown"></li>
-            <%= image_tag "https://www.sfu.ca/content/sfu/globalhumanities/human-dir/alumni/grad/o-baker.img.1322091648.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+          <%= image_tag "https://as2.ftcdn.net/v2/jpg/02/23/50/73/1000_F_223507324_jKl7xbsaEdUjGr42WzQeSazKRighVDU4.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
-
-              <%# <%= link_to "My Bookings", bookings_path, class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Edit account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
