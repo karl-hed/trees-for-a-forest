@@ -20,6 +20,7 @@
   <h3 class="my-5">Reviews</h3>
 
   <%# REVIEW CARD %>
+  <% if false %>
   <% @review.each_with_index do |review, index| %>
     <p>
       <%= image_tag review.booking.user.photo, class:"img-fluid rounded-circle shadow-4-strong ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
@@ -34,16 +35,16 @@
         <% end %>
         <i class="fa-solid fa-star fa-star-gold"></i>
       <% end %>
-    <% (5 - review.rating).times do %>
-      <i class="fa-solid fa-star"></i>
-    <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="fa-solid fa-star"></i>
+      <% end %>
      <!-- <%= review.rating %> / 5 -->
   </p>
   <p>Review id: <%= review.id %></p>
   <%# <p><%= @users[index].booking.review %>
   <p><%= review.content %></p>
 <% end %>
-
+<% end %>
 
 </div>
 
@@ -51,8 +52,9 @@
 
 <%# CARD LAYOUT %>
 
-<div class="container">
-  <div class="col-12">
+<% @review.each_with_index do |review, index| %>
+  <div class="container">
+    <div class="col-12">
       <div class="card py-2 my-3" style="width:100%">
         <div class="row g-0">
           <div class="col-md-2">
@@ -60,15 +62,35 @@
           </div>
           <div class="col-md-10">
             <div class="card-body">
+              <p class="card-text">
 
-              <p class="card-text"><small class="text-muted">18/03/2022</small></p>
-              <h5 class="card-title" style="font-family:roboto, sans-serif;">Reviewer Name</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural leIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution </p>
+                <small class="text-muted">
+                  <!-- Review date -->
+                  <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
+                </small>
+
+                <!-- Rating in stars -->
+                <% review.rating.times do %>
+                  <i class="fa-solid fa-star fa-star-gold"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+
+              </p>
+
+              <h5 class="card-title" style="font-family:roboto, sans-serif;">
+                <!-- Reviewer name -->
+                <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+              </h5>
+              <!-- Review content -->
+              <p class="card-text"><%= review.content %></p>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
+<% end %>
 
 <%= link_to "Back to organizations", organizations_path %>
