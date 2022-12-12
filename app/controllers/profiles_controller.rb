@@ -7,6 +7,15 @@ class ProfilesController < ApplicationController
         @events_array << booking.event
       end
     end
+    @events = @events_array.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { event: event }),
+        image_url: helpers.asset_url("simple_logo")
+      }
+    end
     @events_array
+    @events
   end
 end

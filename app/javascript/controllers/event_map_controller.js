@@ -25,7 +25,7 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
 
     this.eventsValue.forEach((event) => {
-      bounds.extend([event.longitude, event.latitude ])
+      bounds.extend([ event.longitude, event.latitude ])
     })
     this.map.fitBounds(bounds, {padding: 50})
   }
@@ -33,8 +33,18 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.eventsValue.forEach((event) => {
       console.log(event.name);
+
+      // Create a HTML element for your custom marker
+      const customMarker = document.createElement("div")
+      customMarker.className = "marker"
+      customMarker.style.backgroundImage = `url('${event.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
+
       const popup = new mapboxgl.Popup().setHTML(event.name)
       new mapboxgl.Marker()
+        // .setLngLat([ event.longitude, event.latitude ])
         .setLngLat([ event.longitude, event.latitude ])
         .setPopup(popup)
         .addTo(this.map);
