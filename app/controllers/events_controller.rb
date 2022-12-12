@@ -2,7 +2,17 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = Event.all
+    if params[:query].present?
+      sql_query = <<~SQL
+        events.name @@ :query
+        OR events.description @@ :query
+        OR events.region @@ :query
+        OR organizations.name @@ :query
+      SQL
+      @events = Event.joins(:organization).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @events = Event.all
+    end
     @booking = Booking.new
     @bookings = Booking.where(event: @event)
   end
