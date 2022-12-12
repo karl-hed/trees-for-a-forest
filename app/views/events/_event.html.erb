@@ -6,16 +6,14 @@
   <%# <%= raise %>
 
 <% unless @event.users.include?(current_user) %>
+  <br>
+  <br>
+  <%= raise %>
+  <%= simple_form_for([event, booking]) do |f| %>
+    <br>
+    <%= f.submit "Join event", class: "btn btn-flat" %>
+  <% end %>
 
-          <br>
-          <br>
-
-            <%= simple_form_for([event, booking]) do |f| %>
-              <br>
-              <%= f.submit "Join event", class: "btn btn-flat" %>
-            <% end %>
-
-   
 <% end %>
 
 <%# <% if false %>

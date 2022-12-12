@@ -41,7 +41,8 @@
                 <i class="fa-solid fa-star fa-star-gold"></i>
               <% end %>
               <% (5 - (@mean / organization.reviews.size)).times do %>
-                <i class="fa-solid fa-star"></i>
+                <%# <i class="fa-solid fa-star"></i> %>
+                <i class="fa-regular fa-star"></i>
               <% end %>
               <% @mean = 0 %>
             </div>
