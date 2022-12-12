@@ -14,17 +14,6 @@
   <%# <%= raise %>
   <div class="container">
     <p>Completed Events</p>
-    <% if false %>
-    <% @user.bookings.each do |booking| %>
-      <% if booking.event.date < Date.today && booking.event != nil %>
-        <% @events_array << booking.event %>
-        <p><%= booking.event.name %></p>
-        <div class="btn btn-flat">
-          <%= link_to booking.event.name, event_path(booking.event), class:"text-decoration-none fw-semibold" %>
-        </div>
-      <% end %>
-    <% end %>
-    <% end %>
 
     <%# <% if @events_array.size > 0 %>
       <%# <% raise %>
