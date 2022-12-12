@@ -3,7 +3,7 @@
 
   <div class="d-flex flex-column justify-content-center align-items-center profile-left-section">
 
-    
+
           <%= cl_image_tag @user.photo.key, class:"profile-photo"%>
 
 
@@ -15,20 +15,20 @@
     <div class="row">
       <div class="profile-info d-flex flex-column justify-content-start">
         <h3 class="fw-bold mt-2"><%= @user.first_name %> <%= @user.last_name %></h3>
-        <p class= "fw-bold" ><i class="fa-sharp fa-solid fa-location-dot"></i><%= @user.address %></p>
+        <p class= "fw-bold mb-0" ><i class="fa-sharp fa-solid fa-location-dot"></i><%= @user.address %></p>
         <p class= "d-flex">
           <% if @user.wants_to_carpool %>
             <div class="d-flex">
 
               <div class="card d-flex m-1">
-                <div class="card-body py-0">
-                  carpool  <i class="fa-solid fa-car-side"></i>
+                <div class="card-body py-0" style="color:#A4BE7B">
+                  carpool  <i class="fa-solid fa-car-side" style="color:#A4BE7B"></i>
                 </div>
               </div>
 
               <div class="card d-flex m-1">
-                <div class="card-body py-0">
-                  carpool  <i class="fa-solid fa-car-side"></i>
+                <div class="card-body py-0" style="color:#A4BE7B">
+                  carpool  <i class="fa-solid fa-car-side" style="color:#A4BE7B"></i>
                 </div>
               </div>
 
@@ -36,7 +36,7 @@
           <% else  %>
           <% end %>
         </p>
-        <p><%= @user.bio %></p>
+        <p class="mt-4"><%= @user.bio %></p>
       </div>
     </div>
   </div>
@@ -45,8 +45,8 @@
 
 
 <%# PAGE CONTENT %>
-
-<h4 class="fw-bold"><%= @user.first_name%>'s completed events</h4>
+<div class="container">
+<h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s completed events</h4>
 
 
 
@@ -80,3 +80,5 @@
       </div>
     </div>
   </p>
+  <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
+</div>
