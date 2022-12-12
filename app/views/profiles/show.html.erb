@@ -1,8 +1,29 @@
-<%# BANNER %>
-<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
-  <div class="container">
+
+
+<div class="container-profile">
+  <header>
+
+  </header>
+  <div class="row">
+    <div class="profile-info">
+      <h3 class="d-flex justify-content-around fw-bold mt-2 "><%= @user.first_name %> <%= @user.last_name %></h3>
+      <%# <p><i class="fa-sharp fa-solid fa-location-dot"></i>Location</p>
+      <p><%= @user.bio %></p>
+    </div>
+    <div class="left col-lg-4">
+      <div class="photo-left ">
+        <%= cl_image_tag @user.photo.key, class:"profile-photo"%>
+        <button type="button" class="btn btn-flat"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i> Send a message </button>
+      </div>
+    </div>
   </div>
-</div> %>
+</div>
+
+
+
+
+
+
 
 
 
@@ -14,33 +35,30 @@
 <div class="container">
 
 
-    <%= cl_image_tag @user.photo.key, class:"rounded-circle w-25 "%>
 
 
 
-<%= cl_image_tag @user.photo.key, class:"rounded-circle w-25 "%>
-<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-<p>insert location here</p>
-<p><%= @user.bio %></p>
-<br>
 
-<div class="card w-25px">
-  <div class="card-body">
-    carpool <i class="fa-solid fa-car-side"></i>
-  </div>
-</div>
 
-<button type="button" class="btn btn-flat"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i> Send a message </button>
+
 
 
 
 <p>
 <% if @user.wants_to_carpool %>
-<%= @user.first_name + " accepts carpooling requests"  %>
+<div class="card w-25px">
+  <div class="card-body">
+    carpool <i class="fa-solid fa-car-side"></i>
+  </div>
+</div>
 <% else  %>
 <%= @user.first_name + " Doesn't accepts carpooling requests"   %>
 <% end %>
 </p>
+
+
+
+
 
 
 
