@@ -12,7 +12,6 @@
     <h2 class="my-5">About Us</h2>
       <%# REVIEW BUTTON %>
     <div class="review-button my-5">
-      <%# <a class="btn btn-flat" href="#">Write a review</a> %>
       <%= link_to "Write a review", new_organization_review_path(@organization), class:"btn btn-flat" %>
     </div>
   </div>
@@ -53,47 +52,47 @@
 
 <%# CARD LAYOUT %>
 
-<% @review.each_with_index do |review, index| %>
-  <div class="container">
-    <div class="col-12">
-      <div class="card py-2 my-3" style="width:100%">
-        <div class="row g-0">
-          <div class="col-md-2">
-            <img class="rounded-circle shadow-4-strong img-fluid w-50 "  src="https://www.w3schools.com/w3images/avatar2.png" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-10">
-            <div class="card-body">
-              <p class="card-text">
+  <% @review.each_with_index do |review, index| %>
+    <div class="container">
+      <div class="col-12">
+        <div class="card py-2 my-3" style="width:100%">
+          <div class="row g-0">
+            <div class="col-md-2">
+              <img class="rounded-circle shadow-4-strong img-fluid w-50 " src="https://www.w3schools.com/w3images/avatar2.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-10">
+              <div class="card-body">
+                <p class="card-text">
 
-                <small class="text-muted">
-                  <!-- Review date -->
-                  <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
-                </small>
+                  <small class="text-muted">
+                    <!-- Review date -->
+                    <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
+                  </small>
 
-                <!-- Rating in stars -->
-                <% review.rating.times do %>
-                  <i class="fa-solid fa-star fa-star-gold"></i>
-                <% end %>
-                <% (5 - review.rating).times do %>
-                  <i class="fa-regular fa-star"></i>
-                  <%# <i class="fa-solid fa-star"></i> %>
-                <% end %>
+                  <!-- Rating in stars -->
+                  <% review.rating.times do %>
+                    <i class="fa-solid fa-star fa-star-gold"></i>
+                  <% end %>
+                  <% (5 - review.rating).times do %>
+                    <i class="fa-regular fa-star"></i>
+                    <%# <i class="fa-solid fa-star"></i> %>
+                  <% end %>
 
-              </p>
+                </p>
 
-              <h5 class="card-title" style="font-family:roboto, sans-serif;">
-                <!-- Reviewer name -->
-                <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
-              </h5>
-              <!-- Review content -->
-              <p class="card-text"><%= review.content %></p>
+                <h5 class="card-title" style="font-family:roboto, sans-serif;">
+                  <!-- Reviewer name -->
+                  <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+                </h5>
+                <!-- Review content -->
+                <p class="card-text"><%= review.content %></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 <div class="container">
   <%= link_to "< Back to organizations", organizations_path, class:"btn btn-flat mb-5"  %>
