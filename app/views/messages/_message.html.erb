@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>">
   <small>
-    <%# <strong><%= message.sender.nickname ></strong> %>
+    <strong><%= message.sender.first_name %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
-  <p> <%= cl_image_tag current_user.photo.key, class: "avatar rounded-circle" %><br><%= message.content %></p>
+  <p> <%= cl_image_tag current_user.photo.key, class: "avatar img-fluid rounded-circle" %><br><%= message.content %></p>
 </div>
