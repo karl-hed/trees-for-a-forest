@@ -4,46 +4,67 @@
   </div>
 </div> %>
 
-
-
-
-
-
-
-
 <div class="container">
+  <%= cl_image_tag @user.photo.key, class:"rounded-circle w-25"%>
+  <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+  <p>Location: <%= @user.address %></p>
+  <p>Bio: <%= @user.bio %></p>
+  <br>
+
+  <%# <%= raise %>
+  <div class="container">
+    <% @user.bookings.each do |booking| %>
+      <p><%= booking.event.name %></p>
+    <% end %>
 
 
-    <%= cl_image_tag @user.photo.key, class:"rounded-circle w-25 "%>
+    <% if false %>
+    <% @events.each do |event| %>
+      <div id="events">
+        <div class="card mb-5 mt-5" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <%= image_tag event.organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title"><%= event.name %></h2>
+                <h3 class="card-organization"><%= event.organization.name %></h3>
+                <h5 class="card-date"><%= event.date %></h5>
+                <div class="btn btn-flat">
+                  <%= link_to "View", event_path(event), class:"text-decoration-none fw-semibold " %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
 
-
-
-<%= cl_image_tag @user.photo.key, class:"rounded-circle w-25 "%>
-<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-<p>insert location here</p>
-<p><%= @user.bio %></p>
-<br>
-
-<div class="card w-25px">
-  <div class="card-body">
-    carpool <i class="fa-solid fa-car-side"></i>
   </div>
-</div>
-
-<button type="button" class="btn btn-flat"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i> Send a message </button>
 
 
 
-<p>
-<% if @user.wants_to_carpool %>
-<%= @user.first_name + " accepts carpooling requests"  %>
-<% else  %>
-<%= @user.first_name + " Doesn't accepts carpooling requests"   %>
-<% end %>
-</p>
+
+  <div class="card w-25px">
+    <div class="card-body">
+      carpool <i class="fa-solid fa-car-side"></i>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-flat mt-5"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i>Send a message </button>
+
+  <p class="my-5">
+    <% if @user.wants_to_carpool %>
+      <%= @user.first_name + " accepts carpooling requests" %>
+    <% else %>
+      <%= @user.first_name + " doesn't accepts carpooling requests" %>
+    <% end %>
+  </p>
 
 
-<%# <button type="button" class="btn btn-success btn-lg"><i class="fa-solid fa-messages"></i>Messege</button> %>
-<%= link_to "messege user", profile_messages_path(@user.id) %>
+  <%# <button type="button" class="btn btn-success btn-lg"><i class="fa-solid fa-messages"></i>Messege</button> %>
+  <%= link_to "messege user", profile_messages_path(@user.id), class:"mb-5" %>
 
 </div>
