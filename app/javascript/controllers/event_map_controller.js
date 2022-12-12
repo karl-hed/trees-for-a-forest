@@ -42,6 +42,7 @@ export default class extends Controller {
       customMarker.style.backgroundSize = "contain"
       customMarker.style.width = "25px"
       customMarker.style.height = "25px"
+      console.log("customMarker.style.backgroundImage: ", customMarker.style.backgroundImage)
 
       // const popup = new mapboxgl.Popup().setHTML(marker.name)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
