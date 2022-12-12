@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
       @chatroom = Chatroom.create(first_user_id: current_user.id, second_user_id: params[:profile_id])
     end
     @message = Message.new
+    # raise
   end
 
   def create
@@ -20,7 +21,8 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: {message: @message})
+        message: render_to_string(partial: "message", locals: { message: @message }),
+        sender_id: @message.sender.id
       )
       head :ok
     else
