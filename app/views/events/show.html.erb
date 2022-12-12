@@ -9,17 +9,19 @@
 
 
 
-<div class="container">
 
-  <div class="d-flex justify-content-between">
-    <h2 class="my-5">Details</h2>
+<div class="container">
+  <% unless @event.users.include?(current_user) %>
+    <div class="d-flex justify-content-between">
+      <h2 class="my-5">Details</h2>
 
     <%# BUTTON %>
-    <%= simple_form_for([ @event,  @booking]) do |f| %>
-      <br>
-      <%= f.submit "Join event", class: "btn btn-flat" %>
-    <% end %>
-  </div>
+      <%= simple_form_for([@event,  @booking]) do |f| %>
+        <br>
+        <%= f.submit "Join event", class: "btn btn-flat" %>
+      <% end %>
+    </div>
+  <% end %>
 
 
 
