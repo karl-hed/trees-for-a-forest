@@ -14,7 +14,10 @@
   <%# <%= raise %>
   <div class="container">
     <% @user.bookings.each do |booking| %>
-      <p><%= booking.event.name %></p>
+      <% if booking.event.date < Date.today %>
+        <p><%= booking.event.name %></p>
+        <p><%= booking.event.date %></p>
+      <% end %>
     <% end %>
 
 
