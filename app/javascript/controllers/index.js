@@ -8,7 +8,7 @@ import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
 import EventMapController from "./event_map_controller"
-application.register("event-map", EventMapController)
+application.register("eventmap", EventMapController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
