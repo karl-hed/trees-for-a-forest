@@ -13,10 +13,13 @@
 
   <%# <%= raise %>
   <div class="container">
+    <p>Completed Events</p>
     <% @user.bookings.each do |booking| %>
       <% if booking.event.date < Date.today %>
         <p><%= booking.event.name %></p>
-        <p><%= booking.event.date %></p>
+        <div class="btn btn-flat">
+          <%= link_to "View", event_path(booking.event), class:"text-decoration-none fw-semibold " %>
+        </div>
       <% end %>
     <% end %>
 
