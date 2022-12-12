@@ -1,65 +1,82 @@
+  <header></header>
+<div class="d-flex justify-content-center align-items-center profile-all-section">
+
+  <div class="d-flex flex-column justify-content-center align-items-center profile-left-section">
+
+    
+          <%= cl_image_tag @user.photo.key, class:"profile-photo"%>
 
 
-<div class="container-profile">
-  <header>
+      <button type="button" class="btn btn-flat"><i class="fa-solid fa-message" style="color:white"></i>Send a message </button>
 
-  </header>
-  <div class="row">
-    <div class="profile-info">
-      <h3 class="d-flex justify-content-around fw-bold mt-2 "><%= @user.first_name %> <%= @user.last_name %></h3>
-      <%# <p><i class="fa-sharp fa-solid fa-location-dot"></i>Location</p>
-      <p><%= @user.bio %></p>
-    </div>
-    <div class="left col-lg-4">
-      <div class="photo-left ">
-        <%= cl_image_tag @user.photo.key, class:"profile-photo"%>
-        <button type="button" class="btn btn-flat"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i> Send a message </button>
+  </div>
+
+  <div class="container-profile mt-0 w-50">
+    <div class="row">
+      <div class="profile-info d-flex flex-column justify-content-start">
+        <h3 class="fw-bold mt-2"><%= @user.first_name %> <%= @user.last_name %></h3>
+        <p class= "fw-bold" ><i class="fa-sharp fa-solid fa-location-dot"></i><%= @user.address %></p>
+        <p class= "d-flex">
+          <% if @user.wants_to_carpool %>
+            <div class="d-flex">
+
+              <div class="card d-flex m-1">
+                <div class="card-body py-0">
+                  carpool  <i class="fa-solid fa-car-side"></i>
+                </div>
+              </div>
+
+              <div class="card d-flex m-1">
+                <div class="card-body py-0">
+                  carpool  <i class="fa-solid fa-car-side"></i>
+                </div>
+              </div>
+
+            </div>
+          <% else  %>
+          <% end %>
+        </p>
+        <p><%= @user.bio %></p>
       </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-
-
-
-
-
-
-
-
-
-
-
-<p>
-<% if @user.wants_to_carpool %>
-<div class="card w-25px">
-  <div class="card-body">
-    carpool <i class="fa-solid fa-car-side"></i>
-  </div>
-</div>
-<% else  %>
-<%= @user.first_name + " Doesn't accepts carpooling requests"   %>
-<% end %>
-</p>
-
-
-
-
-
-
 
 </div>
+
+
+<%# PAGE CONTENT %>
+
+<h4 class="fw-bold"><%= @user.first_name%>'s completed events</h4>
+
+
+
+  <%# IF STATEMENT TO DISPLAY STATUS TAG ACCORDING TO NUMBER OF EVENTS COMPLETED gold= 10+, silver= 5+, bronze = 0+ %>
+
+  <%# GOLD SHOVEL %>
+  </p>
+    <div class=" g-shovel card w-25px d-inline-flex ">
+      <div class="card-body py-0">
+        gold shovel <i class="fa-solid fa-medal" style="color:gold"></i>
+      </div>
+    </div>
+
+  </p>
+
+
+  <%# SILVER SHOVEL %>
+  </p>
+    <div class=" s-shovel card w-25px d-inline-flex ">
+      <div class="card-body py-0">
+        silver shovel <i class="fa-solid fa-medal"style="color:silver"></i>
+      </div>
+    </div>
+  </p>
+
+  <%# GOLD SHOVEL %>
+  </p>
+    <div class=" b-shovel card w-25px d-inline-flex ">
+      <div class="card-body py-0">
+        bronze shovel <i class="fa-solid fa-medal" style="color:brown"></i>
+      </div>
+    </div>
+  </p>

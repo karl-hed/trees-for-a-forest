@@ -92,7 +92,9 @@ latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.343
 
 longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -71.246459]
 
-avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
+# avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
+avatar_imgs = %w[app/assets/images/avatar1.jpg app/assets/images/avatar2.jpg app/assets/images/avatar3.jpg app/assets/images/avatar4.jpg app/assets/images/avatar5.jpg app/assets/images/avatar6.jpg]
+
 
 event_photos = %w[
   https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80
@@ -102,19 +104,19 @@ seed_number = org_array.size
 
 array_of_users = []
 
-puts "Creating user Jim Bo"
+puts "Creating user Saffron Baker"
 user_jim = User.new(
-  first_name: "Jim",
-  last_name: "Bo",
+  first_name: "Saffron",
+  last_name: "Baker",
   email: "lewagon@lewagon.com",
   password: "password",
-  bio: "Student at Le Wagon Montreal",
+  bio: "Hi there! My name is Saffron and I am the owner of my very own etsy shop. I am super eco conscious and care deeply about the environnment. I love planting trees in my spare time.",
   address: "Montreal",
   latitude: 45.508888,
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
+file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
 
 user_jim.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
 user_jim.save!
@@ -124,17 +126,17 @@ array_of_users << user_jim
 puts "Creating user Harmony"
 user_harmony = User.new(
   first_name: "Anne Fleur",
-  last_name: "Hagbang Bayiha",
+  last_name: "Bayiha",
   email: "anne_fleur@lewagon.com",
   password: "123456",
-  bio: "Student at Le Wagon Montreal",
+  bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Finding ways to get involved and to give back to mother nature 🌿",
   address: "Montreal",
   latitude: 45.508888,
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
-user_harmony.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
+user_harmony.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
 user_harmony.save!
 
 array_of_users << user_harmony
@@ -154,8 +156,8 @@ puts "Creating #{seed_number - array_of_users.size} other users"
     longitude: Faker::Address.longitude,
     wants_to_carpool: [true, false].sample
   )
-  file = File.open(File.join(Rails.root, avatar_imgs[[*0..1].sample]))
-  user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+  file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
+  user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
   user.save!
   array_of_users << user
 end
