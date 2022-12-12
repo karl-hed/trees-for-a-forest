@@ -5,10 +5,10 @@ import "bootstrap"
 import { initSweetalert } from './plugins/init_sweetalert';
 
 initSweetalert('#sweet-alert-demo', {
-  title: "Thank you Anne Fleur 👏🏾!",
+  title: "Thank you 👏🏾!",
   text: "Your registration is confirmed.",
   icon: "success"
-  
+
 
 
 });
