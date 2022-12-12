@@ -7,6 +7,7 @@
 
 
 <div class="container">
+
   <%# JOIN BUTTON %>
   <% unless @event.users.include?(current_user) %>
     <div class="d-flex justify-content-between">
@@ -17,6 +18,10 @@
       <% end %>
     </div>
   <% end %>
+
+
+
+
 
 
   <br>
