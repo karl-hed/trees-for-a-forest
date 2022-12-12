@@ -6,16 +6,11 @@
 </div>
 
 
-
-
-
-
 <div class="container">
+  <%# JOIN BUTTON %>
   <% unless @event.users.include?(current_user) %>
     <div class="d-flex justify-content-between">
       <h2 class="my-5">Details</h2>
-
-    <%# BUTTON %>
       <%= simple_form_for([@event,  @booking]) do |f| %>
         <br>
         <%= f.submit "Join event", class: "btn btn-flat" %>
@@ -24,14 +19,12 @@
   <% end %>
 
 
-
-
   <br>
   <div class="card">
     <div class="card-body">
     <%= @event.description %>
     <br>
-    <small class= "muted">capacity:<%= @event.capacity %></small>
+    <small class= "muted">Capacity: <%= @event.capacity %></small>
     </div>
   </div>
 
@@ -78,34 +71,29 @@
       <%# <% user = booking.select { |b| b.user == current_user } %>
       <%# <%= raise %>
 
-    <% unless @event.users.include?(current_user) %>
-
-              <br>
-              <br>
-
-
-
-    <% end %>
-
-    <%# <% if false %>
+    <%# LIST OF PEOPLE ATTENDING THIS EVENT %>
     <h2 class="my-5">People attending this event</h2>
 
       <div class="container">
+        <div class="d-flex justify-content-between">
           <% @bookings.each do |booking| %>
             <%= link_to profile_path(booking.user) do %>
               <div class="d-inline">
                 <% if booking.user.photo.attached? %>
                   <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
                 <% end  %>
-                <%= booking.user.first_name %> <%= booking.user.last_name %>
+                <!-- <%= booking.user.first_name %> <%= booking.user.last_name %> -->
+                <p>
+                  <%= booking.user.first_name %> <%= booking.user.last_name %>
+                </p>
               </div>
             <% end %>
           <% end %>
+        </div>
       </div>
-    <%# <% end %>
     </div>
      <br>
      <br>
     <!-- <%= link_to "Edit this event", edit_event_path(@event) %> | -->
-    <%= link_to "Back to events", events_path %>
+    <%= link_to "< Back to events", events_path, class: "btn btn-flat mb-5" %>
 </div>
