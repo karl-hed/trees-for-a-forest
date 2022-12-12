@@ -21,57 +21,51 @@
     <% end %>
   </div>
 </div>
-
-
-<div class="container">
-
+<%# Geocoding for index page - start - %>
 
 
 <div class="space m-1"></div>
 
-
-<%# Geocoding for index page - start - %>
-
-
-
-<% @events.each do |event| %>
+<%# codes de tous les events avec la carte -  - %>
+<div class="container">
+<div class="event-with-map">
+<div class="map d-flex justify-content-end">
+    <div style="width: 45%; height: 600px;"
+      data-controller="map"
+      data-map-events-value="<%= @events.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+<%# codes de tous les events sans la carte -  - %>
+<div class="event-each-do">
+  <% @events.each do |event| %>
 <div id="events">
 
+
   <div class="card mb-5 mt-5" style="max-width: 540px;">
+        <%= link_to event_path(event), class:"text-decoration-none" do %>
     <div class="row g-0">
       <div class="col-md-4">
-        <%= image_tag event.organization.photo_url, class:"img-fluid ", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+          <%= image_tag event.organization.photo_url, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title"><%= event.name %></h2>
           <h3 class="card-organization"><%= event.organization.name %></h3>
-          <h5 class="card-date"><%= event.date %></h5>
-          <div class="btn btn-flat">
-            <%= link_to "View", event_path(event), class:"text-decoration-none fw-semibold " %>
-          </div>
+          <h5 class="card-date"><i class="fa-solid fa-calendar-days"></i><%= event.date %></h5>
         </div>
       </div>
     </div>
+        <% end %>
   </div>
+
 </div>
 
 
 
   <% end %>
+</div>
 
 
 
 <%# <%= link_to "New event", new_event_path %>
-
-</div>
-
-</div>
-<div class="container">
-  <div class="row">
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-events-value="<%= @events.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  </div>
-<%# Geocodingfor index page - end - %>
