@@ -20,7 +20,7 @@
       <div class="row">
         <div style="width: 100%; height: 600px;"
             data-controller="eventmap"
-            data-eventmap-events-value="<%= @events_array.to_json %>"
+            data-eventmap-events-value="<%= @markers.to_json %>"
             data-eventmap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
         </div>
       </div>
