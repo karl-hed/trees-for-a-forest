@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
   resources :events, only: [:index]
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show] do
+    resources :messages, only: [:index, :create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

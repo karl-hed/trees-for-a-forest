@@ -4,19 +4,17 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
-
-import { CountUp } from 'countup.js';
-
-window.onload = function() {
-  new CountUp('tree-counter', 12956, {enableScrollSpy: true, duration: 5});
-}
-
-import MapController from "./map_controller"
-application.register("map", MapController)
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
 
 import EventMapController from "./event_map_controller"
 application.register("eventmap", EventMapController)
 
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
+
+import TreeCounterController from "./tree_counter_controller"
+application.register("tree-counter", TreeCounterController)
