@@ -12,8 +12,15 @@ class ProfilesController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
-        image_url: helpers.asset_url("simple_logo.png")
+        image_url: helpers.asset_url("tree.png")
       }
+    end
+
+    @upcoming_events = []
+    @user.bookings.each do |booking|
+      if booking.event.date > Date.today && booking.event != nil
+        @upcoming_events << booking.event
+      end
     end
   end
 end
