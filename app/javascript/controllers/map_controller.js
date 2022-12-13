@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="map"
+// JS CONTROLLER FOR INDEX/EVENTS PAGE
 export default class extends Controller {
   static values = {
     apiKey: String,
