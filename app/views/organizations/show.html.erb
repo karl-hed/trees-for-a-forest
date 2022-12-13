@@ -14,7 +14,7 @@
 
     <% if user_signed_in? %>
       <div class="review-button my-5">
-        <%= link_to "Write a review", new_organization_review_path(@organization), class:"btn btn-flat" %>
+        <%# <%= link_to "Write a review", new_organization_review_path(@organization), class:"btn btn-flat" %>
       </div>
     <% end %>
   </div>
@@ -44,6 +44,7 @@
                   <small class="text-muted">
                     <!-- Review date -->
                     <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
+                    Event: <%= review.booking.event.name %>
                   </small>
 
                   <h5 class="card-title" style="font-family:roboto, sans-serif;">

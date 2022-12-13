@@ -6,6 +6,9 @@
 </div>
 
 <div class="container my-5">
+  <% @review.each do |review| %>
+
+  <% end %>
   <%= simple_form_for([@organization, @review]) do |f| %>
     <%= f.select :rating, options_for_select(%w[0 1 2 3 4 5]) %>
     <%= f.input :content %>
