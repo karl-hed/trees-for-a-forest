@@ -2,9 +2,11 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @past_events = []
+    @past_bookings = []
     @user.bookings.each do |booking|
       if booking.event.date < Date.today && booking.event != nil
         @past_events << booking.event
+        @past_bookings << booking
       end
     end
     @markers = @past_events.map do |event|

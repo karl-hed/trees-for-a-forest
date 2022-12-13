@@ -45,6 +45,48 @@
 <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s completed events</h4>
 
 
+  <div class="container">
+    <% @markers.each do |past_event| %>
+
+    <% end %>
+  </div>
+
+  <!-- User events -->
+  <div class="all-events w-100">
+    <% @past_bookings.each do |booking| %>
+      <div id="events">
+
+        <div class="card mb-5 mt-5" style="max-width: 540px;">
+          <%= link_to event_path(booking.event), class:"text-decoration-none" do %>
+            <div class="row g-0">
+              <div class="col-md-4">
+                <%= image_tag booking.event.organization.photo_url, class:"img-fluid", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+              </div>
+
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h2 class="card-title"><%= booking.event.name %></h2>
+                  <h3 class="card-organization"><%= booking.event.organization.name %></h3>
+                  <h5 class="card-date"><i class="fa-solid fa-calendar-days"></i><%= booking.event.date %></h5>
+                  <% if user_signed_in? %>
+                    <div class="review-button my-5">
+                      <%= link_to "Write a review", new_booking_review_path(booking), class:"btn btn-flat" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+  <!-- END User events -->
+
+
+
   <div class="row">
     <div style="width: 100%; height: 600px;"
           data-controller="tree-counter"
@@ -85,7 +127,7 @@
   </p>
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
   <% @upcoming_events.each do |event| %>
-<p><strong>Event name:</strong></p><p><%= event.name %></p>
-<p><strong>Event date:</strong></p><p><%= event.date %></p>
-<% end %>
+    <p><strong>Event name:</strong></p><p><%= event.name %></p>
+    <p><strong>Event date:</strong></p><p><%= event.date %></p>
+  <% end %>
 </div>
