@@ -22,7 +22,6 @@ class ProfilesController < ApplicationController
     else
       @user.achievement_level = 0
     end
-    # raise
 
     @markers = @past_events.map do |event|
       {
