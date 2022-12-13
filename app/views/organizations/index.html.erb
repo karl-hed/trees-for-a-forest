@@ -41,7 +41,7 @@
                         <% @mean += review.rating %>
                       <% end %>
                       <% (@mean / organization.reviews.size).times do %>
-                        <i class="fa-solid fa-star fa-star-gold"></i>
+                        <i class="fa-solid fa-star fa-star-gold py-3"></i>
                       <% end %>
                       <% (5 - (@mean / organization.reviews.size)).times do %>
                         <%# <i class="fa-solid fa-star"></i> %>
