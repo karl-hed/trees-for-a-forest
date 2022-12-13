@@ -1,4 +1,9 @@
 class ProfilesController < ApplicationController
+
+  def signed_in_user
+    User.find(session[:user_id]) if session[:user_id]
+  end
+
   def show
     @user = User.find(params[:id])
     @past_events = []

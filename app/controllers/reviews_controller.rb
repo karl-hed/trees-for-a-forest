@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     # raise
     @review = Review.new(review_params)
     # TODO: (Fred 09-12-22) Code temporaire pour permettre au review de fonctionner durant le démo intermédiaire.
-    # À remplacer la semaine prochaine
+    # À remplacer la semaine prochaine OK DONE
     # @booking = Booking.joins(:user, event: :organization)
     #                   .where(users: { id: current_user.id })
     #                   .where(organization: { id: params[:organization_id] })
