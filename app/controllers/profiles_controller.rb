@@ -14,6 +14,15 @@ class ProfilesController < ApplicationController
         @past_bookings << booking
       end
     end
+
+    if @past_bookings.size > 10
+      @user.achievement_level = 2
+    elsif @past_bookings.size < 10 && @past_bookings.size > 5
+      @user.achievement_level = 1
+    else
+      @user.achievement_level = 0
+    end
+
     @markers = @past_events.map do |event|
       {
         lat: event.latitude,
