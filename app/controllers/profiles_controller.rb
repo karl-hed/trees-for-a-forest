@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
     end
 
     if @past_bookings.size > 10
-      @user.achievement_level = 2
+      @user.achievement_level = "gold"
     elsif @past_bookings.size < 10 && @past_bookings.size > 5
-      @user.achievement_level = 1
+      @user.achievement_level = "silver"
     else
-      @user.achievement_level = 0
+      @user.achievement_level = "bronze"
     end
 
     @markers = @past_events.map do |event|
