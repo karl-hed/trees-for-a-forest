@@ -42,15 +42,13 @@ export default class extends Controller {
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
-      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.width = "35px"
+      customMarker.style.height = "35px"
       customMarker.style.backgroundSize = "contain"
-      customMarker.style.width = "25px"
-      customMarker.style.height = "25px"
-      console.log("customMarker.style.backgroundImage: ", customMarker.style.backgroundImage)
-
+      customMarker.style.backgroundImage = `url('${marker.image_url}')`
       // const popup = new mapboxgl.Popup().setHTML(marker.name)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({element: customMarker})
         // .setLngLat([ marker.longitude, marker.latitude ])
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
