@@ -91,34 +91,23 @@
   <%# IF STATEMENT TO DISPLAY STATUS TAG ACCORDING TO NUMBER OF EVENTS COMPLETED gold= 10+, silver= 5+, bronze = 0+ %>
 
   <%# <% raise %>
-  <% if @user.achievement_level == 2 %>
-    <%# GOLD SHOVEL %>
-    </p>
-      <div class=" g-shovel card w-25px d-inline-flex ">
-        <div class="card-body py-0">
+  </p>
+    <div class=" g-shovel card w-25px d-inline-flex ">
+      <div class="card-body py-0">
+        <% if @user.achievement_level == "gold" %>
+          <%# GOLD SHOVEL %>
           gold shovel <i class="fa-solid fa-medal" style="color:gold"></i>
-        </div>
-      </div>
-    </p>
-  <% elsif @user.achievement_level == 1 %>
-    <%# SILVER SHOVEL %>
-    </p>
-      <div class=" s-shovel card w-25px d-inline-flex ">
-        <div class="card-body py-0">
+        <% elsif @user.achievement_level == "silver" %>
+          <%# SILVER SHOVEL %>
+
           silver shovel <i class="fa-solid fa-medal"style="color:silver"></i>
-        </div>
-      </div>
-    </p>
-  <% else %>
-    <%# BRONZE SHOVEL %>
-    </p>
-      <div class=" b-shovel card w-25px d-inline-flex ">
-        <div class="card-body py-0">
+        <% else %>
+          <%# BRONZE SHOVEL %>
           bronze shovel <i class="fa-solid fa-medal" style="color:brown"></i>
-        </div>
+        <% end %>
       </div>
-    </p>
-  <% end %>
+    </div>
+  </p>
 
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
 
