@@ -18,3 +18,4 @@ application.register("map", MapController)
 
 import TreeCounterController from "./tree_counter_controller"
 application.register("tree-counter", TreeCounterController)
+
