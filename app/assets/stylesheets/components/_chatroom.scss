@@ -1,5 +1,4 @@
 .chatroom {
-  background: white;
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
@@ -28,3 +27,10 @@
     }
   }
 }
+
+.chat-photo {
+  width: 60px;
+  border-radius: 65px;
+  border: 2px solid white;
+}
+
