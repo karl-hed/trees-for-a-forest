@@ -61,7 +61,7 @@
                   <h2 class="card-title"><%= booking.event.name %></h2>
                   <h3 class="card-organization"><%= booking.event.organization.name %></h3>
                   <h5 class="card-date"><i class="fa-solid fa-calendar-days"></i><%= booking.event.date %></h5>
-                  <% if user_signed_in? && current_user == booking.user %>
+                  <% if user_signed_in? && current_user == booking.user && booking.review.nil? %>
                     <div class="review-button my-5">
                       <%= link_to "Write a review", new_booking_review_path(booking), class:"btn btn-flat" %>
                     </div>
