@@ -2,9 +2,9 @@
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-6 mt-5 ">
           <div class="card h-75">
-            <div class="card-header">
+            <div class="card-header d-flex">
               <%= cl_image_tag @profile.photo.key, class:"chat-photo"%>
-              <p><%= @profile.first_name %></p>
+              <p class="fw-semibold mx-2"style="color:#285430"><%= @profile.first_name %> <%=@profile.last_name %></p>
             </div>
             <div class="container chatroom"
               data-controller="chatroom-subscription"
