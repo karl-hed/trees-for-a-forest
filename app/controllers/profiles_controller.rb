@@ -1,10 +1,17 @@
 class ProfilesController < ApplicationController
+
+  def signed_in_user
+    User.find(session[:user_id]) if session[:user_id]
+  end
+
   def show
     @user = User.find(params[:id])
     @past_events = []
+    @past_bookings = []
     @user.bookings.each do |booking|
       if booking.event.date < Date.today && booking.event != nil
         @past_events << booking.event
+        @past_bookings << booking
       end
     end
     @markers = @past_events.map do |event|
