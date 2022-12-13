@@ -84,9 +84,8 @@
     </div>
   </p>
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
-</div>
-
-
-<div class="container">
-  <button type="button" class="btn btn-flat mt-5"><i class="fa-solid fa-messages"></i><i class="fa-solid fa-comment"></i>Send a message </button>
+  <% @upcoming_events.each do |event| %>
+<p><strong>Event name:</strong></p><p><%= event.name %></p>
+<p><strong>Event date:</strong></p><p><%= event.date %></p>
+<% end %>
 </div>

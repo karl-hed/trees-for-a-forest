@@ -15,5 +15,12 @@ class ProfilesController < ApplicationController
         image_url: helpers.asset_url("tree.png")
       }
     end
+
+    @upcoming_events = []
+    @user.bookings.each do |booking|
+      if booking.event.date > Date.today && booking.event != nil
+        @upcoming_events << booking.event
+      end
+    end
   end
 end
