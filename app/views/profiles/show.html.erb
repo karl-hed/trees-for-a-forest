@@ -23,14 +23,26 @@
               </div>
 
               <div class="card d-flex m-1">
-                <div class="card-body py-0" style="color:#A4BE7B">
-                  carpool  <i class="fa-solid fa-car-side" style="color:#A4BE7B"></i>
+                <%# IF STATEMENT TO DISPLAY STATUS TAG ACCORDING TO NUMBER OF EVENTS COMPLETED gold= 10+, silver= 5+, bronze = 0+ %>
+                <div class="card-body py-0">
+                  <% if @user.achievement_level == "gold" %>
+                    <%# GOLD SHOVEL %>
+                    gold shovel <i class="fa-solid fa-medal" style="color:gold"></i>
+                  <% elsif @user.achievement_level == "silver" %>
+                    <%# SILVER SHOVEL %>
+                    silver shovel <i class="fa-solid fa-medal"style="color:silver"></i>
+                  <% else %>
+                    <%# BRONZE SHOVEL %>
+                    bronze shovel <i class="fa-solid fa-medal" style="color:brown"></i>
+                  <% end %>
                 </div>
+
               </div>
 
             </div>
           <% else  %>
           <% end %>
+
         </p>
         <p class="mt-4"><%= @user.bio %></p>
       </div>
@@ -87,24 +99,6 @@
           data-tree-counter-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
-
-  <%# IF STATEMENT TO DISPLAY STATUS TAG ACCORDING TO NUMBER OF EVENTS COMPLETED gold= 10+, silver= 5+, bronze = 0+ %>
-  </p>
-    <div class=" g-shovel card w-25px d-inline-flex ">
-      <div class="card-body py-0">
-        <% if @user.achievement_level == "gold" %>
-          <%# GOLD SHOVEL %>
-          gold shovel <i class="fa-solid fa-medal" style="color:gold"></i>
-        <% elsif @user.achievement_level == "silver" %>
-          <%# SILVER SHOVEL %>
-          silver shovel <i class="fa-solid fa-medal"style="color:silver"></i>
-        <% else %>
-          <%# BRONZE SHOVEL %>
-          bronze shovel <i class="fa-solid fa-medal" style="color:brown"></i>
-        <% end %>
-      </div>
-    </div>
-  </p>
 
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
 
