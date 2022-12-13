@@ -43,6 +43,12 @@
                     <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
                   </small>
 
+                  <h5 class="card-title" style="font-family:roboto, sans-serif;">
+                    <!-- Reviewer name -->
+                    <%= link_to "#{review.booking.user.first_name}" " #{review.booking.user.last_name}", profile_path(review.booking.user), class:"text-decoration-none" %>
+                    <!-- <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> -->
+                  </h5>
+
                   <!-- Rating in stars -->
                   <% review.rating.times do %>
                     <i class="fa-solid fa-star fa-star-gold"></i>
@@ -54,13 +60,6 @@
 
                 </p>
 
-                <h5 class="card-title" style="font-family:roboto, sans-serif;">
-                  <!-- Reviewer name -->
-                  <div class="review">
-                    <%= link_to "#{review.booking.user.first_name}" " #{review.booking.user.last_name}", profile_path(review.booking.user), class:"text-decoration-none" %>
-                  </div>
-                  <!-- <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> -->
-                </h5>
                 <!-- Review content -->
                 <p class="card-text"><%= review.content %></p>
               </div>
