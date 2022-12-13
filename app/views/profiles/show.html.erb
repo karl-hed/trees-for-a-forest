@@ -51,7 +51,6 @@
 </div>
 
 
-
 <%# PAGE CONTENT %>
 <div class="container">
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name %>'s completed events</h4>
@@ -90,8 +89,6 @@
   </div>
   <!-- END User events -->
 
-
-
   <div class="row">
     <div style="width: 100%; height: 600px;"
           data-controller="tree-counter"
@@ -101,7 +98,6 @@
   </div>
 
   <h4 class="fw-bold"style="color:#285430"><%= @user.first_name%>'s upcoming events</h4>
-
 
   <div class="all-events w-100">
     <% @upcoming_events.each do |event| %>
@@ -130,11 +126,4 @@
     <% end %>
   </div>
 
-
-  <% if false %>
-  <% @upcoming_events.each do |event| %>
-    <p><strong>Event name:</strong></p><p><%= event.name %></p>
-    <p><strong>Event date:</strong></p><p><%= event.date %></p>
-  <% end %>
-  <% end %>
 </div>
