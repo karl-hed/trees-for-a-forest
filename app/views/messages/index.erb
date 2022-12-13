@@ -1,28 +1,40 @@
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
->
+<body class="chatroom-background" style="background-image: url('https://images.unsplash.com/photo-1494825514961-674db1ac2700?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80');">
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="col-6 mt-5 ">
+          <div class="card h-75">
+            <div class="card-header">
+              <%= cl_image_tag @profile.photo.key, class:"chat-photo"%>
+              <p><%= @profile.first_name %></p>
+            </div>
+            <div class="container chatroom"
+              data-controller="chatroom-subscription"
+              data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+              data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
+            >
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "messages/message", message: message %>
+              <div class="messages" data-chatroom-subscription-target="messages">
+                <% @chatroom.messages.each do |message| %>
+                  <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+                    <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                      <%= render "messages/message", message: message %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+
+              <%= simple_form_for [@profile, @message],
+                url: profile_messages_path,
+                html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|
+              %>
+                <%= f.input :content,
+                  label: false,
+                  placeholder: "Send #{@profile.first_name} a message",
+                  wrapper_html: {class: "flex-grow-1"}
+                %>
+                <%= f.submit "Send", class: "btn btn-flat mb-3" %>
+              <% end %>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
-
-  <%= simple_form_for [@profile, @message],
-    url: profile_messages_path,
-    html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@profile.first_name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-success mb-3" %>
-  <% end %>
-</div>
+    </div>
+</body>
