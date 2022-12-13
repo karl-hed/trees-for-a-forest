@@ -9,6 +9,4 @@ initSweetalert('#sweet-alert-demo', {
   text: "Your registration is confirmed.",
   icon: "success"
 
-
-
 });
