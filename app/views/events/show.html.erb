@@ -9,13 +9,27 @@
 <div class="container">
 
   <%# JOIN BUTTON %>
-  <% unless @event.users.include?(current_user) %>
+  <% if !@event.users.include?(current_user) && @event.date > Date.today %>
     <div class="d-flex justify-content-between" data-controller="join-event">
       <h2 class="my-5">Details</h2>
       <%= simple_form_for([@event,  @booking]) do |f| %>
         <br>
         <button type="button" class="btn btn-flat" id="sweet-alert-demo">Join event</button>
       <% end %>
+    </div>
+  <% elsif @event.users.include?(current_user) %>
+    <div class="d-flex justify-content-between" data-controller="join-event">
+      <br>
+      <% if @event.date < Date.today %>
+        <p class="mt-5">You have already participated to this event.</p>
+      <% else %>
+        <p class="mt-5">Subscribed to event</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-between" data-controller="join-event">
+      <br>
+      <p class="mt-5">You have missed this event!</p>
     </div>
   <% end %>
 
@@ -30,6 +44,8 @@
     <%= @event.description %>
     <br>
     <small class= "muted">Capacity: <%= @event.capacity %></small>
+    <br>
+    <small class= "muted">Date: <%= @event.date %></small>
     </div>
   </div>
 
@@ -76,11 +92,16 @@
       <%# <% user = booking.select { |b| b.user == current_user } %>
       <%# <%= raise %>
 
-    <%# LIST OF PEOPLE ATTENDING THIS EVENT %>
-    <h2 class="my-5 fw-semibold" style="color:#285430 ">People attending this event</h2>
-
-
-
+    <%# LIST OF PEOPLE WHO ATTENDED/ATTENDING THIS EVENT %>
+    <h2 class="my-5 fw-semibold" style="color:#285430 ">
+      People
+      <% if @event.date < Date.today %>
+        who attended
+      <% else %>
+        attending
+      <% end %>
+      this event
+    </h2>
 
 
       <div class="container">
@@ -102,6 +123,5 @@
     </div>
      <br>
      <br>
-    <!-- <%= link_to "Edit this event", edit_event_path(@event) %> | -->
     <%= link_to "< Back to events", events_path, class: "btn btn-flat mb-5" %>
 </div>
