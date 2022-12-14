@@ -46,11 +46,9 @@
     </div>
   </div>
 
-   <h2 class="my-5 fw-semibold" style="color:#285430">Meet up point</h2>
-
+  <h2 class="my-5 fw-semibold" style="color:#285430">Meet up point</h2>
 
   <p style="color: green"><%= notice %></p>
-
 
   <%# Geocoding for show page - start - %>
   <div class="container">
@@ -60,41 +58,39 @@
         data-eventmap-event-value="<%= @event.to_json %>"
         data-eventmap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-
   </div>
 
-    <div id="<%= dom_id @event %>">
+  <div id="<%= dom_id @event %>">
 
-      <%= render "individual_event", event: @event %>
-
-      <%# LIST OF PEOPLE WHO ATTENDED/ATTENDING THIS EVENT %>
-      <h2 class="my-5 fw-semibold" style="color:#285430 ">
-        People
-        <% if @event.date < Date.today %>
-          who attended
-        <% else %>
-          attending
-        <% end %>
+    <%# LIST OF PEOPLE WHO ATTENDED/ATTENDING THIS EVENT %>
+    <h2 class="my-5 fw-semibold" style="color:#285430 ">
+      People
+      <% if @event.date < Date.today %>
+        who attended
+      <% else %>
+        attending
+      <% end %>
         this event
-      </h2>
+    </h2>
 
-      <div class="container">
-        <div class="d-flex align-items-start justify-content-around">
-          <% @bookings.each do |booking| %>
-            <%= link_to profile_path(booking.user) do %>
-              <div class="d-inline">
-                <% if booking.user.photo.attached? %>
-                  <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
-                <% end  %>
-                <p>
-                  <%= booking.user.first_name %> <%= booking.user.last_name %>
-                </p>
-              </div>
-            <% end %>
+    <div class="container">
+      <div class="d-flex align-items-start justify-content-around">
+        <% @bookings.each do |booking| %>
+          <%= link_to profile_path(booking.user) do %>
+            <div class="d-inline">
+              <% if booking.user.photo.attached? %>
+                <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+              <% end  %>
+              <p>
+                <%= booking.user.first_name %> <%= booking.user.last_name %>
+              </p>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
+  </div>
+
      <br>
      <br>
     <%= link_to "< Back to events", events_path, class: "btn btn-flat mb-5" %>
