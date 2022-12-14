@@ -18,27 +18,24 @@
       <% end %>
     </div>
   <% elsif @event.users.include?(current_user) %>
-    <div class="d-flex justify-content-between" data-controller="join-event">
+    <div class="d-flex justify-content-between">
       <br>
       <% if @event.date < Date.today %>
-        <p class="mt-5">You have already participated to this event.</p>
+        <p class="mt-5" style="color: green">You have already participated to this event.</p>
       <% else %>
-        <p class="mt-5">Subscribed to event</p>
+        <p class="mt-5" style="color: green">Subscribed to event</p>
       <% end %>
     </div>
   <% else %>
-    <div class="d-flex justify-content-between" data-controller="join-event">
+    <div class="d-flex justify-content-between">
       <br>
       <p class="mt-5">You have missed this event!</p>
     </div>
   <% end %>
 
-
-
-
-
-
   <br>
+
+  <%# DESCRIPTION/CAPACITY/DATE OF THE EVENT %>
   <div class="card">
     <div class="card-body">
     <%= @event.description %>
@@ -52,27 +49,9 @@
    <h2 class="my-5 fw-semibold" style="color:#285430">Meet up point</h2>
 
 
-
-
-
-
   <p style="color: green"><%= notice %></p>
 
 
-
-
-  <%# <% @event.photos.each do |photo| %>
-    <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill  %>
-  <%# <% end %>
-
-  <div>
-
-
-
-
-
-
-  </div>
   <%# Geocoding for show page - start - %>
   <div class="container">
     <div class="row">
@@ -83,26 +62,21 @@
     </div>
 
   </div>
-    <%# <%= render @event, event: @event, booking: @booking, user_booking: @user_booking, bookings: @bookings %>
 
     <div id="<%= dom_id @event %>">
 
-      <%= render "individual_event", event:  @event %>
+      <%= render "individual_event", event: @event %>
 
-      <%# <% user = booking.select { |b| b.user == current_user } %>
-      <%# <%= raise %>
-
-    <%# LIST OF PEOPLE WHO ATTENDED/ATTENDING THIS EVENT %>
-    <h2 class="my-5 fw-semibold" style="color:#285430 ">
-      People
-      <% if @event.date < Date.today %>
-        who attended
-      <% else %>
-        attending
-      <% end %>
-      this event
-    </h2>
-
+      <%# LIST OF PEOPLE WHO ATTENDED/ATTENDING THIS EVENT %>
+      <h2 class="my-5 fw-semibold" style="color:#285430 ">
+        People
+        <% if @event.date < Date.today %>
+          who attended
+        <% else %>
+          attending
+        <% end %>
+        this event
+      </h2>
 
       <div class="container">
         <div class="d-flex align-items-start justify-content-around">
