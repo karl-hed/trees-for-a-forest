@@ -21,7 +21,7 @@ User.destroy_all
 # Message.destroy_all
 # Chat.destroy_all
 
-achievement_levels = %w[0 1 2 3]
+achievement_levels = %w[gold silver bronze]
 
 org_array = %w[onetreeplanted jour-de-la-terre espacepourlavie arbrescanada asfq
                mon-arbre-a-moi arbres-eco GRAME-Eco-quartier nature-action-quebec arbre-evolution]
