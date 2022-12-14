@@ -33,7 +33,7 @@
     <% @events.each do |event| %>
       <div id="events">
 
-        <div class="card mb-5 mt-5" style="max-width: 540px;">
+        <div class="card mb-5 mt-5 overflow-auto" style="max-width: 540px;">
               <%= link_to event_path(event), class:"text-decoration-none" do %>
                 <div class="row g-0">
                   <div class="col-md-4">

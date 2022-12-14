@@ -1,8 +1,9 @@
 <%# BANNER %>
 <div class="banner-with-button">
-<div class="banner" style="background-image: linear-gradient(rgba(255,255,255,0.60),rgba(255,255,255,0.60)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
+<div class="banner event-banner" style="background-image: linear-gradient(rgba(255,255,255,0.60),rgba(255,255,255,0.60)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
   <div class="container">
     <h1 class="title-organization fs-1" style="font-family:roboto, sans-serif;"><%= @event.name %></h1>
+    <h1 class="title-organization-event fs-1" style="font-family:roboto, sans-serif;"><%= @event.organization.name.capitalize %></h1>
   </div>
 <%# <Calendar> %>
   <div class="calendar">
@@ -14,10 +15,10 @@
   <button type="button" class="btn btn-flat" id="sweet-alert-demo">Join event</button>
 </div>
 
-
 <div class="container">
 
-  <%# JOIN BUTTON %>
+
+
   <% if !@event.users.include?(current_user) && @event.date > Date.today %>
     <div class="d-flex justify-content-between" data-controller="join-event">
       <%= simple_form_for([@event,  @booking]) do |f| %>
@@ -52,6 +53,7 @@
 
 
 <div class="container">
+<h2 class="details">Details</h2>
 
 
   <br>
@@ -59,11 +61,14 @@
   <%# DESCRIPTION/CAPACITY/DATE OF THE EVENT %>
   <div class="card">
     <div class="card-body">
+    <div class="description">
     <%= @event.description %>
+    </div>
     <br>
+    <div class="capacity">
     <small class= "muted">Capacity: <%= @event.capacity %></small>
+    </div>
     <br>
-    <small class= "muted">Date: <%= @event.date %></small>
     </div>
   </div>
 
@@ -95,15 +100,17 @@
     </h2>
 
     <div class="container">
-      <div class="d-flex align-items-start justify-content-start ">
+      <div class="d-flex align-items-start justify-content-start firstname-link">
           <% @bookings.each do |booking| %>
             <%= link_to profile_path(booking.user) do %>
               <div class="d-inline">
                 <% if booking.user.photo.attached? %>
-                  <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+                  <%= cl_image_tag booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong mx-2", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
                 <% end  %>
                 <p>
-                  <%= booking.user.first_name %> <%= booking.user.last_name %>
+                  <div class="firstname">
+                    <%= booking.user.first_name %>
+                  </div>
                 </p>
               </div>
             <% end %>
@@ -114,5 +121,6 @@
 
      <br>
      <br>
+
     <%= link_to "< Back to events", events_path, class: "btn btn-flat mb-5" %>
 </div>
