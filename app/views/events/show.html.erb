@@ -1,8 +1,20 @@
 <%# BANNER %>
+<div class="banner-with-button">
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
   <div class="container">
     <h1 class="fs-1" style="font-family:roboto, sans-serif;"><%= @event.name %></h1>
   </div>
+
+  <div class="show-logo">
+  </div>
+  <%# <Calendar> %>
+  <div class="calendar">
+  <h4 class="card-date fs-3"><i class="fa-solid fa-calendar-days"></i><%= @event.date %></h4>
+  </div>
+  <%# <Button> %>
+  <div class="button-position">
+  <% unless @event.users.include?(current_user) %>
+
 </div>
 
 
@@ -11,7 +23,6 @@
   <%# JOIN BUTTON %>
   <% if !@event.users.include?(current_user) && @event.date > Date.today %>
     <div class="d-flex justify-content-between" data-controller="join-event">
-      <h2 class="my-5">Details</h2>
       <%= simple_form_for([@event,  @booking]) do |f| %>
         <br>
         <button type="button" class="btn btn-flat" id="sweet-alert-demo">Join event</button>
@@ -32,6 +43,11 @@
       <p class="mt-5">You have missed this event!</p>
     </div>
   <% end %>
+  </div>
+</div>
+</div>
+
+<div class="container">
 
   <br>
 
