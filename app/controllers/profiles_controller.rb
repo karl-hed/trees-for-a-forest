@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
-        image_url: helpers.asset_url("tree.png")
+        image_url: helpers.asset_url("pine_tree2.png")
       }
     end
 
