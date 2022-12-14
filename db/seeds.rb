@@ -172,7 +172,7 @@ seed_number = org_array.size
 array_of_users = []
 
 puts "Creating user Saffron Baker"
-user_jim = User.new(
+user_saffron = User.new(
   first_name: "Saffron",
   last_name: "Baker",
   email: "lewagon@lewagon.com",
@@ -185,13 +185,13 @@ user_jim = User.new(
 )
 file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
 
-user_jim.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-user_jim.save!
+user_saffron.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user_saffron.save!
 
-array_of_users << user_jim
+array_of_users << user_saffron
 
 puts "Creating user Anne Fleur"
-user_harmony = User.new(
+user_anne_fleur = User.new(
   first_name: "Anne Fleur",
   last_name: "Bayiha",
   email: "anne_fleur@lewagon.com",
@@ -203,10 +203,10 @@ user_harmony = User.new(
   wants_to_carpool: true
 )
 file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
-user_harmony.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-user_harmony.save!
+user_anne_fleur.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+user_anne_fleur.save!
 
-array_of_users << user_harmony
+array_of_users << user_anne_fleur
 
 puts "Creating #{seed_number - array_of_users.size} other users"
 (seed_number - array_of_users.size).times do
