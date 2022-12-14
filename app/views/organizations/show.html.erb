@@ -1,7 +1,10 @@
 <%# BANNER %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(255,255,255,0.60),rgba(255,255,255,0.60)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
   <div class="container">
-    <h1 class="fs-1" style="font-family:roboto, sans-serif;"><%= @organization.name %></h1>
+      <div class="card-img-top p-3 pb-0 mx- position-relative">
+        <h1 class="position-absolute top-50 start-0 translate-middle-y" style="font-family:roboto, sans-serif;color:#285430;font-size:65px;font-weight:bold;"><%= @organization.name %></h1>
+        <%= image_tag @organization.photo_url, class:"img-fluid position-absolute top-50 end-0 translate-middle-y", :width=>100, :height=>100, :gravity=>"auto", :crop=>"fill" %>
+      </div>
   </div>
 </div>
 
@@ -9,7 +12,7 @@
 <div class="container">
 
   <div class="d-flex justify-content-between">
-    <h2 class="my-5">About Us</h2>
+    <h2 class="my-5" style="font-family:roboto, sans-serif;color:#285430;font-size:48px;font-weight:normal;">About us</h2>
     <%# REVIEW BUTTON %>
 
     <% if user_signed_in? %>
@@ -19,8 +22,8 @@
     <% end %>
   </div>
 
-  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-  <h3 class="my-5">Reviews</h3>
+  <p><%= @organization.about_us %></p>
+  <h3 class="my-5" style="font-family:roboto, sans-serif;color:#285430;font-size:48px;font-weight:normal;">Reviews</h3>
 
 
 </div>
@@ -30,12 +33,12 @@
 <%# CARD LAYOUT %>
 
   <% @review.each_with_index do |review, index| %>
-    <div class="container">
+    <div class="container mt-5">
       <div class="col-12">
         <div class="card py-2 my-3" style="width:100%">
-          <div class="row g-0">
-            <div class="col-md-2">
-              <img class="rounded-circle shadow-4-strong img-fluid mx-auto d-block w-50" src="https://www.w3schools.com/w3images/avatar2.png" class="img-fluid rounded-start" alt="...">
+          <div class="row g-0 bg-white mt-2 mb-2" >
+            <div class="col-md-2 position-relative">
+              <%= cl_image_tag review.booking.user.photo.key, class:"img-fluid rounded-circle shadow-4-strong img-fluid mx-auto d-block w-50 position-absolute top-50 start-50 translate-middle"%>
             </div>
             <div class="col-md-10">
               <div class="card-body">
@@ -44,12 +47,11 @@
                   <small class="text-muted">
                     <!-- Review date -->
                     <%= review.created_at.year %>/<%= review.created_at.month %>/<%= review.created_at.day < 10 ? "0#{review.created_at.day}" : review.created_at.day %>
-                    Event: <%= review.booking.event.name %>
                   </small>
 
                   <h5 class="card-title" style="font-family:roboto, sans-serif;">
                     <!-- Reviewer name -->
-                    <%= link_to "#{review.booking.user.first_name}" " #{review.booking.user.last_name}", profile_path(review.booking.user), class:"text-decoration-none" %>
+                    <%= link_to "#{review.booking.user.first_name}" " #{review.booking.user.last_name}", profile_path(review.booking.user), class:"text-decoration-none text-dark" %>
                   </h5>
 
                   <!-- Rating in stars -->
@@ -72,7 +74,3 @@
       </div>
     </div>
   <% end %>
-
-<div class="container">
-  <%= link_to "< Back to organizations", organizations_path, class:"btn btn-flat mb-5"  %>
-</div>
