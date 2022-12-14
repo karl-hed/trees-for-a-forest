@@ -2,7 +2,7 @@
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-6 mt-5 ">
           <div class="card h-75">
-            <div class="card-header d-flex">
+            <div class="card-header d-flex d-flex align-items-center">
               <%= cl_image_tag @profile.photo.key, class:"chat-photo"%>
               <p class="fw-semibold mx-2"style="color:#285430"><%= @profile.first_name %> <%=@profile.last_name %></p>
             </div>
@@ -28,7 +28,7 @@
               %>
                 <%= f.input :content,
                   label: false,
-                  placeholder: "Send #{@profile.first_name} a message",
+                  placeholder: "Type a message...",
                   wrapper_html: {class: "flex-grow-1"}
                 %>
                 <%= f.submit "Send", class: "btn btn-flat mb-3" %>
