@@ -1,0 +1,5 @@
+meta_name: "Trees for a forest"
+meta_title: "Trees for a forest - Lend a hand to plant a tree"
+meta_description: "Tree planting app for nature-lovers"
+meta_image: "TreesForAForestEvent.avif" # should exist in `app/assets/images/`
+twitter_account: "@treesforaforest"   # required for Twitter Cards

@@ -37,6 +37,73 @@ event_names = %w[Save\ the\ Environment
                  Tree\ Planting\ Event\ Quebec
                  Grow\ your\ Forest]
 
+about_us_org = ["We are a national conservation organization working in the U.S.\
+                  and Canada to advance the conservation of forests. We work \
+                  together with brands and governments to restore native forests,\
+                  promote and expand urban forests, and improve upon forest \
+                  policy. In over 140 years of forest restoration projects, \
+                  American Forests has successfully planted over 50 million \
+                  trees across North America.",
+                "We are a 501(3)(c) nonprofit on a mission to employ \
+                 people through reforestation. Its projects \
+                 involve working directly with people in villages in Canada to \
+                 plant over 250 million trees and plan to continue to plant over \
+                 100 million trees each year.",
+                "We are a 501(c)(3) nonprofit based in Quebec that has a simple \
+                 directive: one dollar = one tree. Founded in 2014 with a \
+                 mission to make it easy for people to help the environment, \
+                 One Tree Planted works together with reforestation \
+                 organizations around the world to fund the planting of trees \
+                 that help stabilize the climate, provide habitat for \
+                 biodiversity, and create sustainable jobs.",
+                "We are a NGO that was founded as a simple solution to global \
+                 warming. The group works to empower communities and create \
+                 sustainable, high standard, and scalable initiatives for \
+                 reforestation. It believes that healthy forests are the best \
+                 technology for removing carbon dioxide from the atmosphere and \
+                 have built corporate and scientific partnerships to fund tree \
+                 planting initiatives around the world.",
+                "We are a 501(c)(3) nonprofit building alliances to create a \
+                 better future for people and planet. They offer a \
+                 certification program for brands selling rainforest-friendly \
+                 products and work alongside activists, businesses, small \
+                 farmers, and forest communities to drive positive social, \
+                 environmental, and economic change across forest landscapes.",
+                "We are a nonprofit working to protect the lands and waters on \
+                 and in which all life depends. Founded in 1951, the \
+                 organization collaborates with scientists, policymakers, \
+                 farmers, communities, and others to help tackle climate change \
+                 in a number of different ways. Some of their priorities \
+                 include greening urban spaces, encouraging regenerative \
+                 farming, and protecting clean waterways.",
+                "We are an international organization dedicated to creating a \
+                 green and peaceful world that is ecologically diverse and \
+                 healthy. Founded in the 1970s, the nonprofit now has a \
+                 presence in over 40 countries and relies on its membership of \
+                 activists, students, educators, scientists, and \
+                 environmentalists to investigate issues and solutions, lobby \
+                 governments, and show up for actions against climate change.",
+                "We are a nonprofit organization and group of scholars, \
+                 scientists, entrepreneurs, and advocates around the globe \
+                 who are collaborating to lay out a comprehensive plan to \
+                 reverse global warming.",
+                "We are a charity working with members to advocate for \
+                 healthy, humane, and sustainable systems for food, farming, \
+                 and land use. The group lobbies politicians, certifies \
+                 sustainable products, and provides resources and education \
+                 for both farmers and consumers in the food and fashion \
+                 industries. Its current campaigns focus on regenerative \
+                 farming, agroforestry, making healthy, sustainable forestry \
+                 easier for everyone.",
+                "We are a nonprofit organization and group of scholars, \
+                 scientists, entrepreneurs, and advocates around the globe who \
+                 are collaborating to lay out a comprehensive plan to reverse \
+                 global warming. Conclusions from its analysis show that we \
+                 already have the tools to tackle climate change. In light of \
+                 this, today, the group now focuses on educating people around \
+                 the world and supporting initiatives that implement the \
+                 effective tools identified from its research."]
+
 logos = %w[https://cdn.shopify.com/s/files/1/0326/7189/files/One_Tree_Planted-logo-round.png?v=1668781952
            https://jourdelaterre.org/images/JTC_logo_c_rgb_web.png
            https://m.espacepourlavie.ca/sites/espacepourlavie.ca/themes/eplv_mobile/images/logo-eplv.jpg
@@ -105,7 +172,7 @@ seed_number = org_array.size
 array_of_users = []
 
 puts "Creating user Saffron Baker"
-user_jim = User.new(
+user_saffron = User.new(
   first_name: "Saffron",
   last_name: "Baker",
   email: "lewagon@lewagon.com",
@@ -118,13 +185,13 @@ user_jim = User.new(
 )
 file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
 
-user_jim.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-user_jim.save!
+user_saffron.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user_saffron.save!
 
-array_of_users << user_jim
+array_of_users << user_saffron
 
-puts "Creating user Harmony"
-user_harmony = User.new(
+puts "Creating user Anne Fleur"
+user_anne_fleur = User.new(
   first_name: "Anne Fleur",
   last_name: "Bayiha",
   email: "anne_fleur@lewagon.com",
@@ -136,10 +203,10 @@ user_harmony = User.new(
   wants_to_carpool: true
 )
 file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
-user_harmony.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-user_harmony.save!
+user_anne_fleur.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+user_anne_fleur.save!
 
-array_of_users << user_harmony
+array_of_users << user_anne_fleur
 
 puts "Creating #{seed_number - array_of_users.size} other users"
 (seed_number - array_of_users.size).times do
@@ -169,7 +236,8 @@ puts "Creating #{org_array.size} organizations"
 org_array.each do |org|
   array_of_organizations << Organization.create!(
     name: org,
-    photo_url: logos[index]
+    photo_url: logos[index],
+    about_us: about_us_org[index]
   )
   index += 1
 end
@@ -181,10 +249,8 @@ puts "Creating #{seed_number} events"
 I18n.locale = 'en-US'
 seed_number.times do
   array_of_events << Event.create!(
-    # name: Faker::FunnyName.name,
     name: event_names[index],
     description: descriptions[index],
-    # date: Faker::Date.in_date_period,
     date: Faker::Time.between_dates(from: Date.today - 10, to: Date.today + 5),
     time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
     organization_id: array_of_organizations[index].id,
