@@ -4,6 +4,7 @@ import "./controllers"
 import "bootstrap"
 import { initSweetalert } from './plugins/init_sweetalert';
 
+
 document.addEventListener('turbo:load', () => {
   initSweetalert('#sweet-alert-demo', {
     title: "Thank you 👏🏾!",
