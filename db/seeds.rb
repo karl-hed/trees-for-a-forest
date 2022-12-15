@@ -171,23 +171,7 @@ seed_number = org_array.size
 
 
 
-# puts "Creating user Anne Fleur"
-# user_anne_fleur = User.new(
-  #   first_name: "Anne Fleur",
-  #   last_name: "Bayiha",
-  #   email: "annefleur@lewagon.com",
-  #   password: "123456",
-  #   bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Constantly looking for ways to get involved and to give back to mother nature 🌿",
-  #   address: "Montreal",
-  #   latitude: 45.508888,
-  #   longitude: -73.561668,
-  #   wants_to_carpool: true
-  # )
-  # file = File.open(File.join(Rails.root, avatar_imgs[[]))
-  # user_anne_fleur.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-  # user_anne_fleur.save!
 
-  # array_of_users << user_anne_fleur
   array_of_users = []
 
 puts "Creating #{seed_number - array_of_users.size} other users"
