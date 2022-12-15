@@ -37,13 +37,10 @@
                   <div class="card-text pt-2">
                     <p class="text-dark"><%= organization.about_us[0..100] %>...</p>
                     <div class="d-inline w-100">
-                      <% organization.reviews.each do |review| %>
-                        <% @mean += review.rating %>
-                      <% end %>
-                      <% (@mean / organization.reviews.size).times do %>
+                      <% (organization.average_rating).times do %>
                         <i class="fa-solid fa-star fa-star-gold py-3"></i>
                       <% end %>
-                      <% (5 - (@mean / organization.reviews.size)).times do %>
+                      <% (5 - organization.average_rating).times do %>
                         <%# <i class="fa-solid fa-star"></i> %>
                         <i class="fa-regular fa-star"></i>
                       <% end %>

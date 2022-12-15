@@ -335,24 +335,24 @@ array_of_users << kenzo
 
 # AI
 
-puts "Creating user Ai "
-ai = User.new(
-  first_name: "Ai",
-  last_name: "Zhang",
-  email: "ai@gmail.com",
-  password: "123456",
-  bio: "Hey! I'm Ai, and I'm a teacher 🍎. I love to volunteer, and I'm committed to making the world a better place. Check out my progress. ",
-  address: "Brossard",
-  latitude: 45.508888,
-  longitude: -73.561668,
-  wants_to_carpool: true
-)
-file = File.open(File.join(Rails.root, ai_avatar[0]))
+# puts "Creating user Ai "
+# ai = User.new(
+#   first_name: "Ai",
+#   last_name: "Zhang",
+#   email: "ai@gmail.com",
+#   password: "123456",
+#   bio: "Hey! I'm Ai, and I'm a teacher 🍎. I love to volunteer, and I'm committed to making the world a better place. Check out my progress. ",
+#   address: "Brossard",
+#   latitude: 45.508888,
+#   longitude: -73.561668,
+#   wants_to_carpool: true
+# )
+# file = File.open(File.join(Rails.root, ai_avatar[0]))
 
-ai.photo.attach(io: file, filename: "Ai.cropped.jpg", content_type: "image/jpg")
-ai.save!
+# ai.photo.attach(io: file, filename: "Ai.cropped.jpg", content_type: "image/jpg")
+# ai.save!
 
-array_of_users << ai
+# array_of_users << ai
 
 # ROXANNE
 
@@ -442,7 +442,7 @@ array_of_users << najib
 
 
 
-
+puts "SIZE ARRAY OF USERS: #{array_of_users.count}"
 
 
 
@@ -607,21 +607,14 @@ array_of_organizations << arbre_evolution
 
 
 
-
-
-
-
-
-
-
-
+puts "SIZE ARRAY OF ORGANISATION: #{array_of_organizations.count}"
 
 index = 0
 array_of_events = []
 
 puts "Creating #{seed_number} events"
 I18n.locale = 'en-US'
-(seed_number - 1).times do
+(seed_number - 2).times do
   array_of_events << Event.create!(
     name: event_names[index],
     description: descriptions[index],
@@ -651,6 +644,21 @@ array_of_events << Event.create!(
   logo: logos[index]
 )
 
+# Event for the Review
+array_of_events << Event.create!(
+  name: "EVENT FOR WHICH WE WRITE A REVIEW",
+  description: descriptions[index],
+  date: Date.today - 10,
+  time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
+  organization_id: array_of_organizations[index].id,
+  latitude: latitudes[index],
+  longitude: longitudes[index],
+  region: places[index],
+  capacity: [*70..100].sample,
+  logo: logos[index]
+)
+
+puts "SIZE ARRAY OF EVENTS: #{array_of_events.count}"
 
 index = 0
 array_of_bookings = []
@@ -673,6 +681,19 @@ seed_number.times do
   )
   index += 1
 end
+
+index = 0
+puts "Creating #{seed_number} bookings"
+# seed_number.times do
+  array_of_bookings << Booking.create!(
+    user_id: User.find_by(first_name: "Karl").id,
+    event_id: Event.find_by(name: "EVENT FOR WHICH WE WRITE A REVIEW").id
+  )
+  index += 1
+# end
+
+
+puts "SIZE ARRAY OF BOOKINGS: #{array_of_bookings.count}"
 
 index = 0
 review_index = 0
@@ -702,15 +723,25 @@ puts "Creating #{reviews.size} reviews"
 
 review_index = 0
 
+
+Review.create!(
+  content: reviews[review_index],
+  rating: [*3..5].sample,
+  booking_id: org_booking.id
+)
+
 array_of_organizations.each do |org|
   org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
-  org_bookings.each do |org_booking|
-    Review.create!(
-      content: reviews[review_index],
-      rating: [*3..5].sample,
-      booking_id: org_booking.id
-    )
-    review_index += 1
+  puts "SIZE BOOKING: #{org_bookings.size}"
+  if org_bookings.size > 0
+    org_bookings.each do |org_booking|
+      Review.create!(
+        content: reviews[review_index],
+        rating: [*3..5].sample,
+        booking_id: org_booking.id
+      )
+      review_index += 1
+    end
   end
 end
 
