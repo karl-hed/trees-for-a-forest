@@ -169,29 +169,9 @@ event_photos = %w[
 
 seed_number = org_array.size
 
-
-
-# puts "Creating user Anne Fleur"
-# user_anne_fleur = User.new(
-  #   first_name: "Anne Fleur",
-  #   last_name: "Bayiha",
-  #   email: "annefleur@lewagon.com",
-  #   password: "123456",
-  #   bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Constantly looking for ways to get involved and to give back to mother nature 🌿",
-  #   address: "Montreal",
-  #   latitude: 45.508888,
-  #   longitude: -73.561668,
-  #   wants_to_carpool: true
-  # )
-  # file = File.open(File.join(Rails.root, avatar_imgs[[]))
-  # user_anne_fleur.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-  # user_anne_fleur.save!
-
-  # array_of_users << user_anne_fleur
-  array_of_users = []
+array_of_users = []
 
 # USERS ---------------------------------
-
 
 saffron_avatar = %w[app/assets/images/Saffron.cropped.jpg]
 oro_avatar = %w[app/assets/images/Oro.cropped.jpg]
@@ -333,27 +313,6 @@ kenzo.save!
 
 array_of_users << kenzo
 
-# AI
-
-# puts "Creating user Ai "
-# ai = User.new(
-#   first_name: "Ai",
-#   last_name: "Zhang",
-#   email: "ai@gmail.com",
-#   password: "123456",
-#   bio: "Hey! I'm Ai, and I'm a teacher 🍎. I love to volunteer, and I'm committed to making the world a better place. Check out my progress. ",
-#   address: "Brossard",
-#   latitude: 45.508888,
-#   longitude: -73.561668,
-#   wants_to_carpool: true
-# )
-# file = File.open(File.join(Rails.root, ai_avatar[0]))
-
-# ai.photo.attach(io: file, filename: "Ai.cropped.jpg", content_type: "image/jpg")
-# ai.save!
-
-# array_of_users << ai
-
 # ROXANNE
 
 puts "Creating user Roxanne "
@@ -417,7 +376,6 @@ harmony.save!
 
 array_of_users << harmony
 
-
 # Najib
 
 puts "Creating user Najib"
@@ -439,14 +397,7 @@ najib.save!
 
 array_of_users << najib
 
-
-
-
 puts "SIZE ARRAY OF USERS: #{array_of_users.count}"
-
-
-
-
 
 # END USERS -----------------------------
 
@@ -558,7 +509,6 @@ arbres_canada = Organization.create!(
 )
 array_of_organizations << arbres_canada
 
-
 #ASFQ
 puts "Creating ASFQ organization"
 asfq = Organization.create!(
@@ -604,8 +554,6 @@ arbre_evolution = Organization.create!(
 array_of_organizations << arbre_evolution
 
 ##END OF ORGANIZATION
-
-
 
 puts "SIZE ARRAY OF ORGANISATION: #{array_of_organizations.count}"
 
@@ -683,7 +631,7 @@ seed_number.times do
 end
 
 index = 0
-puts "Creating #{seed_number} bookings"
+puts "Creating 1 more bookings"
 # seed_number.times do
   array_of_bookings << Booking.create!(
     user_id: User.find_by(first_name: "Karl").id,
@@ -724,11 +672,11 @@ puts "Creating #{reviews.size} reviews"
 review_index = 0
 
 
-Review.create!(
-  content: reviews[review_index],
-  rating: [*3..5].sample,
-  booking_id: org_booking.id
-)
+# Review.create!(
+#   content: reviews[review_index],
+#   rating: [*3..5].sample,
+#   booking_id: org_booking.id
+# )
 
 array_of_organizations.each do |org|
   org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
