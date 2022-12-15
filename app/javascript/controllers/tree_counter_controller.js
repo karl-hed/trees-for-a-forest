@@ -32,7 +32,7 @@ export default class extends Controller {
     this.eventsValue.forEach((marker) => {
       bounds.extend([ marker.lng, marker.lat ])
     })
-    this.map.fitBounds(bounds, {padding: 50})
+    this.map.fitBounds(bounds, {padding: 50, zoom: 14})
   }
 
   #addMarkersToMap() {
