@@ -21,7 +21,6 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
 
-    // this.#fitMapToMarkers()
     setTimeout(() => {
       this.#fitMapToMarkers()
     }, 300)
@@ -34,21 +33,6 @@ export default class extends Controller {
       bounds.extend([ marker.lng, marker.lat ])
     })
     this.map.fitBounds(bounds, {padding: 50, maxZoom: 14})
-
-
-    // var bounds = new mapboxgl.LngLatBounds();
-
-    // markers.features.forEach(function(feature) {
-    //   bounds.extend(feature.geometry.coordinates);
-    // });
-
-
-    // this.eventsValue.forEach((marker) => {
-    //   bounds.extend(feature.geometry.coordinates)
-    // })
-
-
-    // map.fitBounds(bounds);
   }
 
   #addMarkersToMap() {
