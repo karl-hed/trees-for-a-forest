@@ -367,7 +367,8 @@ seed_number.times do
     latitude: latitudes[index],
     longitude: longitudes[index],
     region: places[index],
-    capacity: [*70..100].sample
+    capacity: [*70..100].sample,
+    logo: logos[index]
   )
   index += 1
 end
