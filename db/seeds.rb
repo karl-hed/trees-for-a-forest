@@ -169,34 +169,16 @@ event_photos = %w[
 
 seed_number = org_array.size
 
+
 array_of_users = []
-
-puts "Creating user Saffron Baker"
-user_saffron = User.new(
-  first_name: "Saffron",
-  last_name: "Baker",
-  email: "lewagon@lewagon.com",
-  password: "password",
-  bio: "Hi there! My name is Saffron and I am the owner of my very own etsy shop. I am super eco conscious and care deeply about the environnment. I love planting trees in my spare time.",
-  address: "Montreal",
-  latitude: 45.508888,
-  longitude: -73.561668,
-  wants_to_carpool: true
-)
-file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
-
-user_saffron.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-user_saffron.save!
-
-array_of_users << user_saffron
 
 puts "Creating user Anne Fleur"
 user_anne_fleur = User.new(
   first_name: "Anne Fleur",
   last_name: "Bayiha",
-  email: "anne_fleur@lewagon.com",
+  email: "annefleur@lewagon.com",
   password: "123456",
-  bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Finding ways to get involved and to give back to mother nature 🌿",
+  bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Constantly looking for ways to get involved and to give back to mother nature 🌿",
   address: "Montreal",
   latitude: 45.508888,
   longitude: -73.561668,
@@ -261,6 +243,10 @@ seed_number.times do
   )
   index += 1
 end
+
+
+
+
 
 index = 0
 array_of_bookings = []
@@ -357,3 +343,216 @@ end
 #   )
 #   index += 1
 # end
+
+# Users
+
+
+
+
+
+
+
+
+saffron_avatar = %w[app/assets/images/Saffron.cropped.jpg]
+oro_avatar = %w[app/assets/images/Oro.cropped.jpg]
+anthony_avatar = %w[app/assets/images/Anthony.cropped.jpg]
+kenzo_avatar = %w[app/assets/images/Kenzo.cropped.jpg]
+marc_andre_avatar = %w[app/assets/images/Marc_andre.cropped.jpg]
+ai_avatar = %w[app/assets/images/Ai.cropped.jpg]
+roxanne_avatar = %w[app/assets/images/Roxanne.cropped.jpg]
+harmony_avatar = %w[app/assets/images/Harmony.cropped.jpg]
+najib_avatar = %w[app/assets/images/Najib.cropped.jpg]
+
+puts "creating users ✏️..."
+
+
+
+
+
+puts "Creating user Saffron Baker"
+saffron = User.new(
+  first_name: "Saffron",
+  last_name: "Baker",
+  email: "saffron@gmail.com",
+  password: "123456",
+  bio: "Hi! I'm Saffron, and I'm an environmentalist. I love trees 🌲, travel ✈️, and all of the wonderful things that come along with being an environmentalist. ",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, saffron_avatar[0]))
+
+saffron.photo.attach(io: file, filename: "Saffron.cropped.jpg", content_type: "image/jpg")
+saffron.save!
+
+array_of_users << saffron
+
+# ORO
+
+puts "Creating user Oro "
+oro = User.new(
+  first_name: "Oro",
+  last_name: "Musa",
+  email: "oro@gmail.com",
+  password: "123456",
+  bio: "Hello everyone 👋🏾! I am dental assistant who loves the outdoors. I want to meet people who share my values. Hit me up!",
+  address: "Chambly",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: false
+)
+file = File.open(File.join(Rails.root, oro_avatar[0]))
+
+oro.photo.attach(io: file, filename: "Oro.cropped.jpg", content_type: "image/jpg")
+oro.save!
+
+array_of_users << oro
+
+# ANTHONY
+
+puts "Creating user anthony "
+anthony = User.new(
+  first_name: "Anthony",
+  last_name: "Lackey",
+  email: "anthony@gmail.com",
+  password: "123456",
+  bio: "I believe in our ability to make a difference, and I want to be an active part of that change 🌍. I hope you'll join me!",
+  address: "Quebec",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, anthony_avatar[0]))
+
+anthony.photo.attach(io: file, filename: "Anthony.cropped.jpg", content_type: "image/jpg")
+anthony.save!
+
+array_of_users << anthony
+
+# KENZO
+
+puts "Creating user kenzo "
+kenzo = User.new(
+  first_name: "Kenzo",
+  last_name: "Lackey",
+  email: "kenzo@gmail.com",
+  password: "123456",
+  bio: "I'm Kenzo, a doctor who loves nature and hiking 🏔️. I believe that we can all do more to make the world a better place by planting trees and caring for animals 🐕 in need. ",
+  address: "Saguenay",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: false
+)
+file = File.open(File.join(Rails.root, kenzo_avatar[0]))
+
+kenzo.photo.attach(io: file, filename: "Kenzo.cropped.jpg", content_type: "image/jpg")
+kenzo.save!
+
+array_of_users << kenzo
+
+# AI
+
+puts "Creating user Ai "
+ai = User.new(
+  first_name: "Ai",
+  last_name: "Zhang",
+  email: "ai@gmail.com",
+  password: "123456",
+  bio: "Hey! I'm Ai, and I'm a teacher 🍎. I love to volunteer, and I'm committed to making the world a better place. Check out my progress. ",
+  address: "Brossard",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, ai_avatar[0]))
+
+ai.photo.attach(io: file, filename: "Ai.cropped.jpg", content_type: "image/jpg")
+ai.save!
+
+array_of_users << ai
+
+# ROXANNE
+
+puts "Creating user Roxanne "
+roxanne = User.new(
+  first_name: "Roxanne",
+  last_name: "Davignon",
+  email: "roxanne@gmail.com",
+  password: "123456",
+  bio: "Hola, I am Roxanne a veterinarian 🐕🐈 who loves helping animals in need.  Join me! Plant a tree and make a difference, too!",
+  address: "Brossard",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: false
+)
+file = File.open(File.join(Rails.root, roxanne_avatar[0]))
+
+roxanne.photo.attach(io: file, filename: "Roxanne.cropped.jpg", content_type: "image/jpg")
+roxanne.save!
+
+array_of_users << roxanne
+
+# MARC-ANDRÉ
+
+puts "Creating user Marc-André "
+marc_andre = User.new(
+  first_name: "Marc-André",
+  last_name: "Dupuis",
+  email: "marc_andre@gmail.com",
+  password: "123456",
+  bio: "Travel. Sail the world. Plant trees 🌲✈️⛵.",
+  address: "Trois-Rivières",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: false
+)
+file = File.open(File.join(Rails.root, marc_andre_avatar[0]))
+
+marc_andre.photo.attach(io: file, filename: "Marc_andre.cropped.jpg", content_type: "image/jpg")
+marc_andre.save!
+
+array_of_users << marc_andre
+
+# Harmony
+
+puts "Creating user harmony "
+harmony = User.new(
+  first_name: "Harmony",
+  last_name: "Todd",
+  email: "harmony@gmail.com",
+  password: "123456",
+  bio: "I love being outside, especially when it's nice out. I love to cook 💓👩🏻‍🍳, and I love to eat food that tastes like nature. My friends say I make the best vegan hummus, hit me up if you would like to taste.",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, harmony_avatar[0]))
+
+harmony.photo.attach(io: file, filename: "Harmony.cropped.jpg", content_type: "image/jpg")
+harmony.save!
+
+array_of_users << harmony
+
+
+# Najib
+
+puts "Creating user Najib"
+najib = User.new(
+  first_name: "Najib",
+  last_name: "Akhtar",
+  email: "najib@gmail.com",
+  password: "123456",
+  bio: "I'm an software engineer 💻 who loves to help others. I volunteer in my spare time and am passionate about planting trees wherever I can.",
+  address: "Sherbrook",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, najib_avatar[0]))
+
+najib.photo.attach(io: file, filename: "Najib.cropped.jpg", content_type: "image/jpg")
+najib.save!
+
+array_of_users << najib
