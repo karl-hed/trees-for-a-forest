@@ -169,26 +169,7 @@ event_photos = %w[
 
 seed_number = org_array.size
 
-# array_of_users = []
 
-# puts "Creating user Saffron Baker"
-# user_saffron = User.new(
-#   first_name: "Saffron",
-#   last_name: "Baker",
-#   email: "lewagon@lewagon.com",
-#   password: "password",
-#   bio: "Hi there! My name is Saffron and I am the owner of my very own etsy shop. I am super eco conscious and care deeply about the environnment. I love planting trees in my spare time.",
-#   address: "Montreal",
-#   latitude: 45.508888,
-#   longitude: -73.561668,
-#   wants_to_carpool: true
-# )
-# file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
-
-# user_saffron.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
-# user_saffron.save!
-
-# array_of_users << user_saffron
 array_of_users = []
 
 puts "Creating user Anne Fleur"
@@ -263,26 +244,6 @@ seed_number.times do
   index += 1
 end
 
-# UPDATED EVENTS
-index = 0
-array_of_events = []
-
-puts "Creating #{seed_number} events"
-I18n.locale = 'en-US'
-seed_number.times do
-  array_of_events << Event.create!(
-    name: event_names[index],
-    description: descriptions[index],
-    date: Faker::Time.between_dates(from: Date.today - 10, to: Date.today + 5),
-    time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
-    organization_id: array_of_organizations[index].id,
-    latitude: latitudes[index],
-    longitude: longitudes[index],
-    region: places[index],
-    capacity: [*70..100].sample
-  )
-  index += 1
-end
 
 
 
@@ -502,7 +463,7 @@ ai = User.new(
   address: "Brossard",
   latitude: 45.508888,
   longitude: -73.561668,
-  wants_to_carpool: false
+  wants_to_carpool: true
 )
 file = File.open(File.join(Rails.root, ai_avatar[0]))
 
@@ -589,7 +550,7 @@ najib = User.new(
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = File.open(File.join(Rails.root, harmony_avatar[0]))
+file = File.open(File.join(Rails.root, najib_avatar[0]))
 
 najib.photo.attach(io: file, filename: "Najib.cropped.jpg", content_type: "image/jpg")
 najib.save!
