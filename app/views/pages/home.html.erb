@@ -1,66 +1,67 @@
-<body class="back">
+<div class="">
 
   <div class="video-content">
-    <div class="content">
-        <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="content-home">
+        <div class="d-flex flex-column justify-content-center align-items-center mb-3">
           <h1>Trees for a Forest</h1>
-          <h6>Lend a hand to plant a tree</h6>
-        </div>
+          <h6 class="mb-5">Lend a hand to plant a tree</h6>
         <div class="btn btn-ghost">
               <%= link_to "Start now", events_path, class: "nav-link fs-5" %>
+        </div>
         </div>
     </div>
     <%= video_tag "video1.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "back-video" %>
   </div>
 
-  <div class="space"></div>
+  <%# <div class="space"></div> %>
 
-    <div id="footer-div">
-
+  <div id="footer-div">
     <%# TREE COUNTER %>
+    <div class="mt-5 pt-5">
+      <div class="trees-planted">
+        <h1>TREES PLANTED</h1>
+      </div>
 
-    <div class="trees-planted">
-      <h1>TREES PLANTED</h1>
+      <div class="counter">
+        <h2 id="tree-counter"></h2>
+      </div>
+
+      <%# FOOTER %>
+
+      <div class="footer-content d-flex justify-content-around">
+        <ul class="footer-text">
+          <li>About&nbsp</li>
+          <li>Services&nbsp</li>
+          <li>Press&nbsp</li>
+          <li>Careers&nbsp</li>
+          <li>FAQs&nbsp</li>
+          <li>Contacts&nbsp</li>
+        </ul>
+      </div>
+
+      <div style="color:#285430" class= "d-flex justify-content-center ">
+        <p style="font-size: 20px"><strong>Stay in touch</strong></p>
+      </div>
+
+
+
+      <div class="socials d-flex justify-content-around fs-3">
+        <ul>
+          <i class="fa-brands fa-tiktok">&nbsp&nbsp</i>
+
+          <i class="fa-brands fa-instagram">&nbsp&nbsp</i>
+          <i class="fa-brands fa-square-twitter">&nbsp&nbsp</i>
+          <i class="fa-brands fa-facebook">&nbsp&nbsp</i>
+        </ul>
+      </div>
+
     </div>
 
-    <div class="counter">
-      <h2 id="tree-counter"></h2>
-    </div>
-
-    <%# FOOTER %>
-
-    <div class="footer-content d-flex justify-content-around">
-      <ul class="footer-text">
-        <li>About&nbsp</li>
-        <li>Services&nbsp</li>
-        <li>Press&nbsp</li>
-        <li>Careers&nbsp</li>
-        <li>FAQs&nbsp</li>
-        <li>Contacts&nbsp</li>
-      </ul>
-    </div>
-
-    <div style="color:#285430" class= "d-flex justify-content-center ">
-      <p style="font-size: 20px"><strong>Stay in touch</strong></p>
-    </div>
-
-
-
-    <div class="socials d-flex justify-content-around fs-3">
-      <ul>
-        <i class="fa-brands fa-tiktok">&nbsp&nbsp</i>
-
-        <i class="fa-brands fa-instagram">&nbsp&nbsp</i>
-        <i class="fa-brands fa-square-twitter">&nbsp&nbsp</i>
-        <i class="fa-brands fa-facebook">&nbsp&nbsp</i>
-      </ul>
-    </div>
-
-</body>
+  </div>
+</div>
 
   <%# IMAGE FOOTER %>
 
   <%# <div class="forest"> %>
     <%# <%= image_tag "footer_image.png" %>
   <%# </div> %>
-</div>
