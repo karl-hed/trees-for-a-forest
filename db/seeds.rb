@@ -104,16 +104,16 @@ about_us_org = ["We are a national conservation organization working in the U.S.
                  the world and supporting initiatives that implement the \
                  effective tools identified from its research."]
 
-logos = %w[https://cdn.shopify.com/s/files/1/0326/7189/files/One_Tree_Planted-logo-round.png?v=1668781952
-           https://jourdelaterre.org/images/JTC_logo_c_rgb_web.png
-           https://m.espacepourlavie.ca/sites/espacepourlavie.ca/themes/eplv_mobile/images/logo-eplv.jpg
-           https://arbrescanada.ca/wp-content/uploads/2017/11/TCLogos_Green-Fr-1025x475-green.png
-           https://afsq.org/wp-content/uploads/2022/10/cropped-Favicon-AFSQ.png
-           https://www.sentiercp.com/medias/iw/800x0/Logo_MFFP.png
-           https://cdn.shopify.com/s/files/1/0148/5632/3158/files/arbres_eco_logo_type_1200x1200.png?v=1613736186
-           https://grame.org/wp-content/uploads/2020/08/GRAME-logo.png
-           https://media-exp1.licdn.com/dms/image/C4D0BAQG_rEz8GKwSAQ/company-logo_200_200/0/1646233804068?e=2147483647&v=beta&t=JYNaKIgJqn3urXppyrEy3tmfzg0noXYV0cSN2_hcYlE
-           https://mouvement.arbre-evolution.org/images/logo_AE.png]
+logos = %w[org1.cropped.jpg
+          org2.cropped.jpg
+          org3.cropped.jpg
+          org4.cropped.jpg
+          org5.cropped.jpg
+          org6.cropped.jpg
+          org7.cropped.jpg
+          org5.cropped.jpg
+          org6.cropped.jpg
+          org7.cropped.jpg]
 
 descriptions = ["Tree planting event near Sherbrooke for nature-lovers. Get to know nature-minded people around you and\
                  give your time to participate in an awesome event.",
