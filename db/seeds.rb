@@ -23,8 +23,8 @@ User.destroy_all
 
 achievement_levels = %w[gold silver bronze]
 
-org_array = %w[onetreeplanted jour-de-la-terre espacepourlavie arbrescanada asfq
-               mon-arbre-a-moi arbres-eco GRAME-Eco-quartier nature-action-quebec arbre-evolution]
+org_array = %w[One\ Tree\ Planted Jour\ de\ la\ terre Espace\ pour\ la\ vie Arbres\ Canada asfq
+               Mon\ arbre\ à\ moi Arbres-Éco GRAME-Éco-quartier Nature-Action-Québec Arbre-Évolution]
 
 event_names = %w[Save\ the\ Environment
                  Help\ plant\ a\ tree
