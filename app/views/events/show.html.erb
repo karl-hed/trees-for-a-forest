@@ -1,18 +1,15 @@
 <%# BANNER %>
-<div class="banner-with-button">
-  <div class="banner event-banner" style="background-image: linear-gradient(rgba(255,255,255,0.60),rgba(255,255,255,0.60)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
-    <div class="container">
-      <h1 class="title-organization fs-1" style="font-family:roboto, sans-serif;"><%= @event.name %></h1>
-      <h1 class="title-organization-event fs-1" style="font-family:roboto, sans-serif;"><%= @event.organization.name.capitalize %></h1>
-    </div>
-    <%# <Calendar> %>
-    <div class="calendar">
-      <h4 class="card-date fs-3"><i class="fa-solid fa-calendar-days"></i><%= @event.date %></h4>
-    </div>
-
+<div class="banner event-banner" style="background-image: linear-gradient(rgba(255,255,255,0.60),rgba(255,255,255,0.60)), url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
+  <div class="container">
+    <h1 class="title-organization fs-1" style="font-family:roboto, sans-serif;"><%= @event.name %></h1>
+    <h1 class="title-organization-event fs-1" style="font-family:roboto, sans-serif;"><%= @event.organization.name.capitalize %></h1>
+  </div>
+  <%# <Calendar> %>
+  <div class="calendar">
+    <h4 class="card-date fs-3"><i class="fa-solid fa-calendar-days"></i><%= @event.date %></h4>
+  </div>
 
   <div class="container">
-
     <% if !@event.users.include?(current_user) && @event.date > Date.today %>
       <div class="d-flex justify-content-between" data-controller="join-event">
         <%= simple_form_for([@event,  @booking]) do |f| %>
@@ -38,12 +35,8 @@
         <p class="mt-5">You have missed this event!</p>
       </div>
     <% end %>
-    </div>
   </div>
 </div>
-
-
-<div class="container">
 
 <div class="container">
   <h2 class="details my-5 fw-semibold fs-1">Details</h2>
