@@ -3,11 +3,12 @@
   padding: 0;
   padding-top: 200px;
   text-align: start;
-  margin-left: 270px;
+  // margin-left: 270px;
 }
 
 .title-organization h1 {
   color: #285430;
+  padding: 10px 0 0 0 ;
 }
 
 .firstname {
@@ -40,6 +41,6 @@
   font-family: Roboto, sans-serif;
 }
 
-.title-organization-event h1 {
+.title-organization-event .banner h1 {
   color: #A4BE7B;
 }
