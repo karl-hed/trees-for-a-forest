@@ -11,6 +11,17 @@
   justify-content: center;
 }
 
+.content-home h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 525;
+  color: white;
+  font-size: 95px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 h6 {
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -28,15 +39,17 @@ h6 {
   align-items: center;
   justify-content: center;
   padding: 0 5%;
+  object-fit: cover;
 }
 
 .back-video {
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 0;
   z-index: -3;
+  height: 100%;
+  object-fit: cover;
   width: 100%;
-
 }
 
 .content {

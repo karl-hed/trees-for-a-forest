@@ -7,7 +7,7 @@ import { initSweetalert } from './plugins/init_sweetalert';
 
 document.addEventListener('turbo:load', () => {
   initSweetalert('#sweet-alert-demo', {
-    title: "Thank you 👏🏾!",
+    title: "Thank you Anne Fleur 👏🏾!",
     text: "Your registration is confirmed.",
     icon: "success"
   }, () => {
