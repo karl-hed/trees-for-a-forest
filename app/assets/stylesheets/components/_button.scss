@@ -12,16 +12,29 @@
   opacity: 1;
 }
 
+// .btn-flat {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #A4BE7B;
+//   transition: background 0.3s ease;
+// }
+
+// .btn-flat:hover {
+//   background: #a9c975;
+//   color: white;
+// }
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #A4BE7B;
+  background: #285430;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #a9c975;
+  background: #3c6a44;
   color: white;
 }
 
