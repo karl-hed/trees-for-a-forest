@@ -169,327 +169,9 @@ event_photos = %w[
 
 seed_number = org_array.size
 
+array_of_users = []
 
-
-# puts "Creating user Anne Fleur"
-# user_anne_fleur = User.new(
-  #   first_name: "Anne Fleur",
-  #   last_name: "Bayiha",
-  #   email: "annefleur@lewagon.com",
-  #   password: "123456",
-  #   bio: "Student at Le Wagon Montreal, passionate about web-developpment and nature. Constantly looking for ways to get involved and to give back to mother nature 🌿",
-  #   address: "Montreal",
-  #   latitude: 45.508888,
-  #   longitude: -73.561668,
-  #   wants_to_carpool: true
-  # )
-  # file = File.open(File.join(Rails.root, avatar_imgs[[]))
-  # user_anne_fleur.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-  # user_anne_fleur.save!
-
-  # array_of_users << user_anne_fleur
-  array_of_users = []
-
-puts "Creating #{seed_number - array_of_users.size} other users"
-(seed_number - array_of_users.size).times do
-  # puts "email: #{Faker::Internet.email}"
-  user = User.new(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: '123456',
-    bio: Faker::Lorem.sentence,
-    address: Faker::Address.full_address,
-    achievement_level: achievement_levels.sample,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    wants_to_carpool: [true, false].sample
-  )
-  file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
-  user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-  user.save!
-  array_of_users << user
-end
-
-# index = 0
-# array_of_organizations = []
-
-# puts "Creating #{org_array.size} organizations"
-# org_array.each do |org|
-#   array_of_organizations << Organization.create!(
-#     name: org,
-#     photo_url: logos[index],
-#     about_us: about_us_org[index]
-#   )
-#   index += 1
-# end
-
-
-
-# ORGANISATIONS (10)
-
-#ARBRE.ECO
-array_of_organizations = []
-
-puts "Creating arbres.eco organization"
-arbres_eco = Organization.create!(
- name: "Arbres.eco",
- photo_url:"logo_org1.png",
- about_us:"Planting trees is a highly meaningful gesture. By acting on tree cover, we capture greenhouse gases and also improve the environment, health and quality of life for residents, while offering an economically viable response to climate change. We are currently witnessing an international movement aimed at increasing the canopy of cities and countryside. Give a hand so that together we can make a difference!
- Our partners are responsible companies, towns and villages concerned about their environment and also, for-profit organizations involved in their community."
-)
-array_of_organizations << arbres_eco
-
-#GRAME
-puts "Creating grame organization"
-grame = Organization.create!(
- name: "GRAME",
- photo_url:"logo_org2.png",
- about_us:"As climate change becomes humanity's biggest challenge, and 75% of humans live in urban areas, GRAME is convinced that it is possible to build resilient communities that live in healthy and sustainable environments. This is her raison d'être, which she carries with assumed optimism. GRAME takes note of the fact that climate change amplifies social inequalities, and that the most vulnerable populations are the most affected, and often the first, by climate change; it takes this into account in its decisions and contributes to greater environmental justice.
- GRAME acts for a better environment in collaboration with citizens, communities and organizations as well as with governments, by intervening in the field, by deploying education and awareness programs and by issuing recommendations rooted in rigor. science that has characterized it since its creation. Find out how our actions embody our mission year after year!
- "
-)
-array_of_organizations << grame
-
-#ONE TREE PLANTED
-puts "Creating one tree planted organization"
-one_tree_planted = Organization.create!(
- name: "One Tree Planted",
- photo_url:"logo_org3.png",
- about_us:"We want to make it simple for anyone to help the environment by planting trees. Together we can restore forests, create habitat for biodiversity, and make a positive social impact around the world. We plant one tree with every dollar donated. Since 2014, we have more than doubled the number of trees planted each year, and are working with partners across 47+ countries in North America, Latin America, Africa, Asia, Europe and the Pacific. We have planted over 40 million trees in more than 47 countries across the globe since 2014. In 2021, we more than doubled our impact from 2020 - with 23.5 million trees! Since our establishment, we have been dedicated to making it easier for both individuals and businesses to give back to the environment, create a healthier climate, protect biodiversity, and help reforestation efforts. With your support, we aid in environmental conservation and restoration across the globe!"
-
-)
-array_of_organizations << one_tree_planted
-
-#JOUR DE LA TERRE
-puts "Creating Jour de la terre organization"
-jour_de_la_terre = Organization.create!(
- name: "Jour de la Terre",
- photo_url:"logo_org4.png",
- about_us:"Our mission: To help people and organizations reduce their impact on the environment. Earth Day was first celebrated on April 22, 1970. Today, more than one billion people in 193 countries take action each year for Earth Day. Over the years, Earth Day has become the largest participatory environmental movement on the planet.
- In 1990, the creation of the association in France and Canada goes hand in hand with the internationalization of the Earth Day movement. The Jour de la Terre France association has distinguished itself by organizing environmental campaigns and rallies, one of which, on April 22, 1990, remains to this day the largest French event dedicated to the environment with millions participants and nearly a thousand actions in all areas of the environment. In Quebec, Earth Day has been celebrated since 1995 by organizing all kinds of activities to raise awareness of environmental issues. With its ability to mobilize community players, the provincial organization has continued to grow, developing numerous action programs on April 22 and every day.
- In 2015, French and Quebec teams joined forces to breathe new life into the Earth Day movement in France, Quebec and the rest of the Francophonie. In 2019, a strategic alliance was concluded with EarthPLAY in Canada, so that the environmental support programs carried out in Quebec can be heard everywhere on Canadian territory. The association Jour de la Terre Canada is the holder of the trademark of the Earth Day in France and Canada"
-)
-array_of_organizations << jour_de_la_terre
-
-#ESPACE POUR LA VIE
-puts "Creating Espace pour la vie organization"
-espace_pour_la_vie = Organization.create!(
- name: "Espace pour la vie",
- photo_url:"logo_org5.jpg",
- about_us:"Espace pour la vie's mission is to raise awareness of nature and the knowledge associated with it, to contribute to the study and preservation of biodiversity and to promote responsible behavior towards the environment. It contributes to the achievement of this mission in the respective spheres of each of the institutions (Biodôme: ecology and environmental sciences; Insectarium: entomology; Botanical Garden: botany and horticulture; Rio Tinto Alcan Planetarium: astronomy).
- Space for Life receives a large number of donation requests and wishes, while respecting its mission, to support the community and recognized organizations. Individual requests are not considered. Espace pour la vie's mission is to raise awareness of nature and the knowledge associated with it, to contribute to the study and preservation of biodiversity and to promote responsible behavior towards the environment.
- Our donation policy does not provide for monetary contributions or donations of promotional items, plants, etc. Priority will be given to activities and events held by non-profit organizations whose mission echoes the values and objectives of Space for Life. Only successful applications will receive a response."
-
-)
-array_of_organizations << espace_pour_la_vie
-
-#ARBRE CANADA
-puts "Creating Arbres Canada organization"
-arbres_canada = Organization.create!(
- name: "Arbres Canada",
- photo_url:"logo_org6.webp",
- about_us:"Tree Canada is the only national not-for-profit organization that plants and nurtures trees in rural and urban settings, in every province across the country. We help increase Canada's forest cover through our programs, research, advocacy, and by providing grants to communities and schools. We are thought leaders and help build capacity by collaborating with a network of industry experts, academics and other nonprofits to build community knowledge and help municipalities plan and support local forest cover.With our partners and sponsors, we have planted over 84 million trees. Improving the lives of Canadians by planting and caring for trees while teaching the value of trees. To inspire, inform and empower Canadians to plant and nurture trees to improve quality of life and fight climate change."
-
-)
-array_of_organizations << arbres_canada
-
-
-#ASFQ
-puts "Creating ASFQ organization"
-asfq = Organization.create!(
- name: "ASFQ",
- photo_url:"log_org7.webp",
- about_us:"Far from being a luxury, architecture is essential to human flourishing, sustainable development and the autonomy of communities. It involves rights as fundamental as housing, health, education, equality and security. These depend on adequate infrastructure, which requires quality architecture. Yet, due to hazards and injustices, the majority of the planet's inhabitants live in deficient built environments, and do not benefit from the capacities required to develop safe, healthy and ecological living environments. This situation persists all the more as urbanization, migration and climate change are accelerating, further deteriorating the habitat of vulnerable people. This is why solidarity, quality and borderless architecture is more necessary than ever to find the best solutions to the challenges facing humanity."
-
-)
-array_of_organizations << asfq
-
-#MON ARBRE A MOI
-puts "Creating Mon Arbre a moi organization"
-mon_arbre_a_moi = Organization.create!(
- name: "Mon arbre à moi",
- photo_url:"logo_org8.png",
- about_us:"The government of Quebec is launching The My Tree of Mine campaign allows any child born or adopted in Quebec in the current year to receive a small tree seedling that will grow with them. Little plant will grow...The young plants given by the Department during Tree and Forest Month are on average 2 years old and 30 to 60 centimeters high, depending on the species. The trees offered are native forest species of Quebec with a good longevity, more than 100 years. These trees will grow to reach 20 to 25 meters in height, some as young as 30 years old."
-
-)
-array_of_organizations << mon_arbre_a_moi
-
-#NATURE ACTION QUEBEC
-puts "Creating Nature Action Quebec organization"
-nature_action_quebec = Organization.create!(
- name: "Nature action Quebec",
- photo_url:"logo_org9.png",
- about_us:"Nature-Action Québec is a non-profit organization, recognized conservation organization, charity and social economy enterprise that works to protect the environment. Born from a citizen initiative in Saint-Bruno-de-Montarville, NAQ has slowly but surely evolved into its current form: a large-scale social economy enterprise that shapes and executes transition projects in more than 100 communities. with 350 projects annually.
- Its success is based on the strength of its team, made up of more than 100 professionals dedicated to protecting the environment. Experts, managers and technicians who have enviable skills in various sectors of activity and who have chosen to work within an organization whose values and commitment they share.
- Nature-Action Québec has given itself the mission of guiding individuals and organizations in the application of best environmental practices. Thus, it contributes to the realization of many innovative projects in several areas that affect the environment, in partnership with municipalities, non-profit organizations, citizens, government departments and private companies.
- Faced with the climate emergency that is shaking our planet, we now realize that it is time to act for the good of the communities of today and tomorrow. For more than 35 years, NAQ has worked to make things happen with you. Whether through the conservation of natural environments in perpetuity, the environmental restoration of degraded environments, awareness, territorial planning, sustainable development, management of environmental projects, programs and municipal infrastructures, education or communication , Nature-Action Québec puts its expertise at the service of nature and makes a difference in the environment.
- "
-
-)
-array_of_organizations << nature_action_quebec
-
-# ARBRE EVOLUTION
-puts "Creating Arbre évolution organization"
-arbre_evolution = Organization.create!(
- name: "Arbre évolution",
- photo_url:"logo_org10.png",
- about_us:"Arbre-Évolution is a solidarity cooperative that promotes the well-being of communities through a symbiosis between the forest, humans and their environment. We have solid expertise in tree planting, ecosystem restoration, edible landscaping, carbon technologies and knowledge transfer. We offer personalized services to carry out decisive projects in your living environments. Our primary aims are community involvement and environmental awareness among young people. We are also the instigators of the Social Reforestation Program™, a unique tool available to communities to fund greening initiatives.
- Arbre-Évolution considers the forest as a natural environment, but also a human one. On the lookout for the major international challenges of sustainable development, the vision we propose seeks to act on the links between nature and cultural dynamics, on the synergies between communities and their environment. With this identity, we do not perceive the environment as an hermetic concept, but rather as a large whole in which social activity and ecology are in constant interaction. A forest is a living environment that evolves, Tree-Evolution tries to reflect it."
-)
-array_of_organizations << arbre_evolution
-
-##END OF ORGANIZATION
-
-
-
-
-
-
-
-
-
-
-
-
-index = 0
-array_of_events = []
-
-puts "Creating #{seed_number} events"
-I18n.locale = 'en-US'
-seed_number.times do
-  array_of_events << Event.create!(
-    name: event_names[index],
-    description: descriptions[index],
-    date: Faker::Time.between_dates(from: Date.today - 10, to: Date.today + 5),
-    time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
-    organization_id: array_of_organizations[index].id,
-    latitude: latitudes[index],
-    longitude: longitudes[index],
-    region: places[index],
-    capacity: [*70..100].sample,
-    logo: logos[index]
-  )
-  index += 1
-end
-
-
-
-
-
-index = 0
-array_of_bookings = []
-
-puts "Creating #{seed_number} bookings"
-seed_number.times do
-  array_of_bookings << Booking.create!(
-    user_id: array_of_users[index].id,
-    event_id: array_of_events[index].id
-  )
-  index += 1
-end
-
-index = 0
-puts "Creating #{seed_number} bookings"
-seed_number.times do
-  array_of_bookings << Booking.create!(
-    user_id: array_of_users[-index].id,
-    event_id: array_of_events[index].id
-  )
-  index += 1
-end
-
-index = 0
-review_index = 0
-
-puts "Creating #{reviews.size} reviews"
-
-# Review.create!(content: reviews[0], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
-# Review.create!(content: reviews[1], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
-# Review.create!(content: reviews[2], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
-# Review.create!(content: reviews[3], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
-# Review.create!(content: reviews[4], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
-# Review.create!(content: reviews[5], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
-# Review.create!(content: reviews[6], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
-# Review.create!(content: reviews[7], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
-# Review.create!(content: reviews[8], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
-# Review.create!(content: reviews[9], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
-# Review.create!(content: reviews[10], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
-# Review.create!(content: reviews[11], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
-# Review.create!(content: reviews[12], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
-# Review.create!(content: reviews[13], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
-# Review.create!(content: reviews[14], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
-# Review.create!(content: reviews[15], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
-# Review.create!(content: reviews[16], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
-# Review.create!(content: reviews[17], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
-# Review.create!(content: reviews[18], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
-# Review.create!(content: reviews[19], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
-
-review_index = 0
-
-array_of_organizations.each do |org|
-  org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
-  org_bookings.each do |org_booking|
-    Review.create!(
-      content: reviews[review_index],
-      rating: [*3..5].sample,
-      booking_id: org_booking.id
-    )
-    review_index += 1
-  end
-end
-
-
-
-
-
-
-
-
-
-
-# review_index = 0
-
-# reviews.size.times do
-#   # index = (array_of_bookings.size / 2) - 1 if index > seed_number - 1
-#   Review.create!(
-#     content: reviews[review_index],
-#     rating: [*3..5].sample,
-#     booking_id: array_of_bookings[index > seed_number - 1 ? [*1..9].sample : index].id
-#   )
-#   index += 1
-#   review_index += 1
-# end
-
-# array_of_chats = []
-
-# puts "Creating chats"
-# seed_number.times do
-#   array_of_chats << Chat.create(
-#     name: Faker::ProgrammingLanguage.name
-#   )
-# end
-
-# index = 0
-
-# puts "Creating messages"
-# seed_number.times do
-#   Message.create(
-#     content: Faker::Hipster.sentence,
-#     chat_id: array_of_chats[index].id,
-#     user_id: array_of_users[index].id
-#   )
-#   index += 1
-# end
-
-# Users
-
-
-
-
-
-
-
+# USERS ---------------------------------
 
 saffron_avatar = %w[app/assets/images/Saffron.cropped.jpg]
 oro_avatar = %w[app/assets/images/Oro.cropped.jpg]
@@ -507,7 +189,7 @@ puts "creating users ✏️..."
 # ANNEFLEUR
 
 puts "Creating user Anne Fleur"
-anne_fleur = User.new(
+anne_fleur = User.create!(
   first_name: "Anne Fleur",
   last_name: "Bayiha",
   email: "annefleur@lewagon.com",
@@ -518,13 +200,36 @@ anne_fleur = User.new(
   longitude: -73.561668,
   wants_to_carpool: true
 )
-file = File.open(File.join(Rails.root, saffron_avatar[0]))
+# file = File.open(File.join(Rails.root, saffron_avatar[0]))
 
-anne_fleur.photo.attach(io: file, filename: "annefleur.cropped.png", content_type: "image/png")
+# anne_fleur.photo.attach(io: file, filename: "annefleur.cropped.png", content_type: "image/png")
+# anne_fleur.photo.attach(io: file, filename: "logo_org1.png", content_type: "image/png")
+anne_fleur.photo.attach(io: URI.open('https://api.lorem.space/image/face'), filename: "logo_org1.png", content_type: "image/png")
 anne_fleur.save!
 
 array_of_users << anne_fleur
 
+
+# Karl
+
+puts "Creating user Karl"
+karl = User.new(
+  first_name: "Karl",
+  last_name: "Hedayati",
+  email: "karl@lewagon.com",
+  password: "123456",
+  bio: "Hello there. I am Student at Le Wagon Montreal and I am passionate about programming and nature 💻🌿. I am constantly looking for fun ways to give back and get involved to contribute to the environnement.",
+  address: "Montreal",
+  latitude: 45.508888,
+  longitude: -73.561668,
+  wants_to_carpool: true
+)
+file = File.open(File.join(Rails.root, avatar_imgs[2]))
+
+karl.photo.attach(io: file, filename: "avatar3.jpg", content_type: "image/png")
+karl.save!
+
+array_of_users << karl
 
 # SAFFRON
 
@@ -610,27 +315,6 @@ kenzo.save!
 
 array_of_users << kenzo
 
-# AI
-
-puts "Creating user Ai "
-ai = User.new(
-  first_name: "Ai",
-  last_name: "Zhang",
-  email: "ai@gmail.com",
-  password: "123456",
-  bio: "Hey! I'm Ai, and I'm a teacher 🍎. I love to volunteer, and I'm committed to making the world a better place. Check out my progress. ",
-  address: "Brossard",
-  latitude: 45.508888,
-  longitude: -73.561668,
-  wants_to_carpool: true
-)
-file = File.open(File.join(Rails.root, ai_avatar[0]))
-
-ai.photo.attach(io: file, filename: "Ai.cropped.jpg", content_type: "image/jpg")
-ai.save!
-
-array_of_users << ai
-
 # ROXANNE
 
 puts "Creating user Roxanne "
@@ -694,7 +378,6 @@ harmony.save!
 
 array_of_users << harmony
 
-
 # Najib
 
 puts "Creating user Najib"
@@ -715,3 +398,366 @@ najib.photo.attach(io: file, filename: "Najib.cropped.jpg", content_type: "image
 najib.save!
 
 array_of_users << najib
+
+puts "SIZE ARRAY OF USERS: #{array_of_users.count}"
+
+# END USERS -----------------------------
+
+
+
+
+
+# puts "Creating #{seed_number - array_of_users.size} other users"
+# (seed_number - array_of_users.size).times do
+#   # puts "email: #{Faker::Internet.email}"
+#   user = User.new(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     password: '123456',
+#     bio: Faker::Lorem.sentence,
+#     address: Faker::Address.full_address,
+#     achievement_level: achievement_levels.sample,
+#     latitude: Faker::Address.latitude,
+#     longitude: Faker::Address.longitude,
+#     wants_to_carpool: [true, false].sample
+#   )
+#   file = File.open(File.join(Rails.root, avatar_imgs[[*0..avatar_imgs.size-1].sample]))
+#   user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+#   user.save!
+#   array_of_users << user
+# end
+
+# index = 0
+# array_of_organizations = []
+
+# puts "Creating #{org_array.size} organizations"
+# org_array.each do |org|
+#   array_of_organizations << Organization.create!(
+#     name: org,
+#     photo_url: logos[index],
+#     about_us: about_us_org[index]
+#   )
+#   index += 1
+# end
+
+
+
+# ORGANISATIONS (10)
+
+#ARBRE.ECO
+array_of_organizations = []
+
+puts "Creating arbres.eco organization"
+arbres_eco = Organization.create!(
+ name: "Arbres.eco",
+ photo_url:"logo_org1.png",
+ about_us:"Planting trees is a highly meaningful gesture. By acting on tree cover, we capture greenhouse gases and also improve the environment, health and quality of life for residents, while offering an economically viable response to climate change. We are currently witnessing an international movement aimed at increasing the canopy of cities and countryside. Give a hand so that together we can make a difference!
+ Our partners are responsible companies, towns and villages concerned about their environment and also, for-profit organizations involved in their community."
+)
+array_of_organizations << arbres_eco
+
+#GRAME
+puts "Creating grame organization"
+grame = Organization.create!(
+ name: "GRAME",
+ photo_url:"logo_org2.png",
+ about_us:"As climate change becomes humanity's biggest challenge, and 75% of humans live in urban areas, GRAME is convinced that it is possible to build resilient communities that live in healthy and sustainable environments. This is her raison d'être, which she carries with assumed optimism. GRAME takes note of the fact that climate change amplifies social inequalities, and that the most vulnerable populations are the most affected, and often the first, by climate change; it takes this into account in its decisions and contributes to greater environmental justice.
+ GRAME acts for a better environment in collaboration with citizens, communities and organizations as well as with governments, by intervening in the field, by deploying education and awareness programs and by issuing recommendations rooted in rigor. science that has characterized it since its creation. Find out how our actions embody our mission year after year!
+ "
+)
+array_of_organizations << grame
+
+#ONE TREE PLANTED
+puts "Creating one tree planted organization"
+one_tree_planted = Organization.create!(
+ name: "One Tree Planted",
+ photo_url:"logo_org3.png",
+ about_us:"We want to make it simple for anyone to help the environment by planting trees. Together we can restore forests, create habitat for biodiversity, and make a positive social impact around the world. We plant one tree with every dollar donated. Since 2014, we have more than doubled the number of trees planted each year, and are working with partners across 47+ countries in North America, Latin America, Africa, Asia, Europe and the Pacific. We have planted over 40 million trees in more than 47 countries across the globe since 2014. In 2021, we more than doubled our impact from 2020 - with 23.5 million trees! Since our establishment, we have been dedicated to making it easier for both individuals and businesses to give back to the environment, create a healthier climate, protect biodiversity, and help reforestation efforts. With your support, we aid in environmental conservation and restoration across the globe!"
+
+)
+array_of_organizations << one_tree_planted
+
+#JOUR DE LA TERRE
+puts "Creating Jour de la terre organization"
+jour_de_la_terre = Organization.create!(
+ name: "Jour de la Terre",
+ photo_url:"logo_org4.png",
+ about_us:"Our mission: To help people and organizations reduce their impact on the environment. Earth Day was first celebrated on April 22, 1970. Today, more than one billion people in 193 countries take action each year for Earth Day. Over the years, Earth Day has become the largest participatory environmental movement on the planet.
+ In 1990, the creation of the association in France and Canada goes hand in hand with the internationalization of the Earth Day movement. The Jour de la Terre France association has distinguished itself by organizing environmental campaigns and rallies, one of which, on April 22, 1990, remains to this day the largest French event dedicated to the environment with millions participants and nearly a thousand actions in all areas of the environment. In Quebec, Earth Day has been celebrated since 1995 by organizing all kinds of activities to raise awareness of environmental issues. With its ability to mobilize community players, the provincial organization has continued to grow, developing numerous action programs on April 22 and every day.
+ In 2015, French and Quebec teams joined forces to breathe new life into the Earth Day movement in France, Quebec and the rest of the Francophonie. In 2019, a strategic alliance was concluded with EarthPLAY in Canada, so that the environmental support programs carried out in Quebec can be heard everywhere on Canadian territory. The association Jour de la Terre Canada is the holder of the trademark of the Earth Day in France and Canada"
+)
+array_of_organizations << jour_de_la_terre
+
+#ESPACE POUR LA VIE
+puts "Creating Espace pour la vie organization"
+espace_pour_la_vie = Organization.create!(
+ name: "Espace pour la vie",
+ photo_url:"logo_org5.jpg",
+ about_us:"Espace pour la vie's mission is to raise awareness of nature and the knowledge associated with it, to contribute to the study and preservation of biodiversity and to promote responsible behavior towards the environment. It contributes to the achievement of this mission in the respective spheres of each of the institutions (Biodôme: ecology and environmental sciences; Insectarium: entomology; Botanical Garden: botany and horticulture; Rio Tinto Alcan Planetarium: astronomy).
+ Space for Life receives a large number of donation requests and wishes, while respecting its mission, to support the community and recognized organizations. Individual requests are not considered. Espace pour la vie's mission is to raise awareness of nature and the knowledge associated with it, to contribute to the study and preservation of biodiversity and to promote responsible behavior towards the environment.
+ Our donation policy does not provide for monetary contributions or donations of promotional items, plants, etc. Priority will be given to activities and events held by non-profit organizations whose mission echoes the values and objectives of Space for Life. Only successful applications will receive a response."
+
+)
+array_of_organizations << espace_pour_la_vie
+
+#ARBRE CANADA
+puts "Creating Arbres Canada organization"
+arbres_canada = Organization.create!(
+ name: "Arbres Canada",
+ photo_url:"logo_org6.webp",
+ about_us:"Tree Canada is the only national not-for-profit organization that plants and nurtures trees in rural and urban settings, in every province across the country. We help increase Canada's forest cover through our programs, research, advocacy, and by providing grants to communities and schools. We are thought leaders and help build capacity by collaborating with a network of industry experts, academics and other nonprofits to build community knowledge and help municipalities plan and support local forest cover.With our partners and sponsors, we have planted over 84 million trees. Improving the lives of Canadians by planting and caring for trees while teaching the value of trees. To inspire, inform and empower Canadians to plant and nurture trees to improve quality of life and fight climate change."
+
+)
+array_of_organizations << arbres_canada
+
+#ASFQ
+puts "Creating ASFQ organization"
+asfq = Organization.create!(
+ name: "ASFQ",
+ photo_url:"log_org7.webp",
+ about_us:"Far from being a luxury, architecture is essential to human flourishing, sustainable development and the autonomy of communities. It involves rights as fundamental as housing, health, education, equality and security. These depend on adequate infrastructure, which requires quality architecture. Yet, due to hazards and injustices, the majority of the planet's inhabitants live in deficient built environments, and do not benefit from the capacities required to develop safe, healthy and ecological living environments. This situation persists all the more as urbanization, migration and climate change are accelerating, further deteriorating the habitat of vulnerable people. This is why solidarity, quality and borderless architecture is more necessary than ever to find the best solutions to the challenges facing humanity."
+
+)
+array_of_organizations << asfq
+
+#MON ARBRE A MOI
+puts "Creating Mon Arbre a moi organization"
+mon_arbre_a_moi = Organization.create!(
+ name: "Mon arbre à moi",
+ photo_url:"logo_org8.png",
+ about_us:"The government of Quebec is launching The My Tree of Mine campaign allows any child born or adopted in Quebec in the current year to receive a small tree seedling that will grow with them. Little plant will grow...The young plants given by the Department during Tree and Forest Month are on average 2 years old and 30 to 60 centimeters high, depending on the species. The trees offered are native forest species of Quebec with a good longevity, more than 100 years. These trees will grow to reach 20 to 25 meters in height, some as young as 30 years old."
+
+)
+array_of_organizations << mon_arbre_a_moi
+
+#NATURE ACTION QUEBEC
+puts "Creating Nature Action Quebec organization"
+nature_action_quebec = Organization.create!(
+ name: "Nature action Quebec",
+ photo_url:"logo_org9.png",
+ about_us:"Nature-Action Québec is a non-profit organization, recognized conservation organization, charity and social economy enterprise that works to protect the environment. Born from a citizen initiative in Saint-Bruno-de-Montarville, NAQ has slowly but surely evolved into its current form: a large-scale social economy enterprise that shapes and executes transition projects in more than 100 communities. with 350 projects annually.
+ Its success is based on the strength of its team, made up of more than 100 professionals dedicated to protecting the environment. Experts, managers and technicians who have enviable skills in various sectors of activity and who have chosen to work within an organization whose values and commitment they share.
+ Nature-Action Québec has given itself the mission of guiding individuals and organizations in the application of best environmental practices. Thus, it contributes to the realization of many innovative projects in several areas that affect the environment, in partnership with municipalities, non-profit organizations, citizens, government departments and private companies.
+ Faced with the climate emergency that is shaking our planet, we now realize that it is time to act for the good of the communities of today and tomorrow. For more than 35 years, NAQ has worked to make things happen with you. Whether through the conservation of natural environments in perpetuity, the environmental restoration of degraded environments, awareness, territorial planning, sustainable development, management of environmental projects, programs and municipal infrastructures, education or communication , Nature-Action Québec puts its expertise at the service of nature and makes a difference in the environment.
+ "
+
+)
+array_of_organizations << nature_action_quebec
+
+# ARBRE EVOLUTION
+puts "Creating Arbre évolution organization"
+arbre_evolution = Organization.create!(
+ name: "Arbre évolution",
+ photo_url:"logo_org10.png",
+ about_us:"Arbre-Évolution is a solidarity cooperative that promotes the well-being of communities through a symbiosis between the forest, humans and their environment. We have solid expertise in tree planting, ecosystem restoration, edible landscaping, carbon technologies and knowledge transfer. We offer personalized services to carry out decisive projects in your living environments. Our primary aims are community involvement and environmental awareness among young people. We are also the instigators of the Social Reforestation Program™, a unique tool available to communities to fund greening initiatives.
+ Arbre-Évolution considers the forest as a natural environment, but also a human one. On the lookout for the major international challenges of sustainable development, the vision we propose seeks to act on the links between nature and cultural dynamics, on the synergies between communities and their environment. With this identity, we do not perceive the environment as an hermetic concept, but rather as a large whole in which social activity and ecology are in constant interaction. A forest is a living environment that evolves, Tree-Evolution tries to reflect it."
+)
+array_of_organizations << arbre_evolution
+
+##END OF ORGANIZATION
+
+puts "SIZE ARRAY OF ORGANISATION: #{array_of_organizations.count}"
+
+index = 0
+array_of_events = []
+
+array_of_dates = [Date.today - 10, Date.today - 9, Date.today - 8, Date.today - 7, Date.today - 6,
+                  Date.today + 1, Date.today + 2, Date.today + 3, Date.today + 4, Date.today + 5]
+
+puts "Creating #{seed_number} events"
+I18n.locale = 'en-US'
+seed_number.times do
+  array_of_events << Event.create!(
+    name: event_names[index],
+    description: descriptions[index],
+    # date: Faker::Time.between_dates(from: Date.today - 10, to: Date.today + 5),
+    date: array_of_dates[index],
+    time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
+    organization_id: array_of_organizations[index].id,
+    latitude: latitudes[index],
+    longitude: longitudes[index],
+    region: places[index],
+    capacity: [*70..100].sample,
+    logo: logos[index]
+  )
+  puts "EVENT ##{index}: \nname: #{array_of_events[index].name}\ndate:#{array_of_events[index].date}"
+  index += 1
+end
+
+# Event for the demo
+# array_of_events << Event.create!(
+#   name: "SPECIAL EVENT",
+#   description: descriptions[index],
+#   date: Date.today + 5,
+#   time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
+#   organization_id: array_of_organizations[index].id,
+#   latitude: latitudes[index],
+#   longitude: longitudes[index],
+#   region: places[index],
+#   capacity: [*70..100].sample,
+#   logo: logos[index]
+# )
+
+# # Event for the Review
+# array_of_events << Event.create!(
+#   name: "EVENT FOR WHICH WE WRITE A REVIEW",
+#   description: descriptions[index],
+#   date: Date.today - 10,
+#   time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :all),
+#   organization_id: array_of_organizations[index].id,
+#   latitude: latitudes[index],
+#   longitude: longitudes[index],
+#   region: places[index],
+#   capacity: [*70..100].sample,
+#   logo: logos[index]
+# )
+
+puts "SIZE ARRAY OF EVENTS: #{array_of_events.count}"
+
+index = 0
+array_of_bookings = []
+
+user_anne_fleur_id = User.find_by(first_name: "Anne Fleur").id
+user_anne_fleur = User.find_by(first_name: "Anne Fleur")
+user_karl_id = User.find_by(email: "karl@lewagon.com").id
+user_karl = User.find_by(email: "karl@lewagon.com")
+
+# Anne Fleur is booked for the 3 first events
+puts "Anne Fleur is booked for the 3 first events"
+3.times do
+  array_of_bookings << Booking.create!(
+    user_id: user_anne_fleur_id,
+    event_id: array_of_events[index].id
+  )
+  puts "USER: #{user_anne_fleur.first_name}\nEVENT: #{array_of_events[index].name}"
+  index += 1
+end
+
+# Anne Fleur is booked for the 2 last events
+puts "Anne Fleur is booked for the 2 last events"
+index = array_of_events.size - 1
+2.times do
+  array_of_bookings << Booking.create!(
+    user_id: user_anne_fleur_id,
+    event_id: array_of_events[index].id
+  )
+  puts "USER: #{user_anne_fleur.first_name}\nEVENT: #{array_of_events[index].name}"
+  index -= 1
+end
+
+index = 0
+
+# array_of_events and array_of_users need to be the same size
+puts "Creating #{seed_number} bookings"
+seed_number.times do
+  if array_of_users[index].id != user_anne_fleur_id && array_of_users[index].id != user_karl_id
+    array_of_bookings << Booking.create!(
+      user_id: array_of_users[index].id,
+      event_id: array_of_events[index].id
+    )
+  end
+  index += 1
+end
+
+index = 0
+# puts "Creating #{seed_number} bookings"
+# seed_number.times do
+#   array_of_bookings << Booking.create!(
+#     user_id: array_of_users[-index].id,
+#     event_id: array_of_events[index].id
+#   )
+#   index += 1
+# end
+
+index = 0
+# puts "Creating 1 more bookings"
+# seed_number.times do
+  # array_of_bookings << Booking.create!(
+  #   user_id: User.find_by(first_name: "Karl").id,
+  #   event_id: Event.find_by(name: "EVENT FOR WHICH WE WRITE A REVIEW").id
+  # )
+  # index += 1
+# end
+
+# array_of_bookings << Booking.create!(
+#   user_id: array_of_users[0].id,
+#   event_id: array_of_events[0].id
+# )
+
+index = 0
+
+# 5.times do
+#   if Booking.find_by(user: User.find_by(first_name: "Anne Fleur").id).nil?
+#     array_of_bookings << Booking.create!(
+#       user_id: User.find_by(first_name: "Anne Fleur").id,
+#       event_id: array_of_events[index].id
+#     )
+#   end
+#   index += 1
+# end
+
+# array_of_bookings << Booking.create!(
+#   user_id: User.find_by(first_name: "Anne Fleur").id,
+#   event_id: array_of_events[2].id
+# )
+
+# array_of_bookings << Booking.create!(
+#   user_id: User.find_by(first_name: "Anne Fleur").id,
+#   event_id: array_of_events[3].id
+# )
+
+
+puts "SIZE ARRAY OF BOOKINGS: #{array_of_bookings.count}"
+
+index = 0
+review_index = 0
+
+puts "Creating #{reviews.size} reviews"
+
+# Review.create!(content: reviews[0], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
+# Review.create!(content: reviews[1], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
+# Review.create!(content: reviews[2], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
+# Review.create!(content: reviews[3], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
+# Review.create!(content: reviews[4], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
+# Review.create!(content: reviews[5], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
+# Review.create!(content: reviews[6], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
+# Review.create!(content: reviews[7], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
+# Review.create!(content: reviews[8], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
+# Review.create!(content: reviews[9], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
+# Review.create!(content: reviews[10], rating: [*3..5].sample, booking_id: array_of_bookings[5].id)
+# Review.create!(content: reviews[11], rating: [*3..5].sample, booking_id: array_of_bookings[4].id)
+# Review.create!(content: reviews[12], rating: [*3..5].sample, booking_id: array_of_bookings[7].id)
+# Review.create!(content: reviews[13], rating: [*3..5].sample, booking_id: array_of_bookings[8].id)
+# Review.create!(content: reviews[14], rating: [*3..5].sample, booking_id: array_of_bookings[9].id)
+# Review.create!(content: reviews[15], rating: [*3..5].sample, booking_id: array_of_bookings[1].id)
+# Review.create!(content: reviews[16], rating: [*3..5].sample, booking_id: array_of_bookings[6].id)
+# Review.create!(content: reviews[17], rating: [*3..5].sample, booking_id: array_of_bookings[3].id)
+# Review.create!(content: reviews[18], rating: [*3..5].sample, booking_id: array_of_bookings[0].id)
+# Review.create!(content: reviews[19], rating: [*3..5].sample, booking_id: array_of_bookings[2].id)
+
+review_index = 0
+
+
+# Review.create!(
+#   content: reviews[review_index],
+#   rating: [*3..5].sample,
+#   booking_id: org_booking.id
+# )
+
+array_of_organizations.each do |org|
+  org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
+  puts "SIZE BOOKING: #{org_bookings.size}"
+  if org_bookings.size > 0
+    org_bookings.each do |org_booking|
+      if org_booking.user_id != user_anne_fleur_id && org_booking.user_id != user_karl_id
+        Review.create!(
+          content: reviews[review_index],
+          rating: [*3..5].sample,
+          booking_id: org_booking.id
+        )
+      end
+      review_index += 1
+    end
+  end
+end
