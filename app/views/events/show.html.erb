@@ -5,8 +5,8 @@
 
 
   <div class="container">
-    <h1 class="title-organization pt-4 mt-3" style="font-family:roboto, sans-serif; font-size: 60px; font-weight: 900px;"><%= @event.name %></h1>
-    <h1 class="title-organization-event fs-1 pb-1 pt-1" style="font-family:roboto, sans-serif; color: green; letter-spacing: 1px; font-weight: 100; font-size: 60px;"><%= @event.organization.name.capitalize %></h1>
+    <h1 class="title-organization pt-4 mt-3" style="font-family:roboto, sans-serif; font-size: 60px;"><%= @event.name %></h1>
+    <h1 class="title-organization-event fs-1 pb-1 pt-1" style="font-family:roboto, sans-serif; color: #A4BE7B;"><%= link_to @event.organization.name, organization_path(@event.organization), class:"text-decoration-none title-organization-event fs-1 pb-1 pt-1", style:"font-family:roboto, sans-serif; color:green;"%></h1>
   </div>
 
   <div class="container">
