@@ -77,12 +77,12 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <%= link_to event_path(booking.event), class:"text-decoration-none" do %>
-                      <h2 class="card-title"><%= booking.event.name %>🌲</h2>
+                      <h2 class="card-title" style="font-family:roboto, sans-serif;font-size:20px"><%= booking.event.name %>🌲</h2>
                     <% end %>
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column">
-                        <h3 class="card-organization"><%= booking.event.organization.name %></h3>
-                        <h5 class="card-date"><i class="fa-solid fa-calendar-days"></i><%= booking.event.date %></h5>
+                        <h3 class="card-organization" style="font-family:roboto, sans-serif;font-size:16px"><%= booking.event.organization.name %></h3>
+                        <h5 class="card-date" style="font-family:roboto, sans-serif;font-size:14px"><i class="fa-solid fa-calendar-days"></i><%= booking.event.date %></h5>
                     </div>
                       <% if user_signed_in? && current_user == booking.user && booking.review.nil? %>
                         <div class="review-button">
