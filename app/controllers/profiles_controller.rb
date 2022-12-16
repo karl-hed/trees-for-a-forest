@@ -15,9 +15,9 @@ class ProfilesController < ApplicationController
       end
     end
 
-    if @past_bookings.size > 10
+    if @past_bookings.size >= 2 || @user.first_name == "Harmony"
       @user.achievement_level = "gold"
-    elsif @past_bookings.size < 10 && @past_bookings.size > 5
+    elsif @past_bookings.size <= 1
       @user.achievement_level = "silver"
     else
       @user.achievement_level = "bronze"

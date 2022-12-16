@@ -370,7 +370,8 @@ harmony = User.new(
   address: "Montreal",
   latitude: 45.508888,
   longitude: -73.561668,
-  wants_to_carpool: true
+  wants_to_carpool: true,
+  achievement_level: "gold"
 )
 file = File.open(File.join(Rails.root, harmony_avatar[0]))
 
@@ -783,61 +784,109 @@ review_index = 0
 
 
 save_the_environment = array_of_events.find { |event| event.name == "Save the Environment" }
+forest_love = array_of_events.find { |event| event.name == "Forest Love" }
 # save_the_environment_bookings = array_of_bookings.select { |booking| booking.event_id == save_the_environment.id }
 
 reviews_slugs = [
   {
-    user: karl,
-    review: {
-      content: "This was amazing experience",
-      rating: 4
-    }
+    event: save_the_environment,
+    users: [
+      {
+        user: karl,
+        review: {
+          content: "This was amazing experience",
+          rating: 5
+        }
+      },
+      {
+        user: saffron,
+        review: {
+          content: "Thank you to everyone. I've met some awesome people.",
+          rating: 4
+        }
+      },
+      {
+        user: oro,
+        review: {
+          content: "It was a great experience. Thank you to all who participated.",
+          rating: 5
+        }
+      },
+      {
+        user: anthony,
+        review: {
+          content: "Great experience. I will participate again.",
+          rating: 5
+        }
+      },
+      {
+        user: harmony,
+        review: {
+          content: "It was really fun. Thank you to all.",
+          rating: 4
+        }
+      }
+    ]
   },
   {
-    user: saffron,
-    review: {
-      content: "This was amazing",
-      rating: 4
-    }
-  },
-  {
-    user: oro,
-    review: {
-      content: "This was amazing",
-      rating: 4
-    }
-  },
-  {
-    user: anthony,
-    review: {
-      content: "This was amazing",
-      rating: 4
-    }
-  },
-  {
-    user: kenzo,
-    review: {
-      content: "This was amazing",
-      rating: 4
-    }
+    event: forest_love,
+    users: [
+      {
+        user: karl,
+        review: {
+          content: "This was amazing. I will book again.",
+          rating: 5
+        }
+      },
+      {
+        user: saffron,
+        review: {
+          content: "I came with several of my friends who were all experienced tree planters and we all had a really good time.",
+          rating: 4
+        }
+      },
+      {
+        user: oro,
+        review: {
+          content: "I found my experience to be very good.",
+          rating: 5
+        }
+      },
+      {
+        user: anthony,
+        review: {
+          content: "Thank you to all the organizaers. It was really fun and amazing.",
+          rating: 5
+        }
+      },
+      {
+        user: harmony,
+        review: {
+          content: "Thank you to everyone who participated.",
+          rating: 4
+        }
+      }
+    ]
   }
 ]
 
 reviews_slugs.each do |reviews_slug|
-  booking = Booking
-            .find_by(user: reviews_slug[:user], event: save_the_environment) || Booking.create!(
-                                                                                  user: reviews_slug[:user],
-                                                                                  event: save_the_environment
-                                                                                )
+  reviews_slug[:users].each do |user_slug|
+    booking = Booking
+              .find_by(user: user_slug[:user], event: reviews_slug[:event]) || Booking.create!(
+                                                                                    user: user_slug[:user],
+                                                                                    event: reviews_slug[:event]
+                                                                                  )
 
-  Review.create!(
-    content: reviews_slug[:review][:content],
-    rating: reviews_slug[:review][:rating],
-    booking: booking
-  )
+    Review.create!(
+      content: user_slug[:review][:content],
+      rating: user_slug[:review][:rating],
+      booking: booking
+    )
+  end
 end
 
-array_of_organizations.reject { |organization| organization == arbres_eco }.each do |org|
+array_of_organizations.reject { |organization| organization == arbres_eco || organization == asfq }.each do |org|
   org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
   puts "SIZE BOOKING: #{org_bookings.size}"
   if org_bookings.size > 0
