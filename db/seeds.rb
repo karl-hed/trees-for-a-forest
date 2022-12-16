@@ -153,11 +153,11 @@ reviews = ["Awesome organisation. I enjoyed planting trees in this week's (decem
            "I loved the vibe.",
            "I made friends and I enjoyed planting trees with this organization."]
 
-places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Levis]
+places = %w[Sherbrooke Montreal Quebec\ city Chicoutimi Gaspe Longueuil Trois-Rivieres Matane Granby Trois-Pistoles]
 
-latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.3432397 48.844516 45.400002 46.738227]
+latitudes = %w[45.404476 45.508888 46.829853 48.4280529 48.8301 45.537307 46.3432397 48.844516 45.400002 48.119999]
 
-longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -71.246459]
+longitudes = %w[-71.888351 -73.561668 -71.254028 -71.0684923 -64.4818 -73.510734 -72.5432834 -67.530576 -72.733330 -69.180000]
 
 # avatar_imgs = %w[app/assets/images/avatar01.png app/assets/images/avatar02.png]
 avatar_imgs = %w[app/assets/images/avatar1.jpg app/assets/images/avatar2.jpg app/assets/images/avatar3.jpg app/assets/images/avatar4.jpg app/assets/images/avatar5.jpg app/assets/images/avatar6.jpg]
@@ -672,16 +672,14 @@ puts "Book 4 users for the Forest Love event"
 event_forest_love = Event.find_by(name: "Forest Love")
 # user_harmony = User.find_by(first_name: "Harmony")
 
-array_of_bookings << Booking.create!(
-  user_id: harmony.id,
-  event_id: event_forest_love.id
-)
+past_events = Event.where("date < :date", date: Date.today)
 
-array_of_bookings << Booking.create!(
-  user_id: anthony.id,
-  event_id: event_forest_love.id
-)
-
+past_events.each do |past_event|
+  array_of_bookings << Booking.create!(
+    user: harmony,
+    event: past_event
+  )
+end
 
 # 4.times do
 #   if array_of_users[index].id != user_anne_fleur_id && array_of_users[index].id != user_karl_id
