@@ -174,6 +174,7 @@ array_of_users = []
 # USERS ---------------------------------
 
 saffron_avatar = %w[app/assets/images/Saffron.cropped.jpg]
+anne_fleur_avatar = "app/assets/images/annefleur.cropped.png"
 oro_avatar = %w[app/assets/images/Oro.cropped.jpg]
 anthony_avatar = %w[app/assets/images/Anthony.cropped.jpg]
 kenzo_avatar = %w[app/assets/images/Kenzo.cropped.jpg]
@@ -200,11 +201,11 @@ anne_fleur = User.create!(
   longitude: -73.561668,
   wants_to_carpool: true
 )
-# file = File.open(File.join(Rails.root, saffron_avatar[0]))
+file = File.open(File.join(Rails.root, anne_fleur_avatar))
 
-# anne_fleur.photo.attach(io: file, filename: "annefleur.cropped.png", content_type: "image/png")
+anne_fleur.photo.attach(io: file, filename: "annefleur.cropped.png", content_type: "image/png")
 # anne_fleur.photo.attach(io: file, filename: "logo_org1.png", content_type: "image/png")
-anne_fleur.photo.attach(io: URI.open('https://api.lorem.space/image/face'), filename: "logo_org1.png", content_type: "image/png")
+# anne_fleur.photo.attach(io: URI.open('https://api.lorem.space/image/face'), filename: "logo_org1.png", content_type: "image/png")
 anne_fleur.save!
 
 array_of_users << anne_fleur
@@ -277,7 +278,7 @@ array_of_users << oro
 
 puts "Creating user anthony "
 anthony = User.new(
-  first_name: "Anthony",
+first_name: "Anthony",
   last_name: "Lackey",
   email: "anthony@gmail.com",
   password: "123456",
@@ -635,16 +636,16 @@ puts "Anne Fleur is booked for the 3 first events"
 end
 
 # Anne Fleur is booked for the 2 last events
-puts "Anne Fleur is booked for the 2 last events"
-index = array_of_events.size - 1
-2.times do
-  array_of_bookings << Booking.create!(
-    user_id: user_anne_fleur_id,
-    event_id: array_of_events[index].id
-  )
-  puts "USER: #{user_anne_fleur.first_name}\nEVENT: #{array_of_events[index].name}"
-  index -= 1
-end
+# puts "Anne Fleur is booked for the 2 last events"
+# index = array_of_events.size - 1
+# 2.times do
+#   array_of_bookings << Booking.create!(
+#     user_id: user_anne_fleur_id,
+#     event_id: array_of_events[index].id
+#   )
+#   puts "USER: #{user_anne_fleur.first_name}\nEVENT: #{array_of_events[index].name}"
+#   index -= 1
+# end
 
 index = 0
 
@@ -659,6 +660,41 @@ seed_number.times do
   end
   index += 1
 end
+
+index = 0
+
+# organization = Event.find_by(name: "Forest Love").organization
+
+
+puts "Book 4 users for the Forest Love event"
+
+event_forest_love = Event.find_by(name: "Forest Love")
+# user_harmony = User.find_by(first_name: "Harmony")
+
+array_of_bookings << Booking.create!(
+  user_id: harmony.id,
+  event_id: event_forest_love.id
+)
+
+array_of_bookings << Booking.create!(
+  user_id: anthony.id,
+  event_id: event_forest_love.id
+)
+
+
+# 4.times do
+#   if array_of_users[index].id != user_anne_fleur_id && array_of_users[index].id != user_karl_id
+#     # if !Booking.include?(array_of_users[index].id)
+#     if !Booking.find_by(user: array_of_users[index])
+#       array_of_bookings << Booking.create!(
+#         user_id: array_of_users[index].id,
+#         event_id: event_forest_love.id
+#       )
+#     end
+#   end
+#   index += 1
+# end
+
 
 index = 0
 # puts "Creating #{seed_number} bookings"
@@ -740,12 +776,68 @@ review_index = 0
 
 
 # Review.create!(
-#   content: reviews[review_index],
-#   rating: [*3..5].sample,
-#   booking_id: org_booking.id
-# )
+  #   content: reviews[review_index],
+  #   rating: [*3..5].sample,
+  #   booking_id: org_booking.id
+  # )
 
-array_of_organizations.each do |org|
+
+save_the_environment = array_of_events.find { |event| event.name == "Save the Environment" }
+# save_the_environment_bookings = array_of_bookings.select { |booking| booking.event_id == save_the_environment.id }
+
+reviews_slugs = [
+  {
+    user: karl,
+    review: {
+      content: "This was amazing experience",
+      rating: 4
+    }
+  },
+  {
+    user: saffron,
+    review: {
+      content: "This was amazing",
+      rating: 4
+    }
+  },
+  {
+    user: oro,
+    review: {
+      content: "This was amazing",
+      rating: 4
+    }
+  },
+  {
+    user: anthony,
+    review: {
+      content: "This was amazing",
+      rating: 4
+    }
+  },
+  {
+    user: kenzo,
+    review: {
+      content: "This was amazing",
+      rating: 4
+    }
+  }
+]
+
+reviews_slugs.each do |reviews_slug|
+  booking = Booking
+            .find_by(user: reviews_slug[:user], event: save_the_environment) || Booking.create!(
+                                                                                  user: reviews_slug[:user],
+                                                                                  event: save_the_environment
+                                                                                )
+
+  Review.create!(
+    content: reviews_slug[:review][:content],
+    rating: reviews_slug[:review][:rating],
+    booking: booking
+  )
+end
+
+array_of_organizations.reject { |organization| organization == arbres_eco }.each do |org|
   org_bookings = array_of_bookings.select { |booking| booking.organization.id == org.id }
   puts "SIZE BOOKING: #{org_bookings.size}"
   if org_bookings.size > 0
