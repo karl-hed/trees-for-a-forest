@@ -1,3 +1,5 @@
+# Trees for a forest
+
 Trees for a forest is an app to join volunteer tree-planters and businesses that are seeking people willing to participate in a tree-planting event.
 It is an app developped for our 12-week coding bootcamp at [Le Wagon coding bootcamp](https://www.lewagon.com) in Montreal.
 
@@ -37,12 +39,18 @@ As a user I can access the profile of user attending a specific tree planting ev
 
 ![Profile](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/profile.png)
 
-As a user I can view another users profile and view a list of the tree planting events they attended.
+As a user I can view another user's profile and view a list of the tree planting events they attended.
 
 ![Event Profile](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/event_profile.png)
 
-As a user I can send and receive messages from another user trough their profile.
+As a user I can send and receive messages from another user through their profile.
 
-As a user I can view a map of three planting events I completed
+![Profile Message](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/profile_message.png)
+
+As a user I can view a map of three planting events I completed.
+
+![Completed Events](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/completed_events.png)
 
 As a user I can write a review of tree planting events I attended.
+
+![Review](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/review.png)
