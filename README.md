@@ -3,7 +3,7 @@ It is an app developped for our 12-week coding bootcamp at [Le Wagon coding boot
 
 The web app is hosted here: www.trees-for-a-forest.me
 
-![Main Page](https://github.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/main-screenshot.png)
+![Main Page](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/main_screenshot.png)
 
 For viewing our presentation during our demo day, see here:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WbUKf0fFOYs?start=874" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -16,7 +16,7 @@ password: 123456
 
 These are our user paths and functionnalities available (tested during our demo day):
 
-![Main Page](https://github.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/main-screenshot.png)
+![Main Page](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/logged_in.png)
 
 As a user I can:
   - search for tree planting events nearby that match my availibilities
