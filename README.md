@@ -16,7 +16,7 @@ password: 123456
 
 These are our user paths and functionnalities available (tested during our demo day):
 
-![Main Page](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/logged_in.png)
+![Event Map](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/event_map.png)
 
 As a user I can:
   - search for tree planting events nearby that match my availibilities
