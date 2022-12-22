@@ -1,24 +1,27 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 Trees for a forest is an app to join volunteer tree-planters and businesses that are seeking people willing to participate in a tree-planting event.
 It is an app developped for our 12-week coding bootcamp at [Le Wagon coding bootcamp](https://www.lewagon.com) in Montreal.
 
 The web app is hosted here: www.trees-for-a-forest.me
 
-![Main Page](assets/images/main-screenshot.png)
+![Main Page](https://github.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/main-screenshot.png)
 
-For viewing our presentation during our demo day, see here (our presentation is at 24:06)
+For viewing our presentation during our demo day, see here:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WbUKf0fFOYs?start=874" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 The credentials for login and testing the app are:
+```
 username: annefleur@lewagon.com
 password: 123456
+```
 
 These are our user paths and functionnalities available (tested during our demo day):
 
-As a user I can search for Tree planting events nearby that match my availibilities
+![Main Page](https://github.com/karl-hed/trees-for-a-forest/tree/master/app/assets/images/main-screenshot.png)
 
-As a user I can review a list of tree planting events.
-
-As a user I can look up a specific tree planting event by location and organization
+As a user I can:
+  - search for tree planting events nearby that match my availibilities
+  - review a list of tree planting events
+  - look up a specific tree planting event by location and organization
 
 As a user I can  review more information about a specifit tree planting event.
 
