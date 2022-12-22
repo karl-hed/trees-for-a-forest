@@ -6,7 +6,7 @@ The web app is hosted here: www.trees-for-a-forest.me
 ![Main Page](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/main_screenshot.png)
 
 For viewing our presentation during our demo day, see here:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WbUKf0fFOYs?start=874" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Demo Day - Trees for a forest](https://img.youtube.com/vi/WbUKf0fFOYs/0.jpg)](https://www.youtube.com/watch?v=WbUKf0fFOYs?start=874)
 
 The credentials for login and testing the app are:
 ```
