@@ -23,7 +23,7 @@ As a user I can:
 
 ![Event Map](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/event_map.png)
 
-As a user I can
+As a user I can:
   - review more information about a specific tree planting event
   - join a specific tree planting event
 
@@ -35,7 +35,11 @@ As a user I can view a list of people attending a specific tree planting event.
 
 As a user I can access the profile of user attending a specific tree planting event.
 
+![Profile](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/profile.png)
+
 As a user I can view another users profile and view a list of the tree planting events they attended.
+
+![Event Profile](https://raw.githubusercontent.com/karl-hed/trees-for-a-forest/master/app/assets/images/event_profile.png)
 
 As a user I can send and receive messages from another user trough their profile.
 
