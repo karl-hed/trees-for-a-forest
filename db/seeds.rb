@@ -564,8 +564,8 @@ puts "SIZE ARRAY OF ORGANISATION: #{array_of_organizations.count}"
 index = 0
 array_of_events = []
 
-array_of_dates = [Date.today - 10, Date.today - 9, Date.today - 8, Date.today - 7, Date.today - 6,
-                  Date.today + 1, Date.today + 2, Date.today + 3, Date.today + 4, Date.today + 5]
+array_of_dates = [Date.today + 10, Date.today + 9, Date.today + 8, Date.today + 27, Date.today + 26,
+                  Date.today + 19, Date.today + 29, Date.today + 30, Date.today + 34, Date.today + 40]
 
 puts "Creating #{seed_number} events"
 I18n.locale = 'en-US'
